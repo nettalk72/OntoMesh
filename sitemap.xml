@@ -7,13 +7,10 @@
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-  <!-- 추가 페이지 예시(현재 없으면 제외) -->
-  <!--
   <url>
     <loc>https://ontomesh.org/official-network.html</loc>
-    <lastmod>2024-07-30</lastmod>
+    <lastmod>2024-07-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-  -->
 </urlset>
