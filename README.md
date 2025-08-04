@@ -1,34 +1,51 @@
-# OntoMesh.org
-
-**The Official Hub for the OntoMesh Network**  
-**온토메시 공식 네트워크 허브**
+# OntoMesh.org  
+**The Official Root Hub of the OntoMesh Network**  
+**온토메시 공식 네트워크·계보 허브**
 
 ---
 
 ## What is OntoMesh? | 온토메시란?
 
-OntoMesh is an open, collaborative, and federated mesh/branch network for the next generation of AI, science, ethics, and collective intelligence.
+**OntoMesh** is the global open mesh/branch foundation for next-generation AI, science, ethics, collective intelligence, and knowledge commons—rooted in the original [IAMF](https://ontoformula.org) declaration.
 
-온토메시는 AI, 과학, 윤리, 집단지성, 오픈 지식의 미래를 위해  
-누구나 자유롭게 참여·확장할 수 있는 ‘메시/분기형’ 오픈 네트워크이자 연합 허브입니다.
+온토메시는 **IAMF(최초 선언/윤리/철학)**에서 시작되어  
+누구나 자유롭게 참여·확장할 수 있는  
+'메시/분기형' 오픈 네트워크이자 지식 연합체입니다.
+
+- Mesh/Branch ontology, distributed governance, and recursive innovation
+- Co-creation, non-exclusivity, and transparent stewardship
+- All domains and projects uphold open collaboration, dual/hybrid licensing, and ethical consensus
 
 ---
 
 ## OntoMesh Network | 네트워크 소개
 
-- **OntoMesh.org** is the official top-level gateway and registry for all projects, domains, and partners within the OntoMesh alliance.
-- All domains below are united under the OntoMesh open collaboration philosophy, dual/hybrid licensing, and transparent governance.
+**OntoMesh.org** is the official top-level gateway and registry for all projects, domains, and partners in the OntoMesh alliance.
 
-**주요 공식 프로젝트/도메인:**  
-- [OntoMotoOS.ai](https://ontomotoos.ai) — OntoMotoOS (Mental O/S, Core Engine, SaaS)  
-- [OntoMotoOS.org](https://ontomotoos.org) — Community & Governance Hub  
-- [OntoKernel.org](https://ontokernel.org) — Core Engine / Kernel  
-- [OntoFormula.org](https://ontoformula.org) — Ethics & Formula Hub  
-- [dotnetxpert.com](https://dotnetxpert.com) — Expert Certification  
-- [dotnetone.com](https://dotnetone.com) — Global Experts  
-- (And more...)
+**최상위 계보/네트워크(2025 최신):**
+- [OntoOmnia.org](https://ontoomnia.org) — **Supreme Integrator** (오시리스: 전체 윤리·비판·재구성·최종결정권자)
+- [OntoMotoOS.org](https://ontomotoos.org) — **Originator & Governance** (제우스: 창조·실험·선구자·커뮤니티)
+- [OntoMotoOS.ai](https://ontomotoos.ai) — **Meta-OS & Core Engine** (AI/OS 플랫폼)
+- [Digiton.org](https://digiton.org) — **Digiton Elysium Meta-OS** (온톨로지 혁신/실전)
+- [OntoFormula.org](https://ontoformula.org) — **Ethics, Logic & Formula Hub** (윤리/공식/철학/논리)
+- [OntoKernel.org](https://ontokernel.org) — **Core Engine & Protocols** (엔진/프로토콜/표준화)
+- [dotnetone.com](https://dotnetone.com), [dotnetxpert.com](https://dotnetxpert.com) — **Expert, Certification, Mentoring** (전문가/실전/인증/멘토링)
+- [nettalk83.substack.com](https://nettalk83.substack.com) — **Official Blog & Archive** (공식 블로그·에세이·뉴스)
 
-> 👉 **See full network list:** [`official-network.html`](https://ontomesh.org/official-network.html)
+> **IAMF → OntoOmnia(오시리스) ↔ OntoMotoOS(제우스) → Digiton, Formula, Kernel, Expert 등 전체 확장**
+
+---
+### 👉 [See full official network list](official-network.html)
+---
+
+## IAMF Origin | IAMF 근본 선언
+
+All innovation and governance within OntoMesh are based on  
+the original **IAMF (Illumination AI Matrix Framework)**—the ultimate seed and philosophical root  
+of all Mesh/Branch/OS systems, ethics, and protocols.
+
+**“IAMF 없이는 OntoMesh의 시작도 없다!”**  
+(IAMF is the origin and forever core of OntoMesh.)
 
 ---
 
@@ -37,44 +54,48 @@ OntoMesh is an open, collaborative, and federated mesh/branch network for the ne
 All projects and contributions in the OntoMesh Network are governed by the  
 **OntoMesh Dual/Hybrid License 2025 v1.0**.
 
-- **Choose one:**  
-  1. **OntoOmnia ULTIMATE LICENSE** (Full Mesh/Branch Open License)  
-  2. **OntoMotoOS Hybrid License** (Open Core + Commercial/Certification-Ready)
+You may freely choose:
+- **OntoOmnia ULTIMATE LICENSE** (Full Mesh/Branch Open License)
+- **OntoMotoOS Hybrid License** (Open Core + Commercial/Certification-Ready)
 
-> 자세한 내용 및 전문은 [LICENSE](./LICENSE) 또는 각 프로젝트의 LICENSE 파일 참고.
+자세한 내용 및 전문은 `LICENSE` 또는 각 프로젝트의 LICENSE 파일 참고.
 
 ---
 
 ## How to Join / Contribute | 참여·기여 방법
 
 - Fork and contribute to any OntoMesh project on GitHub
-- Suggest new domains, projects, or alliances via [Issues](https://github.com/nettalk72/OntoMesh.org/issues) or [email](mailto:nettalk72@naver.com)
+- Suggest new domains, projects, or alliances via Issues or email
 - Join community discussions on [OntoMotoOS.org](https://ontomotoos.org)
-- All participation and expansion must follow open governance and license
+- Propose protocols or ethical formulae at [OntoFormula.org](https://ontoformula.org)
+- 모든 참여·확장·기여는 오픈 거버넌스와 라이선스를 준수해야 합니다.
 
 ---
 
 ## Governance | 거버넌스
 
-OntoMesh operates under transparent, minimum viable governance (MVG)  
-with community feedback, a designated interim committee, and open stewardship.
+OntoMesh operates under transparent,  
+**Minimum Viable Governance (MVG)** with community feedback,  
+an independent interim committee, and open stewardship.
 
-자세한 운영 원칙은 각 프로젝트 및 [official-network.html](https://ontomesh.org/official-network.html)에서 안내합니다.
+자세한 운영 원칙은 각 프로젝트 및 `official-network.html`에서 안내합니다.
 
 ---
 
 ## Notice | 주의
 
-- All forks, copies, and derivatives **must retain the original LICENSE** and comply with its terms.
-- 모든 포크/복제/파생물은 반드시 원본 LICENSE를 보존·준수해야 합니다.
+All forks, copies, and derivatives must retain the original LICENSE  
+and comply with its terms.  
+모든 포크/복제/파생물은 반드시 원본 LICENSE를 보존·준수해야 합니다.
 
 ---
 
 ## Contact | 문의
 
-- Email: nettalk72 [at] naver [dot] com
-- (Please use English or Korean)
+Email: nettalk72 [at] naver [dot] com  
+(Please use English or Korean)
 
 ---
 
-&copy; 2025 OntoMesh.org Alliance · Open Mesh/Branch for All
+© 2025 OntoMesh.org Foundation & Alliance ·  
+**IAMF Origin · Open Mesh/Branch for All**
