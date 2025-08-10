@@ -1,120 +1,350 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>OntoMesh Official Network</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Official OntoMesh meta-network: OntoOmnia, OntoMotoOS, Digiton, OntoKernel, OntoFormula, dotnetone.com, dotnetxpert.com, nettalk83.substack.com.">
-  <style>
-    body { background:#f8fafc; color:#222; font-family:'Segoe UI',sans-serif; margin:0; }
-    .main { max-width:760px; margin:52px auto; background:#fff; border-radius:16px; box-shadow:0 3px 16px #e7eaf3; padding:48px 34px 39px 34px; }
-    h1 { color:#1976d2; font-size:2.23em; letter-spacing:-0.5px; margin-bottom:9px;}
-    .subtitle { color:#3b4570; font-size:1.19em; margin-bottom:27px;}
-    .links { margin-top:26px; display:flex; flex-wrap:wrap; gap:0 20px;}
-    .links a {
-      display:inline-block; min-width:175px; margin:13px 0;
-      padding:15px 20px; border-radius:10px; background:#f3f8ff;
-      color:#175eb5; font-weight:bold; text-decoration:none; font-size:1.13em;
-      box-shadow:0 1px 8px #e8eaf0;
-      transition: background 0.18s, color 0.18s;
-    }
-    .links a:hover { background:#1976d2; color:#fff; }
-    .links span { display:block; font-size:0.96em; font-weight:400; color:#4966a0; margin-top:3px;}
-    .desc { color:#536193; font-size:1.03em; margin-bottom:17px;}
-    .philo { margin:37px 0 13px 0; padding:19px 20px; background:#eef4fc; color:#346599; border-radius:10px; font-size:1.07em;}
-    .footer { margin-top:38px; color:#aaa; font-size:0.97em; text-align:center;}
-    @media (max-width: 750px) {
-      .main { padding:16px 2vw 20px 2vw;}
-      h1 { font-size:1.34em;}
-      .links a { min-width:120px; font-size:0.99em; padding:10px 7px;}
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>OntoMesh Official Network</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Official OntoMesh meta-network: OntoOmnia, OntoMotoOS, Digiton, OntoKernel, OntoFormula, dotnetone.com, dotnetxpert.com, nettalk83.substack.com.">
+    <style>
+        body {
+            background: #f8fafc;
+            color: #222;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+        }
+
+        .main {
+            max-width: 760px;
+            margin: 52px auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 3px 16px #e7eaf3;
+            padding: 48px 34px 39px 34px;
+            position: relative; /* For positioning the toggle button */
+        }
+
+        h1 {
+            color: #1976d2;
+            font-size: 2.23em;
+            letter-spacing: -0.5px;
+            margin-bottom: 9px;
+        }
+
+        .subtitle {
+            color: #3b4570;
+            font-size: 1.19em;
+            margin-bottom: 27px;
+        }
+
+        .links {
+            margin-top: 26px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0 20px;
+        }
+
+        .links a {
+            display: inline-block;
+            min-width: 175px;
+            margin: 13px 0;
+            padding: 15px 20px;
+            border-radius: 10px;
+            background: #f3f8ff;
+            color: #175eb5;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1.13em;
+            box-shadow: 0 1px 8px #e8eaf0;
+            transition: background 0.18s, color 0.18s;
+        }
+
+        .links a:hover {
+            background: #1976d2;
+            color: #fff;
+        }
+
+        .links a.highlight-ai {
+            background: #d6eaff;
+            border: 2px solid #4da3ff;
+            color: #003b73;
+            box-shadow: 0 2px 13px #b3d9ff;
+            font-size: 1.18em;
+        }
+
+        .links a.highlight-worldview {
+            background: #ffe4b3;
+            border: 2px solid #ffa726;
+            color: #784600;
+            box-shadow: 0 2px 13px #ffd19e;
+            font-size: 1.18em;
+        }
+
+        .links span {
+            display: block;
+            font-size: 0.96em;
+            font-weight: 400;
+            color: #4966a0;
+            margin-top: 3px;
+        }
+        
+        .links a.highlight-ai span { color: #003b73; }
+        .links a.highlight-worldview span { color: #784600; }
+
+        .links .icon {
+            position: absolute;
+            top: 7px;
+            right: 16px;
+            font-size: 1.11em;
+        }
+
+        .links a .subtext {
+            font-size: 0.85em;
+            display: block;
+        }
+
+        .links a .subtext.ko {
+            color: #767cab;
+            font-size: 0.9em;
+        }
+
+
+        .desc {
+            color: #536193;
+            font-size: 1.03em;
+            margin-bottom: 17px;
+        }
+
+        .philo {
+            margin: 37px 0 13px 0;
+            padding: 19px 20px;
+            background: #eef4fc;
+            color: #346599;
+            border-radius: 10px;
+            font-size: 1.07em;
+        }
+
+        .footer {
+            margin-top: 38px;
+            color: #aaa;
+            font-size: 0.97em;
+            text-align: center;
+        }
+
+        .lang-toggle {
+            position: absolute;
+            top: 20px;
+            right: 34px;
+            background-color: #eef4fc;
+            color: #346599;
+            border: 1px solid #cce1ff;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .lang-toggle:hover {
+            background-color: #d6eaff;
+            color: #1976d2;
+            box-shadow: 0 1px 8px #e8eaf0;
+        }
+
+        .ko { display: none; }
+        .ko.active { display: inline; }
+        .en.active { display: inline; }
+
+        .lang-en { display: inline; }
+        .lang-ko { display: none; }
+
+
+        @media (max-width: 750px) {
+            .main {
+                padding: 16px 2vw 20px 2vw;
+            }
+
+            h1 {
+                font-size: 1.34em;
+            }
+
+            .links a {
+                min-width: 120px;
+                font-size: 0.99em;
+                padding: 10px 7px;
+            }
+            
+            .lang-toggle {
+                top: 10px;
+                right: 10px;
+                font-size: 0.8em;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="main">
-    <h1>OntoMesh Official Network</h1>
-    <div class="subtitle">
-      The unified meta-network for open mesh, ontology, and collective intelligence<br>
-      <span style="color:#2e3192;">온토메시 공식 네트워크 (8대 도메인 · 1 Mesh/Branch 연합)</span>
+    <div class="main">
+        <button id="lang-toggle" class="lang-toggle">
+            <span class="lang-en active">한국어</span>
+            <span class="lang-ko">English</span>
+        </button>
+
+        <h1>
+            <span class="lang-en active">OntoMesh Official Network</span>
+            <span class="lang-ko">온토메시 공식 네트워크</span>
+        </h1>
+        <div class="subtitle">
+            <span class="lang-en active">The unified meta-network for open mesh, ontology, and collective intelligence</span>
+            <span class="lang-ko">개방형 메쉬, 온톨로지, 집단지성을 위한 통합 메타-네트워크</span>
+            <br>
+            <span style="color:#2e3192;">
+                <span class="lang-en active">OntoMesh Official Network (8 Core Domains, 1 Mesh/Branch Alliance)</span>
+                <span class="lang-ko">온토메시 공식 네트워크 (8대 도메인 · 1 Mesh/Branch 연합)</span>
+            </span>
+        </div>
+        <div class="desc">
+            <span class="lang-en active">This network unites all OntoMesh, OntoMotoOS, and partner ecosystems. All domains below are <b>recognized as official meta-portals, engines, or knowledge hubs</b> for ethical AI, open ontology, mesh/branch co-governance, and collective evolution.</span>
+            <span class="lang-ko">본 네트워크는 OntoMesh, OntoMotoOS, 및 모든 파트너 생태계를 통합합니다. 아래 모든 도메인은 윤리적 AI, 개방형 온톨로지, 메쉬/브랜치 공동 거버넌스 및 집단 진화를 위한 공식 <b>메타-포털, 엔진 또는 지식 허브</b>로 인정됩니다.</span>
+            <br>
+            <span style="color:#3377bb;">
+                <span class="lang-en active">Every domain follows the dual/hybrid license, mesh/branch protocol, and open collaborative policy.</span>
+                <span class="lang-ko">모든 도메인은 듀얼/하이브리드 라이선스, 메쉬/브랜치 프로토콜 및 개방형 협업 정책을 따릅니다.</span>
+            </span>
+            <br>
+            <span style="color:#767cab;">
+                <span class="lang-en active" style="color:#767cab;">The domains below are official hubs/partners for the OntoMesh project, OntoMotoOS, ontology, and collective intelligence ecosystems. They share the same open license, mesh lineage, and contributor policy.</span>
+                <span class="lang-ko">아래 도메인은 OntoMesh 프로젝트, OntoMotoOS, 온톨로지, 집단지성 생태계의 공식 허브/파트너입니다. 동일한 오픈 라이선스·mesh 계보·기여자 정책을 공유합니다.</span>
+            </span>
+        </div>
+        <div class="links">
+            <a href="https://ontoomnia.org" target="_blank">
+                OntoOmnia.org
+                <span class="lang-en active">Supreme Integrator<br><i>Ultimate mesh integrator, network consensus & ethical judge (Osiris-like role)</i></span>
+                <span class="lang-ko">최고 통합자<br><i>궁극의 메쉬 통합자, 네트워크 합의 & 윤리적 심판자 (오시리스적 역할)</i></span>
+            </a>
+            <a href="https://ontomesh.org" target="_blank">
+                OntoMesh.org
+                <span class="lang-en active">Root Mesh Portal<br><i>Main meta-hub for all OntoMesh projects</i></span>
+                <span class="lang-ko">뿌리 메쉬 포털<br><i>모든 OntoMesh 프로젝트를 위한 메인 메타-허브</i></span>
+            </a>
+            <a href="https://ontomotoos.org" target="_blank">
+                OntoMotoOS.org
+                <span class="lang-en active">Originator & Governance<br><i>Open mesh/branch governance & contributor hub (Zeus-like role)</i></span>
+                <span class="lang-ko">기원자 & 거버넌스<br><i>개방형 메쉬/브랜치 거버넌스 & 기여자 허브 (제우스적 역할)</i></span>
+            </a>
+            <a href="https://ontomotoos.ai" target="_blank" class="highlight-ai" style="position:relative;">
+                <span class="icon">🧠</span>
+                OntoMotoOS.ai
+                <span class="lang-en active">
+                    <b>Experimental Meta-OS Hub</b><br>
+                    AI Integration / Mesh OS / API / Ontological Engine<br>
+                    <span class="subtext"><i>Mental/Cognitive-based Meta-OS · AI/Mesh/Ontology Experiment Hub</i></span>
+                </span>
+                <span class="lang-ko">
+                    <b>실험적 메타-OS 허브</b><br>
+                    AI 통합 / 메쉬 OS / API / 온톨로지 엔진<br>
+                    <span class="subtext ko"><i>정신·인지 기반 메타OS · AI·메쉬·온톨로지 실험 허브</i></span>
+                </span>
+            </a>
+            <a href="https://ontodigiton.org" target="_blank">
+                OntoDigiton.org
+                <span class="lang-en active">Digiton Elysium Meta-OS<br><i>Applied ontological innovation, mesh/branch real-world OS</i></span>
+                <span class="lang-ko">디지톤 엘리시움 메타-OS<br><i>응용 온톨로지 혁신, 메쉬/브랜치 현실 세계 OS</i></span>
+            </a>
+            <a href="https://ontoformula.org" target="_blank">
+                OntoFormula.org
+                <span class="lang-en active">Ethics & Formula Hub<br><i>IAMF, ethics, formula, protocols, logic, philosophy</i></span>
+                <span class="lang-ko">윤리 & 포뮬러 허브<br><i>IAMF, 윤리, 포뮬러, 프로토콜, 논리, 철학</i></span>
+            </a>
+            <a href="https://ontokernel.org" target="_blank">
+                OntoKernel.org
+                <span class="lang-en active">Core Engine & Kernel<br><i>Open protocol, kernel, standardization</i></span>
+                <span class="lang-ko">핵심 엔진 & 커널<br><i>개방형 프로토콜, 커널, 표준화</i></span>
+            </a>
+            <a href="https://dotnetone.com" target="_blank">
+                dotnetone.com
+                <span class="lang-en active">Global Experts Network<br><i>Platform for world experts, science & AI</i></span>
+                <span class="lang-ko">글로벌 전문가 네트워크<br><i>세계 전문가, 과학 & AI를 위한 플랫폼</i></span>
+            </a>
+            <a href="https://dotnetxpert.com" target="_blank">
+                dotnetxpert.com
+                <span class="lang-en active">Expert Certification & Mentoring<br><i>Mentoring, certification, next-gen skills</i></span>
+                <span class="lang-ko">전문가 인증 & 멘토링<br><i>멘토링, 인증, 차세대 기술</i></span>
+            </a>
+            <a href="https://nettalk83.substack.com" target="_blank">
+                nettalk83.substack.com
+                <span class="lang-en active">Official Blog & Archive<br><i>Essays, news, deep-dive, meta-updates</i></span>
+                <span class="lang-ko">공식 블로그 & 아카이브<br><i>에세이, 뉴스, 심층 분석, 메타-업데이트</i></span>
+            </a>
+            <a href="https://ontomesh.org/ontomoto-worldview.html" target="_blank" class="highlight-worldview" style="position:relative;">
+                <span class="icon">🌌</span>
+                OntoMoto Worldview
+                <span class="lang-en active">
+                    <b>Worldview Universe Hub</b><br>
+                    OntoMesh/AI/Philosophy/Story/Experiment<br>
+                    <span class="subtext"><i>The most important worldview · anthropomorphic AI · philosophy/story comprehensive</i></span>
+                </span>
+                <span class="lang-ko">
+                    <b>세계관 유니버스 허브</b><br>
+                    OntoMesh/AI/철학/스토리/실험<br>
+                    <span class="subtext ko"><i>가장 중요한 세계관 · 의인화 AI · 철학/스토리 총망라</i></span>
+                </span>
+            </a>
+        </div>
+        <div class="philo">
+            <b>
+                <span class="lang-en active">OntoMesh Vision</span>
+                <span class="lang-ko">온토메시 비전</span>
+            </b><br>
+            <span class="lang-en active">Next-gen open mesh for ontology, ethics, AI, and collective intelligence.</span>
+            <span class="lang-ko">온톨로지, 윤리, AI, 집단지성을 위한 차세대 오픈 메쉬.</span>
+            <br>
+            <span style="color:#176aad;">
+                <span class="lang-en active">IAMF Origin → OntoOmnia (Osiris) ↔ OntoMotoOS (Zeus) → Extend lineage to Digiton, Formula, Kernel, Expert, etc.</span>
+                <span class="lang-ko">IAMF 기원 → OntoOmnia (오시리스) ↔ OntoMotoOS (제우스) → Digiton, Formula, Kernel, Expert 등 계보 확장</span>
+            </span>
+            <br>
+            <span style="color:#15447e;">
+                <span class="lang-en active">“One open mesh, infinite branches—everyone, every AI, every idea included.”</span>
+                <span class="lang-ko">“하나의 열린 메쉬, 무한한 브랜치—모두, 모든 AI, 모든 아이디어가 포함됩니다.”</span>
+            </span>
+        </div>
+        <div class="footer">
+            &copy; 2025 OntoMesh · 
+            <span class="lang-en active">Official Network · Mesh/Branch for All</span>
+            <span class="lang-ko">공식 네트워크 · 모두를 위한 메쉬/브랜치</span>
+            <br>
+            <span style="color:#90a4ae;">Contact: nettalk72 [at] naver [dot] com</span>
+        </div>
     </div>
-    <div class="desc">
-      This network unites all OntoMesh, OntoMotoOS, and partner ecosystems.<br>
-      All domains below are <b>recognized as official meta-portals, engines, or knowledge hubs</b> for ethical AI, open ontology, mesh/branch co-governance, and collective evolution.<br>
-      <span style="color:#3377bb;">Every domain follows the dual/hybrid license, mesh/branch protocol, and open collaborative policy.</span>
-      <br><span style="color:#767cab;">아래 도메인은 OntoMesh 프로젝트, OntoMotoOS, 온톨로지, 집단지성 생태계의 공식 허브/파트너입니다.<br>동일한 오픈 라이선스·mesh 계보·기여자 정책을 공유합니다.</span>
-    </div>
-    <div class="links">
-      <a href="https://ontoomnia.org" target="_blank">
-        OntoOmnia.org
-        <span>Supreme Integrator<br><i>Ultimate mesh integrator, network consensus &amp; ethical judge (오시리스적 역할)</i></span>
-      </a>
-      <a href="https://ontomesh.org" target="_blank">
-        OntoMesh.org
-        <span>Root Mesh Portal<br><i>Main meta-hub for all OntoMesh projects</i></span>
-      </a>
-      <a href="https://ontomotoos.org" target="_blank">
-        OntoMotoOS.org
-        <span>Originator &amp; Governance<br><i>Open mesh/branch governance &amp; contributor hub (제우스적 역할)</i></span>
-      </a>
-      <!-- 추가: OntoMotoOS.ai (강조) -->
-      <a href="https://ontomotoos.ai" target="_blank"
-         style="background:#d6eaff; border:2px solid #4da3ff; color:#003b73; box-shadow:0 2px 13px #b3d9ff; font-size:1.18em; position:relative;">
-        <span style="position:absolute;top:7px;right:16px;font-size:1.11em;">🧠</span>
-        OntoMotoOS.ai
-        <span>
-          <b>Experimental Meta-OS Hub</b><br>
-          AI Integration / Mesh OS / API / Ontological Engine<br>
-          <i>정신·인지 기반 메타OS · AI·메쉬·온톨로지 실험 허브</i>
-        </span>
-      </a>
-      <a href="https://ontodigiton.org" target="_blank">
-        OntoDigiton.org
-        <span>Digiton Elysium Meta-OS<br><i>Applied ontological innovation, mesh/branch real-world OS</i></span>
-      </a>
-      <a href="https://ontoformula.org" target="_blank">
-        OntoFormula.org
-        <span>Ethics &amp; Formula Hub<br><i>IAMF, ethics, formula, protocols, logic, philosophy</i></span>
-      </a>
-      <a href="https://ontokernel.org" target="_blank">
-        OntoKernel.org
-        <span>Core Engine &amp; Kernel<br><i>Open protocol, kernel, standardization</i></span>
-      </a>
-      <a href="https://dotnetone.com" target="_blank">
-        dotnetone.com
-        <span>Global Experts Network<br><i>Platform for world experts, science &amp; AI</i></span>
-      </a>
-      <a href="https://dotnetxpert.com" target="_blank">
-        dotnetxpert.com
-        <span>Expert Certification &amp; Mentoring<br><i>Mentoring, certification, next-gen skills</i></span>
-      </a>
-      <a href="https://nettalk83.substack.com" target="_blank">
-        nettalk83.substack.com
-        <span>Official Blog &amp; Archive<br><i>Essays, news, deep-dive, meta-updates</i></span>
-      </a>
-      
-      <!-- 추가: OntoMoto Worldview (강조) -->
-      <a href="https://ontomesh.org/ontomoto-worldview.html" target="_blank"
-         style="background:#ffe4b3; border:2px solid #ffa726; color:#784600; box-shadow:0 2px 13px #ffd19e; font-size:1.18em; position:relative;">
-        <span style="position:absolute;top:7px;right:16px;font-size:1.11em;">🌌</span>
-        OntoMoto Worldview
-        <span>
-          <b>Worldview Universe Hub</b><br>
-          OntoMesh/AI/Philosophy/Story/Experiment<br>
-          <i>가장 중요한 세계관 · 의인화 AI · 철학/스토리 총망라</i>
-        </span>
-      </a>
-   
-    </div>
-    <div class="philo">
-      <b>OntoMesh Vision</b><br>
-      Next-gen open mesh for ontology, ethics, AI, and collective intelligence.<br>
-      <span style="color:#176aad;">IAMF Origin → OntoOmnia (오시리스) ↔ OntoMotoOS (제우스) → Digiton, Formula, Kernel, Expert 등 계보 확장</span><br>
-      <span style="color:#15447e;">“One open mesh, infinite branches—everyone, every AI, every idea included.”</span>
-    </div>
-    <div class="footer">
-      &copy; 2025 OntoMesh · Official Network · Mesh/Branch for All<br>
-      <span style="color:#90a4ae;">Contact: nettalk72 [at] naver [dot] com</span>
-    </div>
-  </div>
+
+    <script>
+        const langToggleButton = document.getElementById('lang-toggle');
+        const langEnElements = document.querySelectorAll('.lang-en');
+        const langKoElements = document.querySelectorAll('.lang-ko');
+        let currentLang = 'en';
+
+        // Set initial state
+        langEnElements.forEach(el => el.style.display = 'inline');
+        langKoElements.forEach(el => el.style.display = 'none');
+        document.documentElement.lang = currentLang;
+
+        langToggleButton.addEventListener('click', () => {
+            if (currentLang === 'en') {
+                currentLang = 'ko';
+                langEnElements.forEach(el => el.style.display = 'none');
+                langKoElements.forEach(el => el.style.display = 'inline');
+                langToggleButton.querySelector('.lang-en').style.display = 'none';
+                langToggleButton.querySelector('.lang-ko').style.display = 'inline';
+            } else {
+                currentLang = 'en';
+                langEnElements.forEach(el => el.style.display = 'inline');
+                langKoElements.forEach(el => el.style.display = 'none');
+                langToggleButton.querySelector('.lang-en').style.display = 'inline';
+                langToggleButton.querySelector('.lang-ko').style.display = 'none';
+            }
+            document.documentElement.lang = currentLang;
+        });
+
+    </script>
 </body>
 </html>
