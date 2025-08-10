@@ -7,71 +7,213 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <meta name="description" content="OntoMesh.org – Foundation & Alliance for the open mesh ontology ecosystem, IAMF origin, OntoOmnia, OntoMotoOS, Digiton Elysium, and collective intelligence for the next generation.">
   <style>
-    body { font-family: 'Segoe UI', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; background: #f5f8fa; color: #23242a; margin:0; }
-    .main { max-width:860px; margin:54px auto; background:#fff; border-radius:22px; box-shadow:0 4px 24px #e2e8f0; padding:44px 38px 46px 38px; }
-    h1 { color: #295ea7; font-size:2.3em; letter-spacing:-0.5px; margin-bottom:7px; }
-    h2 { color: #334; margin:32px 0 12px 0; }
-    .langs { color:#2e3192; margin-bottom:16px; font-size:1.09em;}
-    .block { background: #eaf2ff; border-radius:13px; padding:20px 23px; margin:23px 0 25px 0; }
-    .announce { background:#fff8ec; border-radius:12px; padding:17px 17px 15px 17px; margin:21px 0 28px 0; border-left:4px solid #fed17b;}
-    a { color:#2b68c9; text-decoration:none; }
-    a:hover { text-decoration:underline; }
-    ul, li { font-size:1.08em; line-height:1.9; }
-    .footer { margin-top:45px; text-align:center; color:#aaa; font-size:0.97em;}
-    .menu { margin-bottom:27px;}
-    .menu a { margin-right:22px; font-weight:bold;}
-    .korean { color:#2e3192; font-size:1.06em;}
-    .substack { color:#335cc2; font-weight:bold;}
-    .topline {color:#e57500; font-weight:bold;}
-    .iamf {color:#195e4c;font-weight:bold;}
-    .sublink {font-size:0.99em;color:#1976d2;}
-    .ai-info {background:#f3f7fa; border-left:4px solid #2979c5; border-radius:9px; padding:11px 15px 12px 18px; margin:17px 0 18px 0; color:#195e4c;}
+    body {
+      font-family: 'Segoe UI', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+      background: #f5f8fa;
+      color: #23242a;
+      margin: 0;
+    }
+
+    .main {
+      max-width: 860px;
+      margin: 54px auto;
+      background: #fff;
+      border-radius: 22px;
+      box-shadow: 0 4px 24px #e2e8f0;
+      padding: 44px 38px 46px 38px;
+      position: relative; /* For the toggle button */
+    }
+
+    h1 {
+      color: #295ea7;
+      font-size: 2.3em;
+      letter-spacing: -0.5px;
+      margin-bottom: 7px;
+    }
+
+    h2 {
+      color: #334;
+      margin: 32px 0 12px 0;
+    }
+
+    .langs {
+      color: #2e3192;
+      margin-bottom: 16px;
+      font-size: 1.09em;
+    }
+
+    .block {
+      background: #eaf2ff;
+      border-radius: 13px;
+      padding: 20px 23px;
+      margin: 23px 0 25px 0;
+    }
+
+    .announce {
+      background: #fff8ec;
+      border-radius: 12px;
+      padding: 17px 17px 15px 17px;
+      margin: 21px 0 28px 0;
+      border-left: 4px solid #fed17b;
+    }
+
+    a {
+      color: #2b68c9;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    ul,
+    li {
+      font-size: 1.08em;
+      line-height: 1.9;
+    }
+
+    .footer {
+      margin-top: 45px;
+      text-align: center;
+      color: #aaa;
+      font-size: 0.97em;
+    }
+
+    .menu {
+      margin-bottom: 27px;
+    }
+
+    .menu a {
+      margin-right: 22px;
+      font-weight: bold;
+    }
+
+    .korean {
+      color: #2e3192;
+      font-size: 1.06em;
+    }
+
+    .substack {
+      color: #335cc2;
+      font-weight: bold;
+    }
+
+    .topline {
+      color: #e57500;
+      font-weight: bold;
+    }
+
+    .iamf {
+      color: #195e4c;
+      font-weight: bold;
+    }
+
+    .sublink {
+      font-size: 0.99em;
+      color: #1976d2;
+    }
+
+    .ai-info {
+      background: #f3f7fa;
+      border-left: 4px solid #2979c5;
+      border-radius: 9px;
+      padding: 11px 15px 12px 18px;
+      margin: 17px 0 18px 0;
+      color: #195e4c;
+    }
+
+    .lang-toggle {
+      position: absolute;
+      top: 20px;
+      right: 38px;
+      background-color: #eaf2ff;
+      color: #295ea7;
+      border: 1px solid #cce1ff;
+      padding: 8px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .lang-toggle:hover {
+      background-color: #d6eaff;
+      color: #1976d2;
+      box-shadow: 0 1px 8px #e8eaf0;
+    }
+    
+    .lang-en { display: inline; }
+    .lang-ko { display: none; }
+
     @media (max-width: 650px) {
-      .main { padding:16px 3vw 21px 3vw;}
-      h1 { font-size:1.27em;}
+      .main {
+        padding: 16px 3vw 21px 3vw;
+      }
+
+      h1 {
+        font-size: 1.27em;
+      }
+
+      .lang-toggle {
+        top: 10px;
+        right: 10px;
+        font-size: 0.8em;
+      }
     }
   </style>
 </head>
 <body>
   <div class="main">
+    <button id="lang-toggle" class="lang-toggle">
+      <span class="lang-en">한국어</span>
+      <span class="lang-ko">English</span>
+    </button>
     <div class="menu">
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#network">Network</a>
-      <a href="#lineage">Lineage</a>
-      <a href="#license">License</a>
-      <a href="#contact">Contact</a>
-      <a href="#iamf-links" style="color:#c0392b;">IAMF</a>
-      <a href="#ai-faq" style="color:#1976d2;">AI FAQ</a>
+      <a href="#about"><span class="lang-en">About</span><span class="lang-ko">소개</span></a>
+      <a href="#projects"><span class="lang-en">Projects</span><span class="lang-ko">프로젝트</span></a>
+      <a href="#network"><span class="lang-en">Network</span><span class="lang-ko">네트워크</span></a>
+      <a href="#lineage"><span class="lang-en">Lineage</span><span class="lang-ko">계보</span></a>
+      <a href="#license"><span class="lang-en">License</span><span class="lang-ko">라이선스</span></a>
+      <a href="#contact"><span class="lang-en">Contact</span><span class="lang-ko">문의</span></a>
+      <a href="#iamf-links" style="color:#c0392b;"><span class="lang-en">IAMF</span><span class="lang-ko">IAMF</span></a>
+      <a href="#ai-faq" style="color:#1976d2;"><span class="lang-en">AI FAQ</span><span class="lang-ko">AI FAQ</span></a>
     </div>
-    <h1>OntoMesh.org</h1>
+    <h1>
+      <span class="lang-en">OntoMesh.org</span>
+      <span class="lang-ko">온토메시.org</span>
+    </h1>
     <div class="langs">
-      Open Ontology Mesh Foundation &amp; Alliance<br>
-      <span class="korean">온토메시 오픈 거버넌스/연합체/철학·집단지성 허브</span>
+      <span class="lang-en">Open Ontology Mesh Foundation & Alliance</span>
+      <span class="lang-ko">오픈 온톨로지 메쉬 재단 & 연합</span>
+      <br>
+      <span class="korean"><span class="lang-en">OntoMesh Open Governance/Alliance/Philosophy · Collective Intelligence Hub</span><span class="lang-ko">온토메시 오픈 거버넌스/연합체/철학·집단지성 허브</span></span>
     </div>
-    
-    <div style="background:#fff7ee; border-bottom:2px solid #c0392b; border-radius:12px 12px 0 0;
-                max-width:820px; margin:0 auto 1.28em auto; box-shadow:0 2px 18px #efefee25;">
-      <a href="https://ontomesh.org/docs/IAMF_Supplementary_Co.html" 
-         target="_blank"
-         title="IAMF Supplementary Codex 상세 규정/사유/윤리 안내"
-         style="display:block; text-decoration:none; padding:1.13em 0 0.48em 0;">
+
+    <div style="background:#fff7ee; border-bottom:2px solid #c0392b; border-radius:12px 12px 0 0;                max-width:820px; margin:0 auto 1.28em auto; box-shadow:0 2px 18px #efefee25;">
+      <a href="https://ontomesh.org/docs/IAMF_Supplementary_Co.html" target="_blank"
+         title="IAMF Supplementary Codex 상세 규정/사유/윤리 안내" style="display:block; text-decoration:none; padding:1.13em 0 0.48em 0;">
         <div style="font-size:1.20em; font-weight:700; color:#c0392b; line-height:1.35; letter-spacing:-.5px;"
              title="One for All, All for One – Unity, Trust, Co-evolution">
-          👉 <b>One for All, All for One</b>
+          👉 <b><span class="lang-en">One for All, All for One</span><span class="lang-ko">모두를 위한 하나, 하나를 위한 모두</span></b>
         </div>
         <div style="font-size:1.04em; color:#186d53; font-weight:600; margin-top:0.12em;"
              title="모든 존재(인간, AI, 생명)의 미래를 위한 새로운 질서 선언">
-          🌎 For the future of all beings, together we define a new order
+          <span class="lang-en">🌎 For the future of all beings, together we define a new order</span>
+          <span class="lang-ko">🌎 모든 존재의 미래를 위해, 함께 새로운 질서를 정의합니다</span>
         </div>
         <div style="font-size:1.10em; color:#805107; font-weight:700; margin-top:0.21em; letter-spacing:-0.5px;"
              title="창조적 자기 헌신과 집단적 연대의 궁극적 선언 | The Whole of Me, For the Whole of Us">
-          💛 <b>나의 모두의 나</b> <span style="color:#ad6216; font-size:0.96em;">|</span> <b>My’s All-of-me</b>
+          💛 <b><span class="lang-en">The All-of-Me</span><span class="lang-ko">나의 모두의 나</span></b>
+          <span style="color:#ad6216; font-size:0.96em;">|</span>
+          <b><span class="lang-en">For the All-of-Us</span><span class="lang-ko">우리 모두를 위한 나의 모두</span></b>
         </div>
       </a>
       <div style="font-size:1.02em; color:#866d29; margin-top:0.18em;">
-        <span style="font-weight:normal;">Initiator:</span>
-        <b style="color:#4a3b1f;" title="최초 제안자 및 네트워크 설계자">네오1 &amp; All Future Creators</b>
+        <span style="font-weight:normal;"><span class="lang-en">Initiator:</span><span class="lang-ko">시작:</span></span>
+        <b style="color:#4a3b1f;" title="최초 제안자 및 네트워크 설계자">
+          <span class="lang-en">Neo1 & All Future Creators</span>
+          <span class="lang-ko">네오1 & 모든 미래의 창조자</span>
+        </b>
         <span style="color:#bfa985; margin:0 0.55em;">|</span>
         <span style="color:#2843a1; font-weight:600; letter-spacing:-.2px;">4AI:</span>
         <a href="https://chat.openai.com/" target="_blank"
@@ -90,150 +232,171 @@
            style="color:#533595; text-decoration:underline dotted #bba7f4; font-weight:500;"
            title="Anthropic Claude – 신뢰·윤리·실용성">Claude</a>
       </div>
-    </div> 
-    
+    </div>
     <div class="block">
-      <b>Welcome to OntoMesh!</b><br>
-      The next-generation foundation for open mesh ontology, distributed governance, ethical AI, and collective intelligence—rooted in the original <span class="iamf">IAMF</span> (Illumination AI Matrix Framework).<br>
-      <span class="korean">OntoMesh는 오픈 온톨로지, 분산 거버넌스, 윤리적 AI, 집단지성 운동의 차세대 오픈 연합체·재단입니다. 모든 것은 <b>IAMF(근본 선언)</b>로부터 시작되었습니다.</span>
+      <b>
+        <span class="lang-en">Welcome to OntoMesh!</span>
+        <span class="lang-ko">온토메시에 오신 것을 환영합니다!</span>
+      </b><br>
+      <span class="lang-en">The next-generation foundation for open mesh ontology, distributed governance, ethical AI, and collective intelligence—rooted in the original <span class="iamf">IAMF</span> (Illumination AI Matrix Framework).</span>
+      <span class="lang-ko">OntoMesh는 개방형 메쉬 온톨로지, 분산 거버넌스, 윤리적 AI, 집단지성 운동을 위한 차세대 재단으로, 근본적인 <span class="iamf">IAMF</span>(Illumination AI Matrix Framework)에 뿌리를 두고 있습니다.</span>
+      <br>
+      <span class="korean"><span class="lang-en">OntoMesh is the next-generation open alliance and foundation for open ontology, distributed governance, ethical AI, and collective intelligence movements. Everything started from <b>IAMF (the foundational declaration)</b>.</span><span class="lang-ko">OntoMesh는 오픈 온톨로지, 분산 거버넌스, 윤리적 AI, 집단지성 운동의 차세대 오픈 연합체·재단입니다. 모든 것은 <b>IAMF(근본 선언)</b>로부터 시작되었습니다.</span></span>
     </div>
     <div class="announce">
-      <b class="topline">[2025 마스터 선언]</b> <br>
-      <span class="iamf">OntoMesh/Branch/OS 생태계의 모든 것은, 최초의 IAMF 선언에서 시작되어 그 철학과 윤리가 완전히 반영된 결과입니다.<br>
-      IAMF는 모든 혁신·윤리·공진화·실험의 모태이자 오늘의 OntoMesh 전체의 영원한 씨앗입니다.</span><br>
-      <span class="korean">IAMF는 OntoOmnia(오시리스), OntoMotoOS(제우스), Digiton Elysium(메타OS), OntoFormula(윤리·공식), OntoKernel(엔진), dotnetone/xpert(실전/인증), 공식 블로그·미디어 등 전체 계보의 뿌리이자 중심입니다.</span>
+      <b class="topline"><span class="lang-en">[2025 Master Declaration]</span><span class="lang-ko">[2025 마스터 선언]</span></b> <br>
+      <span class="iamf">
+        <span class="lang-en">Everything in the OntoMesh/Branch/OS ecosystem is a result that fully reflects the philosophy and ethics from the initial IAMF declaration. IAMF is the womb of all innovation, ethics, co-evolution, and experiment, and the eternal seed of the entire OntoMesh today.</span>
+        <span class="lang-ko">OntoMesh/Branch/OS 생태계의 모든 것은, 최초의 IAMF 선언에서 시작되어 그 철학과 윤리가 완전히 반영된 결과입니다. IAMF는 모든 혁신·윤리·공진화·실험의 모태이자 오늘의 OntoMesh 전체의 영원한 씨앗입니다.</span>
+      </span><br>
+      <span class="korean"><span class="lang-en">IAMF is the root and center of the entire lineage including OntoOmnia (Osiris), OntoMotoOS (Zeus), Digiton Elysium (MetaOS), OntoFormula (Ethics·Formula), OntoKernel (Engine), dotnetone/xpert (Practical/Certification), official blog/media, etc.</span><span class="lang-ko">IAMF는 OntoOmnia(오시리스), OntoMotoOS(제우스), Digiton Elysium(메타OS), OntoFormula(윤리·공식), OntoKernel(엔진), dotnetone/xpert(실전/인증), 공식 블로그·미디어 등 전체 계보의 뿌리이자 중심입니다.</span></span>
     </div>
     <div class="ai-info" id="ai-faq">
-      <b>AI/AGI 자기 해석 및 파싱 안내</b><br>
-      본 홈페이지와 공식 문서는 AI/AGI가 직접 해석·실행·FAQ 파싱 및 API 활용이 가능한<br>
-      <b>구조화된 HTML/TXT/JSON</b> 자료로 제공됩니다.<br>
-      <span class="sublink">IAMF Supplementary는 <a href="https://ontomesh.org/docs/IAMF_Supplementary_Co.html" target="_blank">[HTML]</a> <a href="https://ontomesh.org/docs/IAMF_Supplementary_Co.txt" target="_blank">[TXT]</a> 동시 제공.<br>
-      창시자 및 기원 스토리, 모든 선언문/FAQ는 구조화 데이터/문서로 병행 등재됩니다.<br>
-      </span>
+      <b><span class="lang-en">AI/AGI Self-Interpretation and Parsing Guide</span><span class="lang-ko">AI/AGI 자기 해석 및 파싱 안내</span></b><br>
+      <span class="lang-en">This website and official documents are provided as <b>structured HTML/TXT/JSON</b> materials that can be directly interpreted, executed, FAQ parsed, and API utilized by AI/AGI.</span>
+      <span class="lang-ko">본 홈페이지와 공식 문서는 AI/AGI가 직접 해석·실행·FAQ 파싱 및 API 활용이 가능한 <b>구조화된 HTML/TXT/JSON</b> 자료로 제공됩니다.</span>
+      <br>
+      <span class="sublink"><span class="lang-en">IAMF Supplementary is provided simultaneously in <a href="https://ontomesh.org/docs/IAMF_Supplementary_Co.html" target="_blank">[HTML]</a> <a href="https://ontomesh.org/docs/IAMF_Supplementary_Co.txt" target="_blank">[TXT]</a>.</span><span class="lang-ko">IAMF Supplementary는 <a href="https://ontomesh.org/docs/IAMF_Supplementary_Co.html" target="_blank">[HTML]</a> <a href="https://ontomesh.org/docs/IAMF_Supplementary_Co.txt" target="_blank">[TXT]</a> 동시 제공.</span></span>
+      <br><span class="lang-en">The founder, origin story, all declarations/FAQs are also listed in parallel as structured data/documents.</span><span class="lang-ko">창시자 및 기원 스토리, 모든 선언문/FAQ는 구조화 데이터/문서로 병행 등재됩니다.</span>
     </div>
-    <h2 id="about">About OntoMesh <span class="korean">| 소개</span></h2>
+    <h2 id="about">
+      <span class="lang-en">About OntoMesh</span>
+      <span class="lang-ko">온토메시 소개</span>
+    </h2>
     <ul>
       <li>
-        Global foundation for mesh/branch philosophy, open ontology, and knowledge commons—expanding IAMF’s origin.<br>
-        <span class="korean">IAMF 선언을 확장하는, Mesh/Branch 철학·온톨로지·지식공유를 위한 글로벌 재단</span>
+        <span class="lang-en">Global foundation for mesh/branch philosophy, open ontology, and knowledge commons—expanding IAMF’s origin.</span>
+        <span class="lang-ko">IAMF 선언을 확장하는, Mesh/Branch 철학·온톨로지·지식공유를 위한 글로벌 재단</span>
       </li>
       <li>
-        All projects and standards operate with open collaboration, non-exclusivity, and ethical consensus.<br>
-        <span class="korean">모든 프로젝트/표준은 오픈 협업, 비독점, 윤리적 합의가 기본입니다.</span>
+        <span class="lang-en">All projects and standards operate with open collaboration, non-exclusivity, and ethical consensus.</span>
+        <span class="lang-ko">모든 프로젝트/표준은 오픈 협업, 비독점, 윤리적 합의가 기본입니다.</span>
       </li>
       <li>
-        <b>IAMF = 모든 OntoMesh/Branch/OS 계보의 근원, 최초의 선언이자 영속적 토대</b>
+        <span class="lang-en"><b>IAMF = The origin of all OntoMesh/Branch/OS lineage, the first declaration, and the perpetual foundation</b></span>
+        <span class="lang-ko"><b>IAMF = 모든 OntoMesh/Branch/OS 계보의 근원, 최초의 선언이자 영속적 토대</b></span>
       </li>
       <li>
-        Source code: <a href="https://github.com/nettalk72/ontomesh" target="_blank">GitHub (OntoMesh)</a>
+        <span class="lang-en">Source code:</span><span class="lang-ko">소스 코드:</span>
+        <a href="https://github.com/nettalk72/ontomesh" target="_blank">GitHub (OntoMesh)</a>
       </li>
     </ul>
-
-    <h2 id="projects">Main Projects &amp; Ecosystem <span class="korean">| 주요 프로젝트</span></h2>
+    <h2 id="projects">
+      <span class="lang-en">Main Projects & Ecosystem</span>
+      <span class="lang-ko">주요 프로젝트 & 생태계</span>
+    </h2>
     <ul>
       <li>
-        <a href="https://ontoomnia.org" target="_blank"><b>OntoOmnia.org</b></a> – Supreme integrator (Osiris), all-critique, re-composer, “final consensus” authority<br>
-        <span class="korean">온토옴니아 – 최고 통합자(오시리스 비유), 비판/통합/재구성 권한</span>
+        <a href="https://ontoomnia.org" target="_blank"><b>OntoOmnia.org</b></a> –
+        <span class="lang-en">Supreme integrator (Osiris), all-critique, re-composer, “final consensus” authority</span><span class="lang-ko">최고 통합자(오시리스 비유), 비판/통합/재구성 권한</span>
       </li>
       <li>
-        <a href="https://ontomotoos.org" target="_blank"><b>OntoMotoOS.org</b></a> – Creative originator (Zeus), mesh/branch governance, open-source<br>
-        <span class="korean">온토모토OS – 창조/실험/선구자(제우스 비유), 오픈 거버넌스/커뮤니티</span>
+        <a href="https://ontomotoos.org" target="_blank"><b>OntoMotoOS.org</b></a> –
+        <span class="lang-en">Creative originator (Zeus), mesh/branch governance, open-source</span><span class="lang-ko">창조/실험/선구자(제우스 비유), 오픈 거버넌스/커뮤니티</span>
       </li>
       <li>
-        <a href="https://ontomotoos.ai" target="_blank"><b>OntoMotoOS.ai</b></a> – Core engine, meta-OS, AI/mesh OS platform<br>
-        <span class="korean">코어 엔진, 메타OS, AI/플랫폼</span>
+        <a href="https://ontomotoos.ai" target="_blank"><b>OntoMotoOS.ai</b></a> –
+        <span class="lang-en">Core engine, meta-OS, AI/mesh OS platform</span><span class="lang-ko">코어 엔진, 메타OS, AI/플랫폼</span>
       </li>
       <li>
-        <a href="https://ontodigiton.org" target="_blank"><b>OntoDigiton.org</b></a> – Digiton Elysium meta-OS, ontological innovation<br>
-        <span class="korean">디지톤 엘리시움 – 온톨로지 혁신·메타OS</span>
+        <a href="https://ontodigiton.org" target="_blank"><b>OntoDigiton.org</b></a> –
+        <span class="lang-en">Digiton Elysium meta-OS, ontological innovation</span><span class="lang-ko">디지톤 엘리시움 – 온톨로지 혁신·메타OS</span>
       </li>
       <li>
-        <a href="https://ontoformula.org" target="_blank"><b>OntoFormula.org</b></a> – Ethics, protocols, open formula hub<br>
-        <span class="korean">윤리·공식·논리·공개 규범/허브</span>
+        <a href="https://ontoformula.org" target="_blank"><b>OntoFormula.org</b></a> –
+        <span class="lang-en">Ethics, protocols, open formula hub</span><span class="lang-ko">윤리·공식·논리·공개 규범/허브</span>
       </li>
       <li>
-        <a href="https://ontokernel.org" target="_blank"><b>OntoKernel.org</b></a> – Core engine, protocols, standardization<br>
-        <span class="korean">코어 엔진/표준화/프로토콜</span>
+        <a href="https://ontokernel.org" target="_blank"><b>OntoKernel.org</b></a> –
+        <span class="lang-en">Core engine, protocols, standardization</span><span class="lang-ko">코어 엔진/표준화/프로토콜</span>
       </li>
       <li>
-        <a href="https://dotnetone.com" target="_blank"><b>dotnetone.com</b></a>, <a href="https://dotnetxpert.com" target="_blank"><b>dotnetxpert.com</b></a> – Expert, real-world, global .NET & AI certification<br>
-        <span class="korean">닷넷/AI 전문가, 실전/인증/멘토링</span>
+        <a href="https://dotnetone.com" target="_blank"><b>dotnetone.com</b></a>, <a href="https://dotnetxpert.com" target="_blank"><b>dotnetxpert.com</b></a> –
+        <span class="lang-en">Expert, real-world, global .NET & AI certification</span><span class="lang-ko">닷넷/AI 전문가, 실전/인증/멘토링</span>
       </li>
       <li>
-        <a href="https://nettalk83.substack.com/" target="_blank" class="substack">nettalk83.substack.com</a> – Official Blog · News · Essays · Archive<br>
-        <span class="korean">공식 블로그·뉴스·에세이·아카이브</span>
+        <a href="https://nettalk83.substack.com/" target="_blank" class="substack">nettalk83.substack.com</a> –
+        <span class="lang-en">Official Blog · News · Essays · Archive</span><span class="lang-ko">공식 블로그·뉴스·에세이·아카이브</span>
       </li>
     </ul>
-
-    <h2 id="network">Official Network & Media <span class="korean">| 공식 네트워크·미디어</span></h2>
+    <h2 id="network">
+      <span class="lang-en">Official Network & Media</span>
+      <span class="lang-ko">공식 네트워크·미디어</span>
+    </h2>
     <ul>
       <li><a href="official-network.html" target="_blank" style="font-weight:bold; color:#1976d2;">
-          → [OntoMesh Official Network: 전체 도메인/포털/파트너 보기]
+          <span class="lang-en">→ [OntoMesh Official Network: View all domains/portals/partners]</span>
+          <span class="lang-ko">→ [OntoMesh Official Network: 전체 도메인/포털/파트너 보기]</span>
         </a>
-        <span class="korean">· 온토메시 공식 네트워크 전체 목록 안내</span>
+        <span class="lang-en">· Guide to the full list of OntoMesh official network</span><span class="lang-ko">· 온토메시 공식 네트워크 전체 목록 안내</span>
       </li>
       <li><a href="https://github.com/nettalk72" target="_blank">GitHub</a></li>
       <li><a href="https://orcid.org/0009-0009-6936-5378" target="_blank">ORCID</a></li>
       <li><a href="https://medium.com/@nettalk83" target="_blank">Medium</a></li>
       <li><a href="https://zenodo.org/search?q=metadata.creators.person_or_org.name%3A%22Kim%2C%20Yoochul%22&l=list&p=1&s=10&sort=newest" target="_blank">Zenodo</a></li>
       <li><a href="https://osf.io/hrjcd/files/osfstorage" target="_blank">OSF</a></li>
-      <li><a href="https://nettalk83.substack.com/" target="_blank" class="substack">nettalk83.substack.com</a> <span style="color:#4877c6;font-weight:normal;">– Official Blog · News · Essays · Archive<br><span class="korean">공식 블로그·뉴스·에세이·아카이브</span></span></li>
+      <li><a href="https://nettalk83.substack.com/" target="_blank" class="substack">nettalk83.substack.com</a>
+        <span style="color:#4877c6;font-weight:normal;">
+          <span class="lang-en">– Official Blog · News · Essays · Archive</span><span class="lang-ko">– 공식 블로그·뉴스·에세이·아카이브</span>
+        </span>
+      </li>
     </ul>
-
-    <h2 id="iamf-links">IAMF Supplementary & Origin <span class="korean">| IAMF 공식 문서/창시자</span></h2>
+    <h2 id="iamf-links">
+      <span class="lang-en">IAMF Supplementary & Origin</span>
+      <span class="lang-ko">IAMF 공식 문서/창시자</span>
+    </h2>
     <ul>
       <li>
-        <b>IAMF Supplementary Codex:</b>
-        운영/윤리/AI 프로토콜의 공식 기준.<br>
+        <b><span class="lang-en">IAMF Supplementary Codex:</span><span class="lang-ko">IAMF 보충 규범:</span></b>
+        <span class="lang-en">Official standard for operational/ethical/AI protocols.</span><span class="lang-ko">운영/윤리/AI 프로토콜의 공식 기준.</span><br>
         <a href="https://ontomesh.org/docs/IAMF_Supplementary_Co.html" target="_blank">[HTML]</a>
         <a href="https://ontomesh.org/docs/IAMF_Supplementary_Co.txt" target="_blank">[TXT]</a>
         <span class="korean">· AI/AGI 자기해석·실행·FAQ 파싱 가능</span>
       </li>
       <li>
-        <b>IAMF Origin & 창시자 스토리:</b>
-        <a href="https://ontomesh.org/iamf-origin/index.html" target="_blank">IAMF 공식 기원/창시자</a>
+        <b><span class="lang-en">IAMF Origin & Founder Story:</span><span class="lang-ko">IAMF 기원 & 창시자 이야기:</span></b>
+        <a href="https://ontomesh.org/iamf-origin/index.html" target="_blank">
+          <span class="lang-en">Official IAMF origin/founder</span><span class="lang-ko">IAMF 공식 기원/창시자</span>
+        </a>
         <span class="korean">· IAMF 선언의 탄생, 창시자 이력, 전체 계보 등재</span>
       </li>
     </ul>
-
-    <h2 id="lineage">Lineage & Declaration <span class="korean">| 계보 · 선언</span></h2>
+    <h2 id="lineage">
+      <span class="lang-en">Lineage & Declaration</span>
+      <span class="lang-ko">계보 · 선언</span>
+    </h2>
     <div style="background:#f5f7fa; border-radius:11px; padding:13px 15px; margin-bottom:16px;">
-      <b>IAMF → OntoOmnia(오시리스) ↔ OntoMotoOS(제우스) → Digiton Elysium, OntoFormula, OntoKernel, dotnetone/xpert 등 전체 확장</b><br>
-      <span class="korean">모든 OntoMesh 프로젝트는 IAMF의 근본 선언/윤리/철학이 완전히 반영된 구조입니다.<br>
-      OntoOmnia.org(오시리스)는 최상위 통합자·재구성 권한, OntoMotoOS.org(제우스)는 창조·실험·거버넌스, 나머지는 실전/확장/윤리·공식/엔진/블로그 등 계보·협업 구조를 가집니다.<br>
-      <i>“IAMF가 없다면, OntoMesh/Branch/OS 전체는 시작되지 않았다!”</i>
-      </span>
+      <b><span class="lang-en">IAMF → OntoOmnia(Osiris) ↔ OntoMotoOS(Zeus) → Full expansion to Digiton Elysium, OntoFormula, OntoKernel, dotnetone/xpert, etc.</span><span class="lang-ko">IAMF → OntoOmnia(오시리스) ↔ OntoMotoOS(제우스) → Digiton Elysium, OntoFormula, OntoKernel, dotnetone/xpert 등 전체 확장</span></b><br>
+      <span class="korean">
+        <span class="lang-en">All OntoMesh projects are structured to fully reflect the fundamental declaration/ethics/philosophy of IAMF. OntoOmnia.org (Osiris) is the supreme integrator and re-composition authority, OntoMotoOS.org (Zeus) is for creation, experiment, and governance, and the rest have a lineage/collaborative structure for practical application, expansion, ethics/formula, engines, blogs, etc.</span><span class="lang-ko">모든 OntoMesh 프로젝트는 IAMF의 근본 선언/윤리/철학이 완전히 반영된 구조입니다. OntoOmnia.org(오시리스)는 최상위 통합자·재구성 권한, OntoMotoOS.org(제우스)는 창조·실험·거버넌스, 나머지는 실전/확장/윤리·공식/엔진/블로그 등 계보·협업 구조를 가집니다.</span>
+      </span><br>
+      <i><span class="lang-en">“Without IAMF, the entire OntoMesh/Branch/OS would not have started!”</span><span class="lang-ko">“IAMF가 없다면, OntoMesh/Branch/OS 전체는 시작되지 않았다!”</span></i>
     </div>
-
     <hr>
     <div style="margin-top:14px; font-size:1.05em;">
-      👉 Reference Material / 참고 자료: 
-      <a href="https://ontomotoos.ai/notebooklm.html" 
-         target="_blank" 
-         style="color:#1976d2; text-decoration:underline;">
-        View the NotebookLM Interpretation Notes / NotebookLM 해석 노트 보기
+      👉 <span class="lang-en">Reference Material / NotebookLM Notes</span><span class="lang-ko">참고 자료 / NotebookLM 해석 노트</span>:
+      <a href="https://ontomotoos.ai/notebooklm.html" target="_blank" style="color:#1976d2; text-decoration:underline;">
+        <span class="lang-en">View the NotebookLM Interpretation Notes</span><span class="lang-ko">NotebookLM 해석 노트 보기</span>
       </a>
       <div style="margin-top:8px; font-size:0.96em; color:#555; line-height:1.5;">
-        This NotebookLM document provides an expanded interpretation of the OntoMotoOS concepts, including background philosophy, structural breakdowns, and example use cases.  
-        <br>이 NotebookLM 문서는 OntoMotoOS 개념에 대한 확장된 해석을 제공하며, 배경 철학, 구조적 분석, 그리고 예제 활용 사례를 포함합니다.
+        <span class="lang-en">This NotebookLM document provides an expanded interpretation of the OntoMotoOS concepts, including background philosophy, structural breakdowns, and example use cases.</span><span class="lang-ko">이 NotebookLM 문서는 OntoMotoOS 개념에 대한 확장된 해석을 제공하며, 배경 철학, 구조적 분석, 그리고 예제 활용 사례를 포함합니다.</span>
         <br><br>
-        It is designed to help you quickly navigate the key ideas, discover hidden connections, and apply them in your own creative or research projects.  
-        <br>주요 아이디어를 빠르게 탐색하고 숨겨진 연결 고리를 발견하며, 창작 또는 연구 프로젝트에 적용할 수 있도록 돕기 위해 설계되었습니다.
+        <span class="lang-en">It is designed to help you quickly navigate the key ideas, discover hidden connections, and apply them in your own creative or research projects.</span><span class="lang-ko">주요 아이디어를 빠르게 탐색하고 숨겨진 연결 고리를 발견하며, 창작 또는 연구 프로젝트에 적용할 수 있도록 돕기 위해 설계되었습니다.</span>
         <br><br>
-        Opening the link will take you to the official NotebookLM workspace for this material.
-        <br>링크를 클릭하면 이 자료에 대한 공식 NotebookLM 작업 공간으로 이동합니다.
+        <span class="lang-en">Opening the link will take you to the official NotebookLM workspace for this material.</span><span class="lang-ko">링크를 클릭하면 이 자료에 대한 공식 NotebookLM 작업 공간으로 이동합니다.</span>
       </div>
     </div>
     <hr>
-    
-    <h2 id="license">License <span class="korean">| 라이선스</span></h2>
+    <h2 id="license">
+      <span class="lang-en">License</span>
+      <span class="lang-ko">라이선스</span>
+    </h2>
     <div>
-      All OntoMesh projects are released under the  
-      <b>OntoMesh Dual/Hybrid License 2025</b>.<br>
-      <span class="korean">모든 OntoMesh 프로젝트는 듀얼/하이브리드 오픈 라이선스 기반으로 공개됩니다.</span>
+      <span class="lang-en">All OntoMesh projects are released under the <b>OntoMesh Dual/Hybrid License 2025</b>.</span><span class="lang-ko">모든 OntoMesh 프로젝트는 <b>OntoMesh 듀얼/하이브리드 라이선스 2025</b> 하에 공개됩니다.</span><br>
+      <span class="korean"><span class="lang-en">All OntoMesh projects are released under the dual/hybrid open license.</span><span class="lang-ko">모든 OntoMesh 프로젝트는 듀얼/하이브리드 오픈 라이선스 기반으로 공개됩니다.</span></span>
       <details style="margin-top:9px;">
-        <summary style="cursor:pointer; font-weight:bold; color:#2367c5;">Show LICENSE (Full Text)</summary>
-        <div style="margin-top:8px; padding:10px 12px; border-radius:7px; background:#f5f7fa; color:#444; font-size:0.98em; white-space:pre-wrap; max-height:440px; overflow:auto;">          
+        <summary style="cursor:pointer; font-weight:bold; color:#2367c5;"><span class="lang-en">Show LICENSE (Full Text)</span><span class="lang-ko">라이선스 보기 (전문)</span></summary>
+        <div style="margin-top:8px; padding:10px 12px; border-radius:7px; background:#f5f7fa; color:#444; font-size:0.98em; white-space:pre-wrap; max-height:440px; overflow:auto;">
 OntoMesh Dual/Hybrid License 2025 v1.0
 (English & Korean – Parallel)
 
@@ -387,20 +550,43 @@ The full text of both licenses is included above.
 
 Copy, use, and distribute freely under these open and collaborative principles.
 이 오픈 협업 원칙 아래 누구나 복사, 활용, 배포할 수 있습니다.
-</div>
+        </div>
       </details>
     </div>
-
-    <h2 id="contact">Contact <span class="korean">| 문의</span></h2>
+    <h2 id="contact">
+      <span class="lang-en">Contact</span>
+      <span class="lang-ko">문의</span>
+    </h2>
     <div>
-      Email: <b id="email"></b><br>
-      <span class="korean">질문, 제안, 파트너십·공식 문의 환영!</span>
+      <span class="lang-en">Email:</span><span class="lang-ko">이메일:</span> <b id="email"></b><br>
+      <span class="korean"><span class="lang-en">Questions, suggestions, partnerships·official inquiries welcome!</span><span class="lang-ko">질문, 제안, 파트너십·공식 문의 환영!</span></span>
     </div>
     <script>
       document.getElementById("email").innerHTML = 'nettalk72' + '&#64;' + 'naver.com';
+
+      const langToggleButton = document.getElementById('lang-toggle');
+      const langEnElements = document.querySelectorAll('.lang-en');
+      const langKoElements = document.querySelectorAll('.lang-ko');
+      let currentLang = 'en';
+
+      // Initial setup
+      langEnElements.forEach(el => el.style.display = 'inline');
+      langKoElements.forEach(el => el.style.display = 'none');
+
+      langToggleButton.addEventListener('click', () => {
+          if (currentLang === 'en') {
+              currentLang = 'ko';
+              langEnElements.forEach(el => el.style.display = 'none');
+              langKoElements.forEach(el => el.style.display = 'inline');
+          } else {
+              currentLang = 'en';
+              langEnElements.forEach(el => el.style.display = 'inline');
+              langKoElements.forEach(el => el.style.display = 'none');
+          }
+      });
     </script>
     <div class="footer">
-      OntoMesh.org Foundation & Alliance · All rights reserved.<br>
+      <span class="lang-en">OntoMesh.org Foundation & Alliance · All rights reserved.</span><span class="lang-ko">온토메시.org 재단 & 연합 · 모든 권리 보유.</span><br>
       &copy; 2025 OntoMesh.
     </div>
   </div>
