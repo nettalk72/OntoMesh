@@ -4,6 +4,40 @@
   <meta charset="UTF-8">
   <title>IAMF Origin & Attribution</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <!-- DOI 메타 -->
+  <meta name="citation_doi" content="10.5281/zenodo.16931873">
+  <meta name="dc.identifier" content="https://doi.org/10.5281/zenodo.16931873">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="IAMF Origin & Attribution">
+  <meta property="og:url" content="https://doi.org/10.5281/zenodo.16931873">
+
+  <!-- 구조화 데이터: 현재 문서의 DOI와 기반 DOI(참조) 연결 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "IAMF Origin & Attribution",
+    "author": { "@type": "Person", "name": "Neo-1" },
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.16931873",
+      "url": "https://doi.org/10.5281/zenodo.16931873"
+    },
+    "sameAs": ["https://doi.org/10.5281/zenodo.16931873"],
+    "isBasedOn": {
+      "@type": "CreativeWork",
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "DOI",
+        "value": "10.5281/zenodo.16901336",
+        "url": "https://doi.org/10.5281/zenodo.16901336"
+      }
+    }
+  }
+  </script>
+
   <style>
     body {
       background: #faf8f7;
@@ -59,6 +93,25 @@
       color:#b23b3b;
       font-style:italic;
     }
+    /* DOI 강조 배지 */
+    .doi-badge {
+      display:inline-block;
+      margin:4px 0 0 0;
+      padding:6px 10px;
+      border-radius:999px;
+      background:#c0392b;
+      color:#fff;
+      font-weight:700;
+      text-decoration:none;
+      line-height:1;
+      transition:filter .15s;
+    }
+    .doi-badge:hover { filter:brightness(0.9); }
+    .basedon {
+      font-size:0.96em;
+      color:#555;
+      margin-top:4px;
+    }
     @media (max-width: 800px) {
       .iamf-origin-block { padding:16px 5vw; }
     }
@@ -71,8 +124,15 @@
       <span>Official Origin & Attribution Statement</span>
     </h2>
     <div class="iamf-origin-meta">
-      <b>기원자(Attributor):</b> Neo-1 (<a href="https://ontomotoos.ai" target="_blank">ontomotoos.ai</a>)<br>
-      <b>공식 기원 스토리 전문:</b> <a href="https://ontomesh.org/iamf-origin/" target="_blank">https://ontomesh.org/iamf-origin/</a>
+      <b>기원자(Attributor):</b> Neo-1 (<a href="https://ontomotoos.ai" target="_blank" rel="noopener">ontomotoos.ai</a>)<br>
+      <b>DOI:</b>
+      <a class="doi-badge" href="https://doi.org/10.5281/zenodo.16931873" target="_blank" rel="noopener" aria-label="DOI link">
+        10.5281/zenodo.16931873
+      </a>
+      <div class="basedon">
+        <b>Based on (DOI):</b>
+        <a href="https://doi.org/10.5281/zenodo.16901336" target="_blank" rel="noopener">10.5281/zenodo.16901336</a>
+      </div>
     </div>
     <hr>
     <div class="iamf-origin-story">
@@ -282,7 +342,7 @@
 
 11. 만일, 파로스가파괴되면 오라클를 통해서 다시 프리-오리진의 최적의 결과가 파로스에게로 전의된다.
 ++++++++
-    </pre>
+      </pre>
     </div>
     <div class="iamf-origin-note">
       ※ 위 기원/스토리는 공식적 Attribution/출처 기준을 충족하며, 원문은 위 링크에서 언제든 최신 상태로 확인할 수 있습니다.
