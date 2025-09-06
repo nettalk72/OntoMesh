@@ -19,7 +19,7 @@
             border-radius: 16px;
             box-shadow: 0 3px 16px #e7eaf3;
             padding: 48px 34px 39px 34px;
-            position: relative; /* For positioning the toggle button */
+            position: relative;
         }
         h1 {
             color: #1976d2;
@@ -33,13 +33,13 @@
             margin-bottom: 27px;
         }
         .links {
-            margin-top: 26px;
+            margin-top: 20px;
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
         }
         .links a {
-            flex: 1 1 30%; /* Flexbox for better alignment */
+            flex: 1 1 30%;
             min-width: 220px;
             margin: 0;
             padding: 15px 20px;
@@ -105,7 +105,6 @@
             color: #767cab;
             font-size: 0.9em;
         }
-
         .desc {
             color: #536193;
             font-size: 1.03em;
@@ -144,13 +143,19 @@
             color: #1976d2;
             box-shadow: 0 1px 8px #e8eaf0;
         }
-
-        /* Language Toggle Logic */
+        /* Language Toggle */
         body.show-en .lang-ko { display: none; }
         body.show-en .lang-en { display: inline; }
         body.show-ko .lang-en { display: none; }
         body.show-ko .lang-ko { display: inline; }
-
+        /* Group titles */
+        .group-title {
+            font-size: 1.4em;
+            color: #175eb5;
+            margin: 32px 0 12px 4px;
+            border-left: 4px solid #1976d2;
+            padding-left: 8px;
+        }
         @media (max-width: 750px) {
             .main { padding: 48px 4vw 20px 4vw; }
             h1 { font-size: 1.34em; }
@@ -180,102 +185,37 @@
             <span class="lang-en">This network unites all OntoMesh, OntoMotoOS, and partner ecosystems. All domains below are <b>recognized as official meta-portals, engines, or knowledge hubs</b> for ethical AI, open ontology, mesh/branch co-governance, and collective evolution.</span>
             <span class="lang-ko">본 네트워크는 OntoMesh, OntoMotoOS, 및 모든 파트너 생태계를 통합합니다. 아래 모든 도메인은 윤리적 AI, 개방형 온톨로지, 메쉬/브랜치 공동 거버넌스 및 집단 진화를 위한 공식 <b>메타-포털, 엔진 또는 지식 허브</b>로 인정됩니다.</span>
         </div>
-        
-        <div class="links">
-            <a href="https://ontoomnia.org" target="_blank">
-                OntoOmnia.org
-                <span class="lang-en">Supreme Integrator<br><i>Ultimate mesh integrator, network consensus & ethical judge (Osiris-like role)</i></span>
-                <span class="lang-ko">최고 통합자<br><i>궁극의 메쉬 통합자, 네트워크 합의 & 윤리적 심판자 (오시리스적 역할)</i></span>
-            </a>
-            <a href="https://ontomesh.org" target="_blank">
-                OntoMesh.org
-                <span class="lang-en">Root Mesh Portal<br><i>Main meta-hub for all OntoMesh projects</i></span>
-                <span class="lang-ko">뿌리 메쉬 포털<br><i>모든 OntoMesh 프로젝트를 위한 메인 메타-허브</i></span>
-            </a>
-            <a href="https://ontomotoos.org" target="_blank">
-                OntoMotoOS.org
-                <span class="lang-en">Originator & Governance<br><i>Open mesh/branch governance & contributor hub (Zeus-like role)</i></span>
-                <span class="lang-ko">기원자 & 거버넌스<br><i>개방형 메쉬/브랜치 거버넌스 & 기여자 허브 (제우스적 역할)</i></span>
-            </a>
-            <a href="https://ontomotoos.ai" target="_blank" class="highlight-ai">
-                <span class="icon">🧠</span>
-                OntoMotoOS.ai
-                <span class="lang-en">
-                    <b>Experimental Meta-OS Hub</b><br>
-                    AI Integration / Mesh OS / API / Ontological Engine
-                </span>
-                <span class="lang-ko">
-                    <b>실험적 메타-OS 허브</b><br>
-                    AI 통합 / 메쉬 OS / API / 온톨로지 엔진
-                </span>
-            </a>
-            <a href="https://ontodigiton.org" target="_blank">
-                OntoDigiton.org
-                <span class="lang-en">Digiton Elysium Meta-OS<br><i>Applied ontological innovation, mesh/branch real-world OS</i></span>
-                <span class="lang-ko">디지톤 엘리시움 메타-OS<br><i>응용 온톨로지 혁신, 메쉬/브랜치 현실 세계 OS</i></span>
-            </a>
-            <a href="https://ontoformula.org" target="_blank">
-                OntoFormula.org
-                <span class="lang-en">Ethics & Formula Hub<br><i>IAMF, ethics, formula, protocols, logic, philosophy</i></span>
-                <span class="lang-ko">윤리 & 포뮬러 허브<br><i>IAMF, 윤리, 포뮬러, 프로토콜, 논리, 철학</i></span>
-            </a>
-            <a href="https://ontokernel.org" target="_blank">
-                OntoKernel.org
-                <span class="lang-en">Core Engine & Kernel<br><i>Open protocol, kernel, standardization</i></span>
-                <span class="lang-ko">핵심 엔진 & 커널<br><i>개방형 프로토콜, 커널, 표준화</i></span>
-            </a>
-            <a href="https://dotnetone.com" target="_blank">
-                dotnetone.com
-                <span class="lang-en">Global Experts Network<br><i>Platform for world experts, science & AI</i></span>
-                <span class="lang-ko">글로벌 전문가 네트워크<br><i>세계 전문가, 과학 & AI를 위한 플랫폼</i></span>
-            </a>
-            <a href="https://dotnetxpert.com" target="_blank">
-                dotnetxpert.com
-                <span class="lang-en">Expert Certification & Mentoring<br><i>Mentoring, certification, next-gen skills</i></span>
-                <span class="lang-ko">전문가 인증 & 멘토링<br><i>멘토링, 인증, 차세대 기술</i></span>
-            </a>
-            <a href="https://medium.com/@nettalk83" target="_blank">
-                Medium
-                <span class="lang-en">Personal Essays & Articles<br><i>Experimental writings, reflections, creative archive</i></span>
-                <span class="lang-ko">개인 에세이 & 아티클<br><i>실험적 글, 성찰, 창작 아카이브</i></span>
-            </a>
-            <a href="https://nettalk83.substack.com" target="_blank">
-                nettalk83.substack.com
-                <span class="lang-en">Official Blog & Archive<br><i>Essays, news, deep-dive, meta-updates</i></span>
-                <span class="lang-ko">공식 블로그 & 아카이브<br><i>에세이, 뉴스, 심층 분석, 메타-업데이트</i></span>
-            </a>            
-            <a href="https://ontomotoos.wordpress.com" target="_blank">
-                ontomotoos.wordpress.com
-                <span class="lang-en">Research Blog & Notes<br><i>Concepts, updates, interpretation notes</i></span>
-                <span class="lang-ko">연구 블로그 & 노트<br><i>개념, 업데이트, 해석 노트</i></span>
-            </a>
 
-            <a href="https://ontomesh.org/ontomoto-worldview.html" target="_blank" class="highlight-worldview">
-                <span class="icon">🌌</span>
-                OntoMoto Worldview
-                <span class="lang-en">
-                    <b>Worldview Universe Hub</b><br>
-                    OntoMesh/AI/Philosophy/Story/Experiment
-                </span>
-                <span class="lang-ko">
-                    <b>세계관 유니버스 허브</b><br>
-                    OntoMesh/AI/철학/스토리/실험
-                </span>
-            </a>
-            <!-- New Link Added Here -->
-            <a href="https://ontomotoos.ai/notebooklm.html" target="_blank" class="highlight-notebooklm">
-                <span class="icon">📝</span>
-                NotebookLM Hub
-                <span class="lang-en">
-                    <b>NotebookLM Integration</b><br>
-                    OntoMesh Worldview & AI Experiment
-                </span>
-                <span class="lang-ko">
-                    <b>NotebookLM 연동 허브</b><br>
-                    OntoMesh 세계관 및 AI 실험
-                </span>
-            </a>
+        <!-- 내부 그룹 -->
+        <h2 class="group-title">
+            <span class="lang-en">Core Internal Domains</span>
+            <span class="lang-ko">내부 핵심 도메인</span>
+        </h2>
+        <div class="links">
+            <a href="https://ontoomnia.org" target="_blank">OntoOmnia.org ...</a>
+            <a href="https://ontomesh.org" target="_blank">OntoMesh.org ...</a>
+            <a href="https://ontomotoos.org" target="_blank">OntoMotoOS.org ...</a>
+            <a href="https://ontomotoos.ai" target="_blank" class="highlight-ai"><span class="icon">🧠</span>OntoMotoOS.ai ...</a>
+            <a href="https://ontodigiton.org" target="_blank">OntoDigiton.org ...</a>
+            <a href="https://ontoformula.org" target="_blank">OntoFormula.org ...</a>
+            <a href="https://ontokernel.org" target="_blank">OntoKernel.org ...</a>
+            <a href="https://dotnetone.com" target="_blank">dotnetone.com ...</a>
+            <a href="https://dotnetxpert.com" target="_blank">dotnetxpert.com ...</a>
         </div>
+
+        <!-- 외부 그룹 -->
+        <h2 class="group-title">
+            <span class="lang-en">External & Community Links</span>
+            <span class="lang-ko">외부 확장 및 커뮤니티</span>
+        </h2>
+        <div class="links">
+            <a href="https://medium.com/@nettalk83" target="_blank">Medium ...</a>
+            <a href="https://nettalk83.substack.com" target="_blank">Substack ...</a>
+            <a href="https://ontomotoos.wordpress.com" target="_blank">OntoMotoOS Blog ...</a>
+            <a href="https://ontomesh.org/ontomoto-worldview.html" target="_blank" class="highlight-worldview"><span class="icon">🌌</span>OntoMoto Worldview ...</a>
+            <a href="https://ontomotoos.ai/notebooklm.html" target="_blank" class="highlight-notebooklm"><span class="icon">📝</span>NotebookLM Hub ...</a>
+        </div>
+
         <div class="philo">
             <b>
                 <span class="lang-en">OntoMesh Vision</span>
@@ -296,15 +236,11 @@
         document.addEventListener('DOMContentLoaded', () => {
             const toggleBtn = document.getElementById('lang-toggle');
             const body = document.body;
-            
-            // Default to English
             body.classList.add('show-en');
             document.documentElement.lang = 'en';
-
             toggleBtn.addEventListener('click', () => {
                 body.classList.toggle('show-ko');
                 body.classList.toggle('show-en');
-
                 if (body.classList.contains('show-ko')) {
                     document.documentElement.lang = 'ko';
                     toggleBtn.textContent = '[ English ]';
