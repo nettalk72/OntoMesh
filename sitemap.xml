@@ -55,8 +55,8 @@
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>   
-    <url>
-    <loc>unified-phase-ontology-whitehead-lineage.html</loc>
+  <url>
+    <loc>https://ontomesh.org/unified-phase-ontology-whitehead-lineage.html</loc>
     <lastmod>2025-11-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
