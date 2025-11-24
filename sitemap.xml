@@ -77,6 +77,12 @@
     <loc>https://ontomesh.org/PsrtIndependent.html</loc>
     <lastmod>2025-11-24</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ontomesh.org/UPO_Independent.html</loc>
+    <lastmod>2025-11-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>
