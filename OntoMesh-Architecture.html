@@ -607,10 +607,11 @@
 <div class="tab-container">
 
     <div class="tab-buttons">
-        <div class="tab-button active" onclick="openTab('tab7')">⭐ Seven Representative Works</div>
-        <div class="tab-button" onclick="openTab('tab9')">🌐 Nine Layer-Based Summary</div>
+        <div class="tab-button" onclick="openTab(this, 'tab7')">⭐ Seven Representative Works</div>
+        <div class="tab-button" onclick="openTab(this, 'tab9')">🌐 Nine Layer-Based Summary</div>
+        <div class="tab-button" onclick="openTab(this, 'tabCore')">🔷 Core Internal Domains</div>
     </div>
-
+    
     <!-- ================================
          TAB 1: Seven Representative Works
     =================================== -->
@@ -668,8 +669,35 @@
         </table>
     </div>
 
+    <div id="tabCore" class="tab-content">
+        <h2>🔷 Core Internal Domains — Summary</h2>
+        <p>This table summarizes the major internal hubs and functional domains across the OntoMesh, OntoMotoOS, and OntoOmnia ecosystem.</p>    
+        <table class="summary-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Domain / Hub</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>🌌 OntoMoto Worldview – Worldview Hub</td><td>Central worldview hub for ontology, AI, philosophy, and experimental frameworks.</td></tr>    
+                <tr><td>2</td><td>OntoOmnia.org – Supreme Integrator</td><td>Ultimate mesh integrator, enabling network consensus and ethical judgment.</td></tr>    
+                <tr><td>3</td><td>OntoMesh.org – Root Mesh Portal</td><td>Main meta-hub governing all OntoMesh-related projects.</td></tr>    
+                <tr><td>4</td><td>OntoMotoOS.org – Originator & Governance</td><td>Open mesh/branch governance and contributor-oriented operational hub.</td></tr>    
+                <tr><td>5</td><td>OntoDigiton.org – Digiton Elysium Meta-OS</td><td>Applied ontological innovation forming a real-world, ontology-driven meta operating system.</td></tr>    
+                <tr><td>6</td><td>OntoFormula.org – Ethics & Formula Hub</td><td>Hub for IAMF, ethics, formula systems, logic, and philosophical structure.</td></tr>    
+                <tr><td>7</td><td>🛡️ OntoTrust.org – Trust & Verification Hub</td><td>Framework for ethical verification, integrity metrics, and provable trust structures.</td></tr>    
+                <tr><td>8</td><td>OntoKernel.org – Core Engine & Kernel</td><td>Open protocol development, kernel standardization, and foundational engine design.</td></tr>    
+                <tr><td>9</td><td>dotnetone.com – Global Experts Network</td><td>Platform connecting global experts in science, AI, and interdisciplinary fields.</td></tr>    
+                <tr><td>10</td><td>dotnetxpert.com – Expert Certification & Mentoring</td><td>Mentoring, certification, and next-generation skill development platform.</td></tr>    
+                <tr><td>11</td><td>🕊️ NooneWeone.org – Existential Integration Hub</td><td>Facilitates the transformation from “No one” (individual dissolution) to “We one” (unified consciousness).</td></tr>    
+                <tr><td>12</td><td>💠 OntoCode.org – Language of Being</td><td>Reconstructs meaning through executable, ontologically expressive code.</td></tr>    
+                <tr><td>13</td><td>🧠 OntoMotoOS.ai – Experimental Meta-OS Hub</td><td>AI integration hub including Mesh OS, APIs, and the ontological engine.</td></tr>
+            </tbody>
+        </table>
+    </div>    
 </div>
-
 
 <div class="arch-container">
     <div class="arch-header">
@@ -776,16 +804,17 @@
 </div>
 
 <script>
-function openTab(tabId) {
-    // 버튼 활성화 변경
+function openTab(button, tabId) {
+    // deactivate all buttons
     document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-    event.target.classList.add('active');
+    button.classList.add('active');
 
-    // 콘텐츠 전환
+    // deactivate all tab contents
     document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
     document.getElementById(tabId).classList.add('active');
 }
 </script>
+
 
     
 </body>
