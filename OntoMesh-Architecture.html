@@ -1501,6 +1501,123 @@ function openTab(button, tabId) {
 }
 </script>
 
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 15px;
+        font-family: "Segoe UI", sans-serif;
+    }
+    table th, table td {
+        border: 1px solid #ccc;
+        padding: 8px 10px;
+        text-align: left;
+    }
+    table th {
+        background: #f0f0f0;
+        font-weight: 600;
+    }
+    h2 {
+        margin-top: 50px;
+        font-family: "Segoe UI", sans-serif;
+    }
+</style>
+
+<script>
+// -------------------------------------------
+// Data Definitions
+// -------------------------------------------
+
+// Seven Representative Works
+const sevenWorks = [
+    { id: 1, title: "Unified Phase Ontology (UPO)", doi: "10.5281/zenodo.17656373", layer: "Layer 4 · Layer 7" },
+    { id: 2, title: "Why the Universe Is Connected", doi: "10.5281/zenodo.17648778", layer: "Layer 4 · Layer 7" },
+    { id: 3, title: "ASI vs AII", doi: "10.5281/zenodo.17564925", layer: "Layer 5" },
+    { id: 4, title: "The Reflection Cycle", doi: "10.5281/zenodo.17359429", layer: "Layer 3" },
+    { id: 5, title: "OntoMotoOS Final Closure", doi: "10.5281/zenodo.17096033", layer: "Layer 2" },
+    { id: 6, title: "Phase Transition of Intelligence (PTI)", doi: "10.5281/zenodo.17722521", layer: "Vertical Axis" },
+    { id: 7, title: "Hybrid Process Ecology (HPE)", doi: "10.5281/zenodo.17774580", layer: "Layer 8" }
+];
+
+// Nine Layer Summary
+const nineLayers = [
+    { layer: "Layer 0", name: "IAMF · Origin Layer", works: "IAMF Series, Identity Feedback, Essential Resonance" },
+    { layer: "Layer 1", name: "Experimental Ontology", works: "OntoLoop, OntoOmnia" },
+    { layer: "Layer 2", name: "Civilization OS", works: "OntoMotoOS Series, Governance, Meta-Resonance" },
+    { layer: "Layer 3", name: "Ethics · Trust · Consciousness", works: "Reflection Cycle, OntoTrust, TGC" },
+    { layer: "Layer 4", name: "High Ontology", works: "UPO, Connected Universe, Phase-Based Cosmology" },
+    { layer: "Layer 5", name: "AI Ontology", works: "ASI/AII, Awareness Architecture" },
+    { layer: "Layer 6", name: "Mythos · Culture", works: "Moana/Tron, Mythic Return, Faith Structures" },
+    { layer: "Layer 7", name: "Pinnacle Integration", works: "Meta-Methodology, Circular Ontology" },
+    { layer: "Layer 8", name: "Hybrid Process Ecology", works: "HPE, PSRT × PTI × UTI Ecology" }
+];
+
+// -------------------------------------------
+// Table Renderers
+// -------------------------------------------
+
+// Seven Works Table
+function renderSevenWorks() {
+    let html = `
+    <h2>⭐ Seven Representative Works — Cross-Link Table</h2>
+    <table>
+        <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>DOI</th>
+            <th>Layer</th>
+        </tr>
+    `;
+
+    sevenWorks.forEach(w => {
+        html += `
+        <tr>
+            <td>${w.id}</td>
+            <td>${w.title}</td>
+            <td><a href="https://doi.org/${w.doi}" target="_blank">${w.doi}</a></td>
+            <td>${w.layer}</td>
+        </tr>`;
+    });
+
+    html += "</table>";
+    return html;
+}
+
+// Nine Layer Table
+function renderNineLayers() {
+    let html = `
+    <h2>🌐 Nine Layer-Based Summary — Cross-Link Table</h2>
+    <table>
+        <tr>
+            <th>Layer</th>
+            <th>Name</th>
+            <th>Representative Works</th>
+        </tr>
+    `;
+
+    nineLayers.forEach(l => {
+        html += `
+        <tr>
+            <td>${l.layer}</td>
+            <td>${l.name}</td>
+            <td>${l.works}</td>
+        </tr>`;
+    });
+
+    html += "</table>";
+    return html;
+}
+
+// -------------------------------------------
+// Insert Tables into the Page
+// -------------------------------------------
+document.addEventListener("DOMContentLoaded", () => {
+    const container = document.createElement("div");
+    container.innerHTML = renderSevenWorks() + renderNineLayers();
+    document.body.appendChild(container);
+});
+</script>
 
     
 </body>
