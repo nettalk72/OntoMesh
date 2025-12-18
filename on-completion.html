@@ -1,0 +1,2357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ontology Completion</title>
+    <style>
+        /* --- BASIC LAYOUT --- */
+        body {
+            font-family: "Noto Sans KR", Arial, sans-serif;
+            line-height: 1.7;
+            color: #222;
+            background: #fafafa;
+            margin: 0;
+            padding: 0;
+        }
+
+        section {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 0 24px;
+        }
+
+        /* --- HEADINGS --- */
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            line-height: 1.4;
+            color: #111;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            margin-top: 36px;
+            margin-bottom: 12px;
+            color: #333;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            margin-top: 28px;
+            margin-bottom: 10px;
+        }
+
+        /* --- PARAGRAPH --- */
+        p {
+            margin: 12px 0;
+            word-break: keep-all;
+        }
+
+        /* --- LISTS --- */
+        ul, ol {
+            margin: 16px 0 16px 20px;
+            padding-left: 20px;
+        }
+
+        li {
+            margin: 6px 0;
+        }
+
+        /* --- TABLE --- */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px 10px;
+            text-align: left;
+        }
+
+        th {
+            background: #f2f2f2;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background: #fafafa;
+        }
+
+        /* --- STRONG --- */
+        strong {
+            color: #000;
+            font-weight: 700;
+        }
+
+        /* --- SPACING FOR LONG TEXT --- */
+        #epilogue p,
+        #appendix-1 p,
+        #appendix-2 p {
+            margin: 14px 0;
+        }
+
+    </style>    
+</head> 
+<body>
+
+<section id="title">
+    <h1>The Desire for Completion</h1>
+    <h2>Ontology, Logic, and the Limits of Definition</h2>
+
+    <p>
+        From philosophy to formal systems,
+        from Gödel to artificial intelligence,
+        this series follows a single word
+        we have never stopped using—
+        <strong>“completion.”</strong>
+    </p>
+
+    <p>
+        Not as a statement of truth,
+        but as a decision.
+        <br />
+        Not as an end,
+        but as a way to continue working
+        despite knowing that the end
+        can never be reached.
+    </p>
+
+    <p>
+        This is not a defense of ontology,
+        nor an attack on it.
+        <br />
+        It is a record of following
+        one persistent doubt
+        to its limit.
+    </p>
+</section>
+
+
+<section id="introduction-expanded">
+    <h1>Preface</h1>
+    <h2>— When the Word “Completion” Began to Sound Strange</h2>
+
+    <p>
+        The first time I heard the phrase <strong>“Ontology Completion,”</strong>
+        what unsettled me was not that I failed to understand a technical term,
+        but that the expression was used with such disarming naturalness.
+    </p>
+
+    <p>
+        <em>Completion.</em>
+    </p>
+
+    <p>
+        Completion of what, to what extent, and by which criteria?
+    </p>
+
+    <p>
+        These questions are usually treated as insignificant.
+        Ontologies, we are told, are bounded by domains;
+        completion is merely a practical concern;
+        to invoke philosophical implications is considered excessive.
+    </p>
+
+    <p>
+        Yet it was precisely this point that troubled me.
+    </p>
+
+    <p>
+        Humanity has already experienced, once before,
+        what happens when the word <em>“completion”</em> is taken seriously—
+        and has suffered a logical defeat because of it.
+    </p>
+
+    <p>
+        In the early twentieth century,
+        Russell and Whitehead attempted to complete all of mathematics through logic.
+        Their ambition was not excessive;
+        it was, in fact, the most intellectually honest aspiration of their time.
+    </p>
+
+    <p>
+        And Gödel proved that this ambition did not fail because it was naïve or insufficient,
+        but because it succeeded.
+    </p>
+
+    <p>
+        Completion did not collapse from the outside;
+        it imploded from within.
+    </p>
+
+    <p>
+        After that moment, philosophy split.
+        One path began to doubt systems themselves.
+        The other, rather than abandoning totality altogether,
+        chose to refine individual sentences, individual rules,
+        with extreme precision.
+    </p>
+
+    <p>
+        What we now call <strong>analytic philosophy</strong>
+        is, in fact, the outcome of that choice.
+    </p>
+
+    <p>
+        It is not a philosophy that denied completion,
+        but one that succeeded in narrowing its scope.
+    </p>
+
+    <p>
+        And that philosophy flowed, almost seamlessly,
+        into computer science.
+    </p>
+
+    <p>
+        Which is why this question cannot be avoided:
+    </p>
+
+    <p>
+        Is <strong>ontology completion</strong>
+        truly a state of knowledge?
+    </p>
+
+    <p>
+        Or is it a language devised to allow work to continue,
+        even after we already know that completion is impossible?
+    </p>
+
+    <p>
+        These texts begin with that question.
+    </p>
+
+    <p>
+        They are not an attempt to deny ontologies,
+        nor to attack AI or formal logic.
+    </p>
+
+    <p>
+        Rather, they seek—at least once—
+        to follow to the end the word we use too casually:
+        <em>“completion.”</em>
+    </p>
+
+    <p>
+        To ask when, why, and in what sense it managed to survive.
+    </p>
+
+    <p>
+        This series does not promise conclusions.
+        It is closer to a record of pursuing a single doubt to its limit.
+    </p>
+
+    <p>
+        We already know that completion is not possible.
+    </p>
+
+    <p>
+        And yet, we continue to speak of it.
+    </p>
+
+    <p>
+        If this question no longer feels trivial to you,
+        you will already read these words to the end.
+    </p>
+</section>
+
+
+
+<section id="part-1-completion-desire">
+    <h1>Part I</h1>
+    <h2>Why Do We Want to Speak of “Completion”</h2>
+    <h3>— The Desire Called Ontology Completion</h3>
+
+    <p>
+        The word <em>“completion”</em> is a strange one.
+    </p>
+
+    <p>
+        It feels especially strange when encountered in technical documents.
+    </p>
+
+    <p>
+        Systems expand, requirements change,
+        domains are always partial and provisional—
+        and yet, in the midst of all this, we often say:
+        <em>“This ontology is now complete.”</em>
+    </p>
+
+    <p>
+        This sentence does not report a fact.
+        It is closer to a declaration of attitude.
+    </p>
+
+    <p>
+        From a technical perspective,
+        <strong>ontology completion</strong> usually has a fairly modest meaning.
+    </p>
+
+    <p>
+        There are no missing concepts that block inference;
+        the rules are closed;
+        and for any given query, the system can respond without stalling.
+    </p>
+
+    <p>
+        In short, it means <em>“sufficiently defined.”</em>
+    </p>
+
+    <p>
+        The problem begins here.
+    </p>
+
+    <p>
+        Between saying <em>“it is sufficient”</em>
+        and saying <em>“it is complete,”</em>
+        there is a leap that logic does not require.
+    </p>
+
+    <p>
+        Why do we not simply say “sufficient”?
+        Why insist on saying “complete”?
+    </p>
+
+    <p>
+        This question points beyond the technical domain.
+    </p>
+
+    <p>
+        The word <em>completion</em> functions as a form of permission:
+        permission to stop touching the system,
+        a declaration that the current state may serve as a reference point,
+        and above all, a spell that temporarily pushes uncertainty aside.
+    </p>
+
+    <p>
+        It is not a word used for systems,
+        but for human reassurance.
+    </p>
+
+    <p>
+        What is striking is that the word <em>completion</em>
+        appears most frequently in fields that are,
+        by their nature, premised on incompleteness.
+    </p>
+
+    <p>
+        Software never stops updating.
+        Data is always insufficient.
+        Any attempt to model the world
+        is inevitably smaller than the world itself.
+    </p>
+
+    <p>
+        And yet, we continue to invoke the word <em>“completion.”</em>
+    </p>
+
+    <p>
+        This is not so much a misunderstanding born of ignorance
+        as it is a choice repeated with full awareness.
+    </p>
+
+    <p>
+        The word <em>completion</em> carries an implicit promise:
+    </p>
+
+    <p>
+        What has been defined here
+        will no longer be questioned.
+    </p>
+
+    <p>
+        This promise is powerful.
+    </p>
+
+    <p>
+        It halts questions,
+        closes discussion,
+        and allows us to move on
+        to the phase of calculation and application.
+    </p>
+
+    <p>
+        What ontology completion actually accomplishes
+        is not a final declaration about what exists,
+        but a signal that the phase of work has shifted.
+    </p>
+
+    <p>
+        This is why ontology completion
+        is less a metaphysical claim
+        than an operational decision.
+    </p>
+
+    <p>
+        “This should be enough.”
+        <br />
+        “Let’s put it into operation.”
+        <br />
+        “If we dig any deeper, the schedule collapses.”
+    </p>
+
+    <p>
+        The word <em>completion</em>
+        is the refinement of all these statements
+        into a single term.
+    </p>
+
+    <p>
+        But it is precisely here
+        that discomfort arises.
+    </p>
+
+    <p>
+        The word <em>ontology</em>
+        originally belonged to philosophy—
+        a language for speaking about being.
+    </p>
+
+    <p>
+        And the word <em>completion</em>
+        implies that no further questions about that being remain.
+    </p>
+
+    <p>
+        The moment the two are combined,
+        a technical decision begins to take on ontological authority.
+    </p>
+
+    <p>
+        It no longer sounds like
+        “this is how we have defined it,”
+        but rather,
+        “this is how it exists.”
+    </p>
+
+    <p>
+        What this series calls into question
+        is not the act of constructing ontologies.
+    </p>
+
+    <p>
+        That act is unavoidable,
+        and often useful.
+    </p>
+
+    <p>
+        The problem lies in the name we give to that act.
+    </p>
+
+    <p>
+        The word <em>completion</em>
+        does not describe a state of knowledge
+        so much as it reveals a way of managing anxiety.
+    </p>
+
+    <p>
+        We do not stop because we know the world completely;
+        we declare that we are stopping
+        because we no longer wish to remain unsettled.
+    </p>
+
+    <p>
+        This declaration does not fail—
+        because it was never aimed at truth to begin with.
+    </p>
+
+    <p>
+        Completion is not a fact.
+        It is a decision.
+    </p>
+
+    <p>
+        And that decision
+        has already once led humanity
+        into a vast experiment in thought.
+    </p>
+
+    <p>
+        In the next part,
+        we will look back to a time
+        long before ontology became a technical term,
+        to trace where this ancient obsession
+        with classifying being began.
+    </p>
+
+    <p>
+        Beginning with the question of why,
+        when faced with the world,
+        we so persistently feel the desire
+        to <em>put things in order</em>.
+    </p>
+</section>
+
+<section id="part-2-ontology-as-philosophy">
+    <h1>Part II</h1>
+    <h2>Ontology Was Originally Philosophy</h2>
+    <h3>— Humanity’s Long Obsession with Classifying Being</h3>
+
+    <p>
+        Ontology was not, to begin with, a technical term.
+    </p>
+
+    <p>
+        Long before the word <em>technology</em> itself existed,
+        humans were already asking ontological questions.
+    </p>
+
+    <p>
+        What exists?
+        <br />
+        And by what criteria can those things be distinguished?
+    </p>
+
+    <p>
+        These were not questions of idle curiosity.
+    </p>
+
+    <p>
+        In order to survive, to judge,
+        and to render the world intelligible,
+        humans had to divide something from something else.
+    </p>
+
+    <p>
+        In ancient Greece, philosophy was,
+        before it was a theory of the world,
+        a technique of ordering.
+    </p>
+
+    <p>
+        Aristotle’s categories were not ornaments
+        designed to decorate explanations of being.
+        They were tools for enduring confusion.
+    </p>
+
+    <p>
+        Is this a substance or an attribute?
+        <br />
+        A particular or a universal?
+        <br />
+        Accidental or essential?
+    </p>
+
+    <p>
+        These distinctions were less a claim that
+        “the world truly is structured this way”
+        than a confession that
+        without such divisions, thinking itself was impossible.
+    </p>
+
+    <p>
+        What matters here is that
+        in these early forms of ontology,
+        the concept of <em>completion</em> is largely absent.
+    </p>
+
+    <p>
+        Being was classified,
+        but those classifications were always provisional.
+    </p>
+
+    <p>
+        Philosophy after Aristotle
+        refined or revised his categories,
+        but it never declared,
+        “This is finished.”
+    </p>
+
+    <p>
+        Ontology was not a closed system,
+        but something closer to a map
+        continuously amended and extended.
+    </p>
+
+    <p>
+        With the arrival of the medieval period,
+        ontology became intertwined with theology.
+    </p>
+
+    <p>
+        Here, being was no longer understood
+        merely as that which exists,
+        but as that which is created,
+        ordered,
+        and placed within a hierarchy.
+    </p>
+
+    <p>
+        It is at this moment that
+        the idea of a <em>complete inventory of being</em>
+        first begins to appear.
+    </p>
+
+    <p>
+        God knows everything.
+        Everything already has its assigned place.
+    </p>
+
+    <p>
+        Yet paradoxically,
+        this completion did not belong to humans.
+    </p>
+
+    <p>
+        Human ontology remained incomplete,
+        and under the shadow of divine completion,
+        it was required to remain humble.
+    </p>
+
+    <p>
+        With the advent of modernity,
+        the situation changes.
+    </p>
+
+    <p>
+        As the place of God is emptied,
+        something else must step in to occupy it.
+    </p>
+
+    <p>
+        Reason.
+    </p>
+
+    <p>
+        Philosophy after Descartes
+        constructs an ontology not around the world itself,
+        but around the knowing subject.
+    </p>
+
+    <p>
+        What exists becomes less important than
+        what can be stated with certainty.
+    </p>
+
+    <p>
+        Being is no longer merely classified;
+        it becomes something that must be proven.
+    </p>
+
+    <p>
+        At this point,
+        ontology quietly changes its goal.
+    </p>
+
+    <p>
+        It moves from the task of listing the world
+        to the task of grounding the world completely.
+    </p>
+
+    <p>
+        This shift creates the conditions
+        under which the word <em>completion</em>
+        can later appear as something natural.
+    </p>
+
+    <p>
+        Being is no longer treated as an open question,
+        but as a list that could, in principle,
+        be fully reached—given sufficient method.
+    </p>
+
+    <p>
+        Within philosophy itself, however,
+        this belief does not last long.
+    </p>
+
+    <p>
+        Any criterion for classifying being
+        always presupposes another criterion,
+        which in turn demands explanation.
+    </p>
+
+    <p>
+        Ontology increasingly reveals
+        that it cannot justify itself.
+    </p>
+
+    <p>
+        Classification was necessary,
+        but final classification was impossible.
+    </p>
+
+    <p>
+        And yet,
+        this ancient obsession does not disappear.
+    </p>
+
+    <p>
+        Instead, it changes form.
+    </p>
+
+    <p>
+        Attempts to classify the whole world
+        become too large and too dangerous,
+        and so they retreat
+        into smaller, safer territories.
+    </p>
+
+    <p>
+        Domains.
+        <br />
+        Formal systems.
+        <br />
+        Closed languages.
+    </p>
+
+    <p>
+        Ontology withdraws from the world
+        and enters the system.
+    </p>
+
+    <p>
+        This movement is not a defeat,
+        but a strategic retreat.
+    </p>
+
+    <p>
+        Even while accepting
+        that the whole cannot be spoken,
+        there still must be places
+        where order is possible.
+    </p>
+
+    <p>
+        And it is precisely at this point
+        that ontology leaves philosophy
+        and moves toward logic and mathematics.
+    </p>
+
+    <p>
+        In the next part,
+        we will examine the moment
+        when this movement appeared
+        in its most optimistic form:
+        the attempt of Russell and Whitehead.
+    </p>
+
+    <p>
+        Why they believed,
+        “This time, it really is possible,”
+        and why that belief
+        remains the most refined failure of all.
+    </p>
+</section>
+
+<section id="part-3-last-optimism">
+    <h1>Part III</h1>
+    <h2>Russell and Whitehead: The Last Optimism Toward Completion</h2>
+    <h3>— <em>Principia Mathematica</em> as a Great Failure</h3>
+
+    <p>
+        At the beginning of the twentieth century,
+        mathematics was unstable.
+    </p>
+
+    <p>
+        Contradictions were not accidental mishaps;
+        they arose repeatedly from within the system itself.
+    </p>
+
+    <p>
+        Anxiety about foundations continued to grow.
+    </p>
+
+    <p>
+        Russell and Whitehead did not look away from this anxiety.
+        They confronted it directly.
+    </p>
+
+    <p>
+        For them, the problem lay not in calculation,
+        but in foundations.
+    </p>
+
+    <p>
+        Their goal was clear:
+    </p>
+
+    <p>
+        To reduce all of mathematics to logic.
+    </p>
+
+    <p>
+        Numbers, sets, functions, proofs—
+        all of these, they believed,
+        could be rigorously derived
+        from a small number of logical axioms and rules.
+    </p>
+
+    <p>
+        If this were possible,
+        mathematics would no longer tremble.
+    </p>
+
+    <p>
+        <em>Principia Mathematica</em>
+        was the product of this ambition.
+    </p>
+
+    <p>
+        This attempt was not reckless.
+    </p>
+
+    <p>
+        By the standards of the time,
+        it was the most conservative
+        and the most thorough option available.
+    </p>
+
+    <p>
+        Intuition was excluded.
+        Self-evidence was treated with suspicion.
+        Every step was written out explicitly.
+    </p>
+
+    <p>
+        The reason it took hundreds of pages
+        to prove that <em>1 + 1 = 2</em>
+        was not exaggeration,
+        but a refusal to take anything for granted.
+    </p>
+
+    <p>
+        What Russell and Whitehead believed in
+        was not completion,
+        but grounding.
+    </p>
+
+    <p>
+        Once the foundations were perfectly secured,
+        everything built upon them
+        would follow mechanically.
+    </p>
+
+    <p>
+        This belief touches a kind of ontological optimism:
+    </p>
+
+    <p>
+        the conviction that being,
+        once translated into a sufficiently well-defined language,
+        would no longer waver.
+    </p>
+
+    <p>
+        What matters is that
+        this optimism did not arise from naivety.
+    </p>
+
+    <p>
+        Russell already knew,
+        through his own paradox,
+        how easily a system could collapse.
+    </p>
+
+    <p>
+        And yet, he did not flee.
+    </p>
+
+    <p>
+        Instead, he pushed the paradox
+        into the system itself,
+        constructing the more refined apparatus
+        of type theory.
+    </p>
+
+    <p>
+        A stance that acknowledges failure
+        without surrendering.
+    </p>
+
+    <p>
+        <em>Principia Mathematica</em>
+        achieved a great deal.
+    </p>
+
+    <p>
+        The refinement of logical notation.
+        <br />
+        The establishment of standards for formal proof.
+        <br />
+        The entrenchment of the attitude
+        that everything must be stated explicitly.
+    </p>
+
+    <p>
+        Much of what we now take for granted
+        in formal logic and programming languages
+        traces back to this work.
+    </p>
+
+    <p>
+        For that reason,
+        this book is not a failure.
+    </p>
+
+    <p>
+        And yet,
+        this attempt failed.
+    </p>
+
+    <p>
+        More precisely,
+        it failed because it succeeded.
+    </p>
+
+    <p>
+        Russell and Whitehead
+        pressed their own rules to the limit.
+    </p>
+
+    <p>
+        As a result,
+        what the system could do
+        and what it could not do
+        became all too clear.
+    </p>
+
+    <p>
+        <em>Principia Mathematica</em>
+        was not a complete system.
+    </p>
+
+    <p>
+        But it became the stage
+        on which the impossibility of completion
+        was demonstrated
+        with the greatest persuasiveness.
+    </p>
+
+    <p>
+        When a system becomes sufficiently precise,
+        its limits become precise as well.
+    </p>
+
+    <p>
+        Those limits are no longer voiced
+        as external criticism,
+        but are prepared to be spoken
+        in the system’s own language.
+    </p>
+
+    <p>
+        Onto this prepared stage,
+        Gödel appears.
+    </p>
+
+    <p>
+        He does not arrive
+        bearing a new philosophy.
+    </p>
+
+    <p>
+        He adds no new axioms.
+    </p>
+
+    <p>
+        He simply uses the language
+        Russell and Whitehead had constructed
+        to say what that language itself
+        could not say.
+    </p>
+
+    <p>
+        In the next part,
+        we will examine this quiet but fatal turn:
+    </p>
+
+    <p>
+        the fact that completion did not collapse
+        from the outside,
+        but imploded from within.
+    </p>
+
+    <p>
+        A proof that required no new axioms
+        to undo axioms themselves—
+        Gödel’s moment.
+    </p>
+</section>
+
+
+<section id="part-4-godel">
+    <h1>Part IV</h1>
+    <h2>Gödel: Completion Collapses from Within</h2>
+    <h3>— A Proof That Undermined Axioms Without Adding Any</h3>
+
+    <p>
+        Gödel’s name is often summarized
+        as that of “the man who showed
+        that mathematics has limits.”
+    </p>
+
+    <p>
+        But this description is too quick.
+    </p>
+
+    <p>
+        What Gödel did
+        was not to discover limits from the outside,
+        but to follow—step by step—
+        how a system already in operation
+        betrays itself from within.
+    </p>
+
+    <p>
+        He did not throw stones from the outside.
+    </p>
+
+    <p>
+        He entered the system,
+        spoke only in its language,
+        and constructed a sentence
+        that the language itself could not bear.
+    </p>
+
+    <p>
+        Gödel’s first incompleteness theorem
+        is technically complex,
+        but its core is simple.
+    </p>
+
+    <p>
+        If a formal system is
+        sufficiently powerful,
+        consistent,
+        and capable of speaking about itself,
+        then within that system
+        there must exist a sentence
+        that is true but unprovable.
+    </p>
+
+    <p>
+        What matters
+        is not merely that such a sentence
+        cannot be proven,
+        but that the system cannot exclude it.
+    </p>
+
+    <p>
+        Gödel constructed,
+        within the system itself,
+        the sentence:
+        “This sentence cannot be proven.”
+    </p>
+
+    <p>
+        If the sentence is proven,
+        the system falls into contradiction.
+    </p>
+
+    <p>
+        If it is not proven,
+        the system must concede its incompleteness.
+    </p>
+
+    <p>
+        Either way,
+        completion is impossible.
+    </p>
+
+    <p>
+        This is not an external attack.
+    </p>
+
+    <p>
+        It is a blank space
+        the system leaves for itself.
+    </p>
+
+    <p>
+        There is a common misunderstanding here.
+    </p>
+
+    <p>
+        Gödel did not leave us
+        with the simple lesson
+        that “we should just add more axioms.”
+    </p>
+
+    <p>
+        Adding axioms
+        may expand a system.
+    </p>
+
+    <p>
+        But in that expanded system,
+        the same problem reappears.
+    </p>
+
+    <p>
+        Completion is merely postponed,
+        never reached.
+    </p>
+
+    <p>
+        This is why Gödel’s proof
+        is so devastating.
+    </p>
+
+    <p>
+        Incompleteness
+        is not a temporary flaw,
+        but a structural condition.
+    </p>
+
+    <p>
+        The more powerful a system becomes,
+        the more clearly it delineates
+        what it cannot say.
+    </p>
+
+    <p>
+        The closer one moves toward completion,
+        the more precisely
+        the impossibility of completion
+        is demonstrated.
+    </p>
+
+    <p>
+        At this point,
+        the attempt of Russell and Whitehead
+        begins to look different.
+    </p>
+
+    <p>
+        Their failure was not the result
+        of excessive ambition,
+        but the unavoidable outcome
+        of pushing that ambition
+        all the way through.
+    </p>
+
+    <p>
+        The moment a system
+        takes completion as its goal,
+        it must explain itself completely.
+    </p>
+
+    <p>
+        And at precisely that moment,
+        something unexplainable
+        inevitably remains.
+    </p>
+
+    <p>
+        After Gödel,
+        the word <em>completion</em>
+        can no longer be used innocently.
+    </p>
+
+    <p>
+        When someone speaks
+        of a completed system,
+        they mean one of two things.
+    </p>
+
+    <p>
+        Either they have defined
+        what completion means
+        with extreme restriction,
+    </p>
+
+    <p>
+        or they already know
+        that completion is impossible,
+        and are using the word
+        for some other purpose.
+    </p>
+
+    <p>
+        Philosophy after Gödel
+        finds itself at this fork.
+    </p>
+
+    <p>
+        One path says:
+        “Then the very idea of a system
+        must be the problem.”
+    </p>
+
+    <p>
+        The other says:
+        “Then let us say,
+        with absolute precision,
+        only what a system can say.”
+    </p>
+
+    <p>
+        These two choices
+        divide the course
+        of twentieth-century philosophy.
+    </p>
+
+    <p>
+        In the next part,
+        we will examine the second path—
+    </p>
+
+    <p>
+        the road that abandons totality
+        and chooses the sentence:
+        the attitude of analytic philosophy.
+    </p>
+
+    <p>
+        Why, even after Gödel,
+        logic and formalism
+        were not discarded.
+    </p>
+</section>
+
+
+<section id="part-5-analytic-philosophy">
+    <h1>Part V</h1>
+    <h2>The Choice After Failure: Analytic Philosophy</h2>
+    <h3>— Abandoning the Whole, Choosing the Sentence</h3>
+
+    <p>
+        Even after Gödel,
+        logic and formalism did not disappear.
+    </p>
+
+    <p>
+        This fact is often overlooked.
+    </p>
+
+    <p>
+        Even after the impossibility of completion was proven,
+        people continued to use logic,
+        to posit axioms,
+        and to refine formal systems.
+    </p>
+
+    <p>
+        This was not inertia.
+    </p>
+
+    <p>
+        It was a deliberate choice.
+    </p>
+
+    <p>
+        Gödel’s theorems were not a declaration
+        that “nothing can be done.”
+    </p>
+
+    <p>
+        They merely stated
+        that “the whole cannot be reached in this way.”
+    </p>
+
+    <p>
+        And so the question changes:
+    </p>
+
+    <p>
+        If the whole is impossible,
+        what, then, can we do?
+    </p>
+
+    <p>
+        Analytic philosophy is the tradition
+        that answered this question
+        with the greatest sobriety.
+    </p>
+
+    <p>
+        At its core,
+        analytic philosophy is a reduction of ambition.
+    </p>
+
+    <p>
+        The whole world ❌
+        <br />
+        The whole of language ❌
+        <br />
+        The essence of meaning ❌
+    </p>
+
+    <p>
+        Instead:
+    </p>
+
+    <p>
+        When is this sentence true?
+        <br />
+        In which cases does this rule apply?
+        <br />
+        Under what conditions does this expression function?
+    </p>
+
+    <p>
+        Completion was abandoned,
+        but precision was not.
+    </p>
+
+    <p>
+        Early Wittgenstein’s
+        <em>Tractatus Logico-Philosophicus</em>
+        is an extreme example of this attitude.
+    </p>
+
+    <p>
+        The world is the totality of facts.
+    </p>
+
+    <p>
+        What can be said
+        must be said clearly.
+    </p>
+
+    <p>
+        And of what cannot be spoken,
+        one must remain silent.
+    </p>
+
+    <p>
+        All the tension of the post-Gödel moment
+        is condensed here.
+    </p>
+
+    <p>
+        After failing to speak of the whole,
+        the decision is made
+        to clarify—without remainder—
+        only what can be said.
+    </p>
+
+    <p>
+        Analytic philosophy then moves
+        toward ever smaller units.
+    </p>
+
+    <p>
+        Semantics.
+        <br />
+        Syntax.
+        <br />
+        Logic.
+        <br />
+        Speech acts.
+        <br />
+        Reference.
+        <br />
+        Truth conditions.
+    </p>
+
+    <p>
+        These are less tools
+        for revealing the essence of the world
+        than devices for removing misunderstanding.
+    </p>
+
+    <p>
+        Analytic philosophy does not explain.
+    </p>
+
+    <p>
+        It organizes.
+    </p>
+
+    <p>
+        This attitude aligns
+        with computer science
+        to a surprising degree.
+    </p>
+
+    <p>
+        Computers do not understand the whole.
+    </p>
+
+    <p>
+        They merely follow rules.
+    </p>
+
+    <p>
+        If a sentence is ambiguous,
+        computation halts.
+    </p>
+
+    <p>
+        If a definition is missing,
+        the system collapses.
+    </p>
+
+    <p>
+        And so the language of analytic philosophy—
+        formality,
+        explicitness,
+        closed rules—
+        is naturally absorbed
+        into computable languages.
+    </p>
+
+    <p>
+        A crucial shift occurs here.
+    </p>
+
+    <p>
+        For analytic philosophy,
+        formalization was an attitude.
+    </p>
+
+    <p>
+        For computer science,
+        formalization is a condition.
+    </p>
+
+    <p>
+        What in philosophy meant
+        “let us speak this way”
+        becomes, in engineering,
+        “unless we speak this way,
+        nothing works.”
+    </p>
+
+    <p>
+        The philosophical strategy
+        of abandoning completion
+        ironically makes
+        local completion possible.
+    </p>
+
+    <p>
+        From this point on,
+        the word <em>completion</em>
+        returns with a different meaning.
+    </p>
+
+    <p>
+        Not the completion of the world,
+        but the completion of a sentence.
+    </p>
+
+    <p>
+        Not the totality of being,
+        but the closure of a domain.
+    </p>
+
+    <p>
+        In ways analytic philosophy never intended—
+        yet precisely because of its attitude—
+        “completion” becomes speakable again.
+    </p>
+
+    <p>
+        But this completion
+        is no longer naïve.
+    </p>
+
+    <p>
+        It is not a claim about the whole,
+        nor a declaration of truth.
+    </p>
+
+    <p>
+        It says only this:
+    </p>
+
+    <p>
+        Within this language,
+        under these rules,
+        for this purpose,
+        no further questions need be asked.
+    </p>
+
+    <p>
+        This is not a philosophical statement,
+        but an operational one.
+    </p>
+
+    <p>
+        In the next part,
+        we will examine this very moment—
+    </p>
+
+    <p>
+        the point at which
+        the attitude of analytic philosophy
+        hardens into the language of engineering.
+    </p>
+
+    <p>
+        Is ontology completion
+        the heir of philosophy,
+        or the most misunderstood legacy
+        philosophy has left behind?
+    </p>
+
+    <p>
+        Let us dissect it directly.
+    </p>
+</section>
+
+
+<section id="part-6-ontology-completion">
+    <h1>Part VI</h1>
+    <h2>The Nature of Ontology Completion</h2>
+    <h3>— The Language of Engineering, Not of Philosophy</h3>
+
+    <p>
+        The phrase <em>ontology completion</em>
+        has a curiously neutral sound.
+    </p>
+
+    <p>
+        It is neither excessive nor aggressive.
+    </p>
+
+    <p>
+        And for that very reason,
+        it is easily accepted.
+    </p>
+
+    <p>
+        It appears as if it emerged naturally
+        from purely technical necessity,
+        untouched by long-standing philosophical disputes.
+    </p>
+
+    <p>
+        But this term is not so pure.
+    </p>
+
+    <p>
+        Ontology completion
+        is not a discovery,
+        but a declaration of state.
+    </p>
+
+    <p>
+        Not “this ontology is true,”
+        but “this ontology is now sufficiently defined.”
+    </p>
+
+    <p>
+        And the criterion of sufficiency here
+        does not come from the world,
+        but from the requirements of the system.
+    </p>
+
+    <p>
+        Does inference terminate?
+        <br />
+        Are there unresolved exceptions?
+        <br />
+        Does the system always respond to queries?
+    </p>
+
+    <p>
+        When these questions
+        can be answered with “yes,”
+        we say that the ontology is complete.
+    </p>
+
+    <p>
+        At this point,
+        a crucial assumption is silently adopted:
+    </p>
+
+    <p>
+        The <strong>Closed World Assumption</strong>.
+    </p>
+
+    <p>
+        What is not stated
+        is treated as non-existent.
+    </p>
+
+    <p>
+        Philosophically,
+        this is an extremely strong claim.
+    </p>
+
+    <p>
+        Engineering-wise,
+        without it,
+        the system simply does not function.
+    </p>
+
+    <p>
+        Ontology completion
+        is the procedure
+        by which this assumption is formalized.
+    </p>
+
+    <p>
+        What matters is that
+        completion here
+        is entirely independent of truth conditions.
+    </p>
+
+    <p>
+        A completed ontology
+        can be wrong.
+    </p>
+
+    <p>
+        It can be incomplete.
+    </p>
+
+    <p>
+        It may even diverge from reality.
+    </p>
+
+    <p>
+        And yet,
+        it is still called complete.
+    </p>
+
+    <p>
+        Because the goal is not understanding,
+        but computation.
+    </p>
+
+    <p>
+        It is at this point
+        that philosophy and engineering
+        decisively diverge.
+    </p>
+
+    <p>
+        Philosophy asks:
+        <br />
+        Does this really exist?
+        <br />
+        Is this classification justified?
+    </p>
+
+    <p>
+        Engineering asks:
+        <br />
+        Does the system terminate?
+        <br />
+        Can we proceed to the next step?
+    </p>
+
+    <p>
+        Ontology completion
+        is an answer to the latter.
+    </p>
+
+    <p>
+        For this reason,
+        ontology completion is less
+        an extension of philosophical ontology
+        than the result of converting
+        the attitude of analytic philosophy
+        into operational rules.
+    </p>
+
+    <p>
+        It eliminates ambiguity,
+        closes definitions,
+        and forbids exceptions.
+    </p>
+
+    <p>
+        This is not a language for speaking about being,
+        but a language for finishing work.
+    </p>
+
+    <p>
+        The problem is that
+        this language works too well.
+    </p>
+
+    <p>
+        Declaring completion
+        halts discussion,
+        enables deployment,
+        and draws boundaries of responsibility.
+    </p>
+
+    <p>
+        “Any problems beyond this point
+        are no longer problems of the ontology.”
+    </p>
+
+    <p>
+        This sentence is
+        technically legitimate,
+        but philosophically heavy.
+    </p>
+
+    <p>
+        Ontology completion feels unsettling
+        not because it imitates philosophy,
+        but because it reuses,
+        without explanation,
+        a word philosophy had already abandoned.
+    </p>
+
+    <p>
+        After Gödel,
+        the word <em>completion</em>
+        was something to be handled with care.
+    </p>
+
+    <p>
+        Engineering, however,
+        redefines the word
+        for a different purpose,
+        and then uses it
+        as if nothing had happened.
+    </p>
+
+    <p>
+        This reuse is not deception.
+    </p>
+
+    <p>
+        It is a choice made out of necessity.
+    </p>
+
+    <p>
+        But every choice
+        comes with a cost.
+    </p>
+
+    <p>
+        Ontology completion
+        does not tell us
+        what we have given up.
+    </p>
+
+    <p>
+        It foregrounds only one fact:
+        that the system works.
+    </p>
+
+    <p>
+        In the next part,
+        we will examine
+        what kinds of fractures appear
+        when this language encounters AI.
+    </p>
+
+    <p>
+        Why artificial intelligence,
+        which began with the languages
+        of analysis and formalization,
+        increasingly turns
+        toward ways of handling meaning
+        outside formal systems.
+    </p>
+
+    <p>
+        And whether,
+        by drawing every leaf perfectly,
+        the forest truly comes into view.
+    </p>
+</section>
+
+
+<section id="part-7-ai-and-analysis">
+    <h1>Part VII</h1>
+    <h2>The Arrival of AI: Was Analysis Really the Answer?</h2>
+    <h3>— If Every Leaf Is Drawn Perfectly, Does the Forest Appear?</h3>
+
+    <p>
+        For a long time,
+        analytic philosophy and engineering
+        were looking in the same direction.
+    </p>
+
+    <p>
+        Remove ambiguity.
+        Make definitions explicit.
+        Close the rules—
+        and meaning will follow.
+    </p>
+
+    <p>
+        Early artificial intelligence
+        inherited this belief almost intact.
+    </p>
+
+    <p>
+        The world could be represented in symbols.
+        Symbols could be manipulated by rules.
+        And with a sufficiently refined ontology,
+        intelligence could be implemented.
+    </p>
+
+    <p>
+        This approach was reasonable.
+    </p>
+
+    <p>
+        And it achieved real results.
+    </p>
+
+    <p>
+        Expert systems.
+        <br />
+        Knowledge-based reasoning.
+        <br />
+        Rule engines.
+        <br />
+        Ontology-centered knowledge representation.
+    </p>
+
+    <p>
+        Here, intelligence was measured
+        not by understanding,
+        but by application.
+    </p>
+
+    <p>
+        Correct classification.
+        <br />
+        Consistent inference.
+        <br />
+        Predictable behavior.
+    </p>
+
+    <p>
+        Yet the same problems
+        followed this approach everywhere.
+    </p>
+
+    <p>
+        As ontologies grew,
+        maintenance costs exploded.
+    </p>
+
+    <p>
+        When the world shifted even slightly,
+        rules quickly became obsolete.
+    </p>
+
+    <p>
+        Most of all,
+        the meanings people actually used
+        constantly crossed
+        the boundaries of ontologies.
+    </p>
+
+    <p>
+        Analysis became more refined,
+        but intelligence did not grow
+        as well as expected.
+    </p>
+
+    <p>
+        The turning point arrived
+        in an unexpected form.
+    </p>
+
+    <p>
+        Models that relied on statistics—
+        later, deep learning
+        and large language models—
+        did not begin
+        by constructing ontologies.
+    </p>
+
+    <p>
+        They did not classify being.
+        They did not define meaning.
+    </p>
+
+    <p>
+        Instead,
+        they absorbed patterns.
+    </p>
+
+    <p>
+        This approach is almost the opposite
+        of the analytic attitude.
+    </p>
+
+    <p>
+        Explicit rules ❌
+        <br />
+        Closed definitions ❌
+        <br />
+        Declarations of completion ❌
+    </p>
+
+    <p>
+        Instead:
+    </p>
+
+    <p>
+        Probability.
+        <br />
+        Continuity.
+        <br />
+        The coexistence of ambiguity.
+    </p>
+
+    <p>
+        AI does not define
+        each individual leaf.
+    </p>
+
+    <p>
+        It looks first
+        at the distribution of the forest as a whole.
+    </p>
+
+    <p>
+        At this point,
+        an uncomfortable question emerges.
+    </p>
+
+    <p>
+        Was the assumption
+        we held for so long—
+        that “sufficiently precise analysis,
+        accumulated enough,
+        will reveal the whole”—
+        ever really correct?
+    </p>
+
+    <p>
+        No matter how precisely
+        one draws each leaf,
+        the climate or ecology of the forest
+        may still remain invisible.
+    </p>
+
+    <p>
+        Of course,
+        this new kind of AI
+        does not solve everything.
+    </p>
+
+    <p>
+        Its explanations are weak.
+        Its grounds are opaque.
+        The boundary between truth and error
+        is often blurred.
+    </p>
+
+    <p>
+        And yet, one thing has become clear.
+    </p>
+
+    <p>
+        Meaning does not arise
+        only within closed ontologies.
+    </p>
+
+    <p>
+        This realization
+        forces us to look again
+        at ontology completion.
+    </p>
+
+    <p>
+        If completed definitions
+        are the precondition of intelligence,
+        then what are these systems
+        that function without them?
+    </p>
+
+    <p>
+        Conversely,
+        if such systems can handle meaning,
+        what, then,
+        was the completion
+        we were so obsessed with for?
+    </p>
+
+    <p>
+        This is not to say
+        that analytic philosophy was wrong.
+    </p>
+
+    <p>
+        It accomplished precisely
+        what it set out to do.
+    </p>
+
+    <p>
+        What has changed
+        is that its limits
+        are now unmistakable.
+    </p>
+
+    <p>
+        Analysis was
+        one mode of intelligence,
+        not intelligence itself.
+    </p>
+
+    <p>
+        The arrival of AI
+        calls for a philosophical return.
+    </p>
+
+    <p>
+        Not the question of
+        completed definitions
+        versus perfect understanding,
+        but the question of
+        how to work together
+        under the assumption of incompleteness.
+    </p>
+
+    <p>
+        In the next part,
+        we will push this question to the end.
+    </p>
+
+    <p>
+        After letting go
+        of the old ideal of completion,
+        what kind of ontology
+        can we still have?
+    </p>
+
+    <p>
+        Not completion,
+        but coexistence
+        as an alternative.
+    </p>
+</section>
+
+
+<section id="part-8-coexistence">
+    <h1>Part VIII</h1>
+    <h2>Back to the Whole: Coexistence Instead of Completion</h2>
+    <h3>— Toward a New Concept of Ontology</h3>
+
+    <p>
+        To abandon completion
+        does not mean
+        to abandon the whole.
+    </p>
+
+    <p>
+        What we gave up
+        was not the whole itself,
+        but the belief
+        that we could possess
+        a completed whole.
+    </p>
+
+    <p>
+        This difference is not trivial.
+    </p>
+
+    <p>
+        After Gödel,
+        we already know:
+    </p>
+
+    <p>
+        No system
+        can fully explain itself.
+        <br />
+        No ontology
+        can completely close off
+        what lies outside it.
+    </p>
+
+    <p>
+        And yet,
+        we continue
+        to build ontologies.
+    </p>
+
+    <p>
+        This is not a contradiction.
+        It is a necessity.
+    </p>
+
+    <p>
+        The problem is not
+        which ontology we have,
+        but what kind of relationship
+        we form with it.
+    </p>
+
+    <p>
+        The moment completion becomes the goal,
+        ontology turns into
+        a device for closing questions.
+    </p>
+
+    <p>
+        When coexistence is assumed,
+        ontology becomes
+        a device for coordinating questions.
+    </p>
+
+    <p>
+        A coexistential ontology
+        has the following characteristics:
+    </p>
+
+    <ul>
+        <li>It assumes no single final classification.</li>
+        <li>It allows the overlap of multiple perspectives.</li>
+        <li>It treats conflict not as error, but as information.</li>
+        <li>It prioritizes connection over closure.</li>
+    </ul>
+
+    <p>
+        Such an ontology asks less
+        “What is this?”
+        and more
+        “Where and how is this used?”
+    </p>
+
+    <p>
+        Here, the whole
+        is not the goal,
+        but the background.
+    </p>
+
+    <p>
+        A forest
+        is not the sum of its leaves.
+        But without leaves,
+        there is no forest.
+    </p>
+
+    <p>
+        The whole is not a structure
+        to be completed,
+        but a field
+        in which parts
+        continually affect one another.
+    </p>
+
+    <p>
+        AI offers an experimental glimpse
+        of this possibility.
+    </p>
+
+    <p>
+        Large-scale models
+        operate meaningfully
+        without presupposing
+        a single ontology.
+    </p>
+
+    <p>
+        They form context
+        not through definitional closure,
+        but through the coexistence of patterns.
+    </p>
+
+    <p>
+        This is not
+        the end of ontology,
+        but a transformation
+        of its role.
+    </p>
+
+    <p>
+        Ontology Completion
+        is still necessary.
+    </p>
+
+    <p>
+        Systems must,
+        at some point,
+        be closed.
+        Decisions must,
+        somewhere,
+        be made.
+    </p>
+
+    <p>
+        But such completion
+        should not be understood
+        as a declaration of truth,
+        but as the drawing
+        of a boundary of responsibility.
+    </p>
+
+    <p>
+        “Up to this point,
+        we take responsibility.”
+    </p>
+
+    <p>
+        Beyond that,
+        we must negotiate
+        with other ontologies.
+    </p>
+
+    <p>
+        Ontology no longer
+        needs to be singular.
+    </p>
+
+    <p>
+        Multiple ontologies
+        can coexist simultaneously,
+        even without full translation
+        between them.
+    </p>
+
+    <p>
+        What matters
+        is the meta-relationship
+        that allows movement
+        between them.
+    </p>
+
+    <p>
+        Overlapping maps
+        reveal more
+        than a single completed one.
+    </p>
+
+    <p>
+        This series
+        was not written
+        to deny the idea of completion.
+    </p>
+
+    <p>
+        It was written,
+        rather,
+        to return that idea
+        to its proper place.
+    </p>
+
+    <p>
+        Completion
+        is not a statement about the world,
+        but the name
+        of a way of working
+        that we choose.
+    </p>
+
+    <p>
+        We still want
+        to organize.
+        <br />
+        To classify.
+        <br />
+        To close.
+    </p>
+
+    <p>
+        That desire
+        does not disappear.
+    </p>
+
+    <p>
+        But now,
+        we no longer need
+        to mistake it
+        for something absolute.
+    </p>
+
+    <p>
+        The moment we choose coexistence
+        over completion,
+        ontology becomes once again
+        a tool for thinking.
+    </p>
+
+    <p>
+        Not a tool for closing,
+        but a tool for connecting.
+    </p>
+</section>
+
+
+<section id="epilogue">
+    <h1>Epilogue</h1>
+    <h2>Writing “Completion” One Last Time</h2>
+
+    <p>
+        If we were to write the word
+        “completion”
+        just once more,
+        it would be like this.
+    </p>
+
+    <p>
+        We tried to draw a single map
+        while facing the world,
+        and to stamp the word
+        “completion”
+        at its edge.
+    </p>
+
+    <p>
+        But the moment the brush touched,
+        the canvas exceeded its own boundary
+        and revealed
+        a wider margin.
+    </p>
+
+    <p>
+        That margin is not a lack,
+        but a space
+        where questions
+        not yet asked
+        are breathing.
+    </p>
+
+    <p>
+        “Completion” is no longer
+        an ideal that has vanished without remainder.
+    </p>
+
+    <p>
+        It remains
+        as a single sentence
+        in which we declare
+        how far we take responsibility,
+        and from where
+        we accept the questions of others.
+    </p>
+
+    <p>
+        A promise
+        not to cross one line,
+        and at the same time,
+        an invitation
+        to let it overlap
+        with someone else’s.
+    </p>
+
+    <p>
+        So let us leave
+        the final page
+        blank.
+    </p>
+
+    <p>
+        When someone writes
+        a new question
+        upon that empty space,
+        this map
+        will expand once again.
+    </p>
+
+    <p>
+        That is the only way
+        in which
+        we can be
+        eternal.
+    </p>
+
+    <p>
+        The only form of completion
+        left to us.
+    </p>
+
+    <p>
+        <strong>— End.</strong>
+    </p>
+</section>
+
+
+</body>
+</html>
