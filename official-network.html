@@ -240,6 +240,29 @@
     background: #1955b9;
     transform: translateY(-1px);
 }
+
+          /* Pair layout (local) */
+  .pair-wrap{
+    display:flex; gap:16px; flex-wrap:wrap;
+    margin-top:14px;
+  }
+  .pair-wrap .proposition-box{
+    flex:1 1 320px;
+    margin-top:0 !important;
+  }
+  .pair-icon{
+    font-size:1.05em; margin-right:6px;
+    vertical-align:baseline;
+  }
+  .pair-meta{
+    margin-top:10px;
+    font-size:0.92em;
+    line-height:1.45;
+  }
+  .pair-meta a{
+    font-weight:700;
+    text-decoration:none;
+  }
         
     </style>
 </head>
@@ -360,101 +383,93 @@
           </i>
         </div>
 
-        <!-- ✳ Ontology of Completion (Post-Completion State Reference) -->
-        <hr style="margin: 48px 0; border: none; border-top: 1px solid #e0e0e0;" />
-
-        <div class="proposition-box" style="border-left-color:#4a6fa5; background:#f7faff;">
-          <b>
-            <span class="lang-en">Ontology of Completion</span>
-            <span class="lang-ko">완성의 존재론 (Ontology of Completion)</span>
-          </b><br>
-
-          <i>
-            <span class="lang-en">
-              A post-completion ontological reference describing the state that remains
-              after generative processes, systems, and architectures have reached
-              structural sufficiency.
+        <div class="pair-wrap">
+        
+          <!-- ✳ Ontology of Completion -->
+          <div class="proposition-box" style="border-left-color:#4a6fa5; background:#f7faff;">
+            <b>
+              <span class="lang-en"><span class="pair-icon">🕊️</span>Ontology of Completion</span>
+              <span class="lang-ko"><span class="pair-icon">🕊️</span>완성의 존재론 (Ontology of Completion)</span>
+            </b><br>
+        
+            <i>
+              <span class="lang-en">
+                A bounded post-completion reference describing the state that remains after
+                generative processes reach structural sufficiency.
+              </span>
+              <span class="lang-ko">
+                생성 과정이 구조적 충분성에 도달한 이후 남는 상태를 서술하는
+                경계형(post-completion) 존재론 참조 문서입니다.
+              </span>
+            </i>
+        
+            <span class="desc">
+              <span class="lang-en">
+                It does not extend systems or engines. It articulates <b>silence</b>, <b>freedom</b>,
+                and <b>stability</b> as affirmative states that arise only after completion.
+              </span>
+              <span class="lang-ko">
+                시스템/엔진을 확장하지 않습니다. 완성 이후에만 성립하는 <b>침묵</b>, <b>자유</b>,
+                <b>안정성</b>을 목표나 방법이 아닌 <b>존재 상태</b>로 서술합니다.
+              </span>
             </span>
-            <span class="lang-ko">
-              생성 과정, 시스템, 아키텍처가 구조적 충분성에 도달한 이후
-              무엇이 남는지를 설명하는
-              완성 이후(post-completion) 존재론적 참조 문서입니다.
+        
+            <div class="pair-meta">
+              <a href="https://doi.org/10.5281/zenodo.17960364" target="_blank" style="color:#2f5fb3;">
+                → DOI: 10.5281/zenodo.17960364
+              </a><br>
+              <span style="color:#3a4b66;">
+                <span class="lang-en">Completion as state · Silence & Freedom after sufficiency</span>
+                <span class="lang-ko">완성=상태 · 충분성 이후의 침묵/자유</span>
+              </span>
+            </div>
+          </div>
+          <!-- ✳ End Ontology of Completion -->
+        
+          <!-- ✳ Stopping as Structure -->
+          <div class="proposition-box" style="border-left-color:#0f8a5f; background:#f6fffb;">
+            <b>
+              <span class="lang-en"><span class="pair-icon">🛑</span>Stopping as Structure</span>
+              <span class="lang-ko"><span class="pair-icon">🛑</span>구조로서의 멈춤 (Stopping as Structure)</span>
+            </b><br>
+        
+            <i>
+              <span class="lang-en">
+                A bounded reference treating stopping not as will or ethics, but as a structural
+                phenomenon where continuation remains possible yet becomes non-generative.
+              </span>
+              <span class="lang-ko">
+                멈춤을 의지·윤리가 아니라 <b>구조적 현상</b>으로 다루는 경계형 참조 문서입니다.
+                계속은 가능하지만 다음 단계가 <b>비생성</b>으로 전환되는 조건을 설명합니다.
+              </span>
+            </i>
+        
+            <span class="desc">
+              <span class="lang-en">
+                Core scope: <b>Flow → Threshold → Recursion → Competition → Failure Absorption → Non-Applicability</b>.
+                Non-prescriptive: it explains when “the next step” becomes structurally invalid.
+              </span>
+              <span class="lang-ko">
+                핵심 범위: <b>Flow → Threshold → Recursion → Competition → Failure Absorption → Non-Applicability</b>.
+                처방하지 않으며 “다음 단계”가 구조적으로 무효화되는 조건을 설명합니다.
+              </span>
             </span>
-          </i>
-
-          <span class="desc">
-            <span class="lang-en">
-              This document does <b>not</b> extend OntoMesh, PSRT, or any generative framework.
-              It articulates <b>silence</b>, <b>freedom</b>, and <b>stability</b> as affirmative
-              states that emerge only after completion — not as goals, methods, or systems.
-            </span>
-            <span class="lang-ko">
-              본 문서는 OntoMesh, PSRT, 또는 어떤 생성 프레임워크도
-              <b>확장하지 않습니다</b>.
-              완성 이후에만 도달 가능한
-              <b>침묵</b>, <b>자유</b>, <b>안정성</b>을
-              목표나 방법이 아닌
-              <b>존재 상태</b>로서 서술합니다.
-            </span>
-          </span>
-
-          <p style="margin-top:10px;">
-            <a href="https://ontomesh.org/ontology-of-completion.html"
-               target="_blank"
-               style="font-weight:bold; color:#2f5fb3; text-decoration:none;">
-              → Visit: Ontology of Completion (Independent State Document)
-            </a>
-          </p>
+        
+            <div class="pair-meta">
+              <a href="https://doi.org/10.5281/zenodo.17984405" target="_blank" style="color:#0b6b4a;">
+                → DOI: 10.5281/zenodo.17984405
+              </a><br>
+              <span style="color:#3a4b66;">
+                <span class="lang-en">Stopping as phenomenon · Applicability expires, generation folds</span>
+                <span class="lang-ko">멈춤=현상 · 적용 만료로 생성이 접힘</span>
+              </span>
+            </div>
+          </div>
+          <!-- ✳ End Stopping as Structure -->
+        
         </div>
-        <!-- ✳ End Ontology of Completion block -->
+        <!-- ✳ End Completion ↔ Stopping pair -->
         
-        <!-- ✳ Stopping as Structure (Zenodo DOI Reference) -->
-        <div class="proposition-box" style="border-left-color:#0f8a5f; background:#f6fffb; margin-top:18px;">
-          <b>
-            <span class="lang-en">Stopping as Structure</span>
-            <span class="lang-ko">구조로서의 멈춤 (Stopping as Structure)</span>
-          </b><br>
-        
-          <i>
-            <span class="lang-en">
-              A bounded framework that treats stopping not as will, ethics, or prohibition,
-              but as a structural phenomenon where continuation remains possible yet becomes
-              non-generative due to the expiration of applicability.
-            </span>
-            <span class="lang-ko">
-              멈춤을 의지·윤리·금지가 아닌 <b>구조적 현상</b>으로 다루는 경계형 프레임워크입니다.
-              계속은 가능하지만, 적용 가능성이 만료되어 다음 단계가 더 이상 생성되지 않는
-              <b>비생성(non-generative)</b> 상태를 설명합니다.
-            </span>
-          </i>
-        
-          <span class="desc">
-            <span class="lang-en">
-              Core scope: <b>Flow → Threshold → Recursion → Competition → Failure Absorption → Non-Applicability</b>.
-              This text is non-prescriptive: it does not recommend stopping; it explains
-              the conditions under which “the next step” becomes structurally invalid.
-            </span>
-            <span class="lang-ko">
-              핵심 범위: <b>Flow → Threshold → Recursion → Competition → Failure Absorption → Non-Applicability</b>.
-              본 문서는 처방하지 않습니다. 멈춤을 권고하지 않고,
-              “다음 단계”가 구조적으로 무효화되는 조건을 설명합니다.
-            </span>
-          </span>
-        
-          <p style="margin-top:10px; margin-bottom:0;">
-            <a href="https://doi.org/10.5281/zenodo.17984405"
-               target="_blank"
-               style="font-weight:bold; color:#0b6b4a; text-decoration:none;">
-              → DOI: 10.5281/zenodo.17984405 (Zenodo Record)
-            </a>
-            <br>
-            <span style="font-size:0.92em; color:#3a4b66;">
-              <span class="lang-en">Permanent citation link via doi.org</span>
-              <span class="lang-ko">doi.org 기반 영구 인용 링크</span>
-            </span>
-          </p>
-        </div>
-        <!-- ✳ End Stopping as Structure block -->
 
         <!-- ✳ PSRT Section (Updated to PSRT v2.1 — Bounded Integration Framework) -->
         <div class="proposition-box" style="border-left-color:#1976d2;">
