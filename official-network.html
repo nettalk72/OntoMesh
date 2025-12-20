@@ -200,6 +200,88 @@
       background: #d6eaff;
     }
 
+    /* NEW: Core Snapshot layout */
+    .core-snapshot {
+      margin-top: 14px;
+      border-radius: 14px;
+      padding: 16px 16px 12px 16px;
+      background: linear-gradient(135deg, #f7fbff 0%, #f1f6ff 100%);
+      border: 1.5px solid #c7dbff;
+      box-shadow: 0 2px 8px rgba(47,110,216,0.08);
+    }
+    .core-snapshot h3 {
+      margin: 0 0 10px 0;
+      font-size: 1.18em;
+      color: #2b68c9;
+      letter-spacing: -0.2px;
+    }
+    .core-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .core-pill {
+      flex: 1 1 230px;
+      background: #ffffff;
+      border: 1px solid #d6e4ff;
+      border-left: 4px solid #2f6ed8;
+      border-radius: 12px;
+      padding: 12px 12px 10px 12px;
+      box-shadow: 0 1px 6px rgba(47,110,216,0.07);
+      transition: transform 0.14s ease, box-shadow 0.14s ease;
+    }
+    .core-pill:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(47,110,216,0.12);
+    }
+    .core-pill .t {
+      font-weight: 800;
+      color: #1f4f9e;
+      margin-bottom: 4px;
+      font-size: 1.02em;
+    }
+    .core-pill .d {
+      color: #3a4b66;
+      font-size: 0.93em;
+      line-height: 1.45;
+    }
+    .core-cta {
+      margin-top: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .core-cta a.primary {
+      background: #2b68c9;
+      color: #fff !important;
+      border: 1px solid #2b68c9;
+    }
+    .core-cta a.primary:hover {
+      background: #1955b9;
+    }
+    .core-cta a {
+      display: inline-block;
+      padding: 10px 14px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 800;
+      background: #ffffff;
+      border: 1px solid #cce1ff;
+      color: #175eb5;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+    .core-cta a:hover {
+      transform: translateY(-1px);
+      background: #d6eaff;
+    }
+    .core-mini {
+      margin-top: 10px;
+      color: #536193;
+      font-size: 0.95em;
+      line-height: 1.55;
+    }
+
     .footer {
       margin-top: 38px;
       color: #aaa;
@@ -213,6 +295,8 @@
       .links a { min-width: 100%; font-size: 0.99em; }
       .lang-toggle { top: 10px; right: 10px; font-size: 0.8em; }
       .top-nav a { width: 100%; text-align: center; }
+      .core-pill { flex: 1 1 100%; }
+      .core-cta a { width: 100%; text-align: center; }
     }
   </style>
 </head>
@@ -242,17 +326,89 @@
         <span class="lang-en">Open Extended Core Docs (Architecture / PSRT / UPO / Completion / Stopping)</span>
         <span class="lang-ko">확장 코어 문서 열기 (Architecture / PSRT / UPO / Completion / Stopping)</span>
       </a>
-      <a href="#core-internal">
-        <span class="lang-en">Jump to Core Internal Domains</span>
-        <span class="lang-ko">내부 핵심 도메인으로</span>
-      </a>
-      <a href="#trust-docs">
-        <span class="lang-en">Jump to Trust & Verification</span>
-        <span class="lang-ko">신뢰/검증으로</span>
+      <a href="official-core.html#pair" style="font-weight:900;">
+        <span class="lang-en">Jump: Completion ↔ Stopping</span>
+        <span class="lang-ko">바로가기: 완성 ↔ 멈춤</span>
       </a>
     </div>
 
-    <div class="desc">
+    <!-- NEW: Core Snapshot (fills the "empty" feeling) -->
+    <div class="core-snapshot">
+      <h3>
+        <span class="lang-en">Core Snapshot (Why the Core Docs exist)</span>
+        <span class="lang-ko">Core Snapshot (코어 문서가 존재하는 이유)</span>
+      </h3>
+
+      <div class="core-mini">
+        <span class="lang-en">
+          This portal is a directory. The Core Docs are a bounded reference layer:
+          they define what is “structurally sufficient,” when recursion is intentionally disabled,
+          and what remains after completion as a stable state (silence, freedom, non-generative stability).
+        </span>
+        <span class="lang-ko">
+          이 포털은 디렉토리입니다. 코어 문서는 ‘경계형 참조층’으로서,
+          무엇이 “구조적으로 충분한가”, 언제 재귀가 의도적으로 비활성화되는가,
+          그리고 완성 이후 무엇이 “상태”로 남는가(침묵, 자유, 비생성적 안정)를 정의합니다.
+        </span>
+      </div>
+
+      <div class="core-grid">
+        <div class="core-pill">
+          <div class="t">
+            <span class="lang-en">Bounded Integration</span>
+            <span class="lang-ko">경계형 통합</span>
+          </div>
+          <div class="d">
+            <span class="lang-en">Integration that stops correctly: explicit boundaries, suspension conditions, and accountability.</span>
+            <span class="lang-ko">제대로 끝나는 통합: 명시적 경계, 중단/정지 조건, 책임 가능성.</span>
+          </div>
+        </div>
+
+        <div class="core-pill" style="border-left-color:#0f8a5f;">
+          <div class="t">
+            <span class="lang-en">Stopping as Structure</span>
+            <span class="lang-ko">구조로서의 멈춤</span>
+          </div>
+          <div class="d">
+            <span class="lang-en">Continuation remains possible, yet becomes non-applicable/non-generative beyond a threshold.</span>
+            <span class="lang-ko">계속은 가능하지만, 임계 이후에는 적용 만료·비생성으로 전환.</span>
+          </div>
+        </div>
+
+        <div class="core-pill" style="border-left-color:#4a6fa5;">
+          <div class="t">
+            <span class="lang-en">Completion as State</span>
+            <span class="lang-ko">완성 = 상태</span>
+          </div>
+          <div class="d">
+            <span class="lang-en">Silence and freedom are affirmative states that arise only after structural sufficiency.</span>
+            <span class="lang-ko">침묵/자유는 결핍이 아니라 충분성 이후에만 성립하는 긍정 상태.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="core-cta">
+        <a class="primary" href="official-core.html">
+          <span class="lang-en">Open Core Docs (Full)</span>
+          <span class="lang-ko">코어 문서 열기 (전체)</span>
+        </a>
+        <a href="official-core.html#architecture">
+          <span class="lang-en">Architecture</span>
+          <span class="lang-ko">아키텍처</span>
+        </a>
+        <a href="official-core.html#psrt">
+          <span class="lang-en">PSRT v2.1</span>
+          <span class="lang-ko">PSRT v2.1</span>
+        </a>
+        <a href="official-core.html#upo">
+          <span class="lang-en">UPO</span>
+          <span class="lang-ko">UPO</span>
+        </a>
+      </div>
+    </div>
+    <!-- END NEW -->
+
+    <div class="desc" style="margin-top:16px;">
       <span class="lang-en">
         This page intentionally remains a <b>directory portal</b>.
         Architecture documents, PSRT/UPO independent pages, and extended philosophical references are provided separately in
@@ -365,7 +521,6 @@
       </a>
     </div>
 
-    <!-- OntoMotoOS Central Proposition (kept) -->
     <div class="proposition-box">
       <b>
         <span class="lang-en">OntoMotoOS Central Proposition:</span>
@@ -387,10 +542,6 @@
       </span>
     </div>
 
-    <!-- =========================
-         External & Community Links
-         (kept as requested)
-         ========================= -->
     <h2 class="group-title">
       <span class="lang-en">External & Community Links</span>
       <span class="lang-ko">외부 확장 및 커뮤니티</span>
@@ -423,10 +574,6 @@
       </a>
     </div>
 
-    <!-- =========================
-         Trust & Verification Documents
-         (kept as requested)
-         ========================= -->
     <h2 id="trust-docs" class="group-title">
       <span class="lang-en">Trust & Verification Documents</span>
       <span class="lang-ko">신뢰 및 검증 관련 문서</span>
@@ -478,7 +625,6 @@
       </span>
     </div>
 
-    <!-- Footer note (kept) -->
     <div class="footer">
       <span class="lang-en">
         🌌 Note: As of September 11, 2025, the OntoMotoOS philosophical project has been officially concluded.
@@ -498,7 +644,6 @@
       const toggleBtn = document.getElementById('lang-toggle');
       const body = document.body;
 
-      // Default language
       body.classList.add('show-en');
       document.documentElement.lang = 'en';
 
