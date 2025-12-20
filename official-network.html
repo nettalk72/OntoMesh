@@ -1,841 +1,520 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>OntoMesh Official Network</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Official OntoMesh meta-network: OntoOmnia, OntoMotoOS, OntoDigiton, OntoKernel, OntoFormula,OntoTrust.org, dotnetone.com, dotnetxpert.com, nettalk83.substack.com.">
-    <style>
-        body {
-            background: #f8fafc;
-            color: #222;
-            font-family: 'Segoe UI', sans-serif;
-            margin: 0;
-        }
-        .main {
-            max-width: 760px;
-            margin: 52px auto;
-            background: #fff;
-            border-radius: 16px;
-            box-shadow: 0 3px 16px #e7eaf3;
-            padding: 48px 34px 39px 34px;
-            position: relative;
-        }
-        h1 {
-            color: #1976d2;
-            font-size: 2.23em;
-            letter-spacing: -0.5px;
-            margin-bottom: 9px;
-        }
-        .subtitle {
-            color: #3b4570;
-            font-size: 1.19em;
-            margin-bottom: 27px;
-        }
-        .links {
-            margin-top: 20px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        .links a {
-            flex: 1 1 30%;
-            min-width: 220px;
-            margin: 0;
-            padding: 15px 20px;
-            border-radius: 10px;
-            background: #f3f8ff;
-            color: #175eb5;
-            font-weight: bold;
-            text-decoration: none;
-            font-size: 1.13em;
-            box-shadow: 0 1px 8px #e8eaf0;
-            transition: background 0.18s, color 0.18s, transform 0.18s;
-            position: relative;
-        }
-        .links a:hover {
-            background: #1976d2;
-            color: #fff;
-            transform: translateY(-2px);
-        }
-        .links a:hover span, .links a:hover .subtext {
-            color: #fff !important;
-        }
-        .links a.highlight-ai {
-            background: #d6eaff;
-            border: 2px solid #4da3ff;
-            color: #003b73;
-            box-shadow: 0 2px 13px #b3d9ff;
-            font-size: 1.18em;
-        }
-        .links a.highlight-worldview {
-            background: #ffe4b3;
-            border: 2px solid #ffa726;
-            color: #784600;
-            box-shadow: 0 2px 13px #ffd19e;
-            font-size: 1.18em;
-        }
-        .links a.highlight-notebooklm {
-            background: #e6f7ff;
-            border: 2px solid #59c1ff;
-            color: #00568a;
-            box-shadow: 0 2px 13px #cceeff;
-            font-size: 1.18em;
-        }
-        .links a > span {
-            display: block;
-            font-size: 0.96em;
-            font-weight: 400;
-            color: #4966a0;
-            margin-top: 3px;
-        }
-        .links a.highlight-ai span, .links a.highlight-notebooklm span { color: #003b73; }
-        .links a.highlight-worldview span { color: #784600; }
-        .links .icon {
-            position: absolute;
-            top: 7px;
-            right: 16px;
-            font-size: 1.11em;
-        }
-        .links a .subtext {
-            font-size: 0.85em;
-            display: block;
-        }
-        .links a .subtext.ko {
-            color: #767cab;
-            font-size: 0.9em;
-        }
-        .desc {
-            color: #536193;
-            font-size: 1.03em;
-            margin-bottom: 17px;
-        }
-        .philo {
-            margin: 37px 0 13px 0;
-            padding: 19px 20px;
-            background: #eef4fc;
-            color: #346599;
-            border-radius: 10px;
-            font-size: 1.07em;
-        }
-        .footer {
-            margin-top: 38px;
-            color: #aaa;
-            font-size: 0.97em;
-            text-align: center;
-        }
-        .lang-toggle {
-            position: absolute;
-            top: 20px;
-            right: 34px;
-            background-color: #eef4fc;
-            color: #346599;
-            border: 1px solid #cce1ff;
-            padding: 8px 12px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.2s ease-in-out;
-            user-select: none;
-        }
-        .lang-toggle:hover {
-            background-color: #d6eaff;
-            color: #1976d2;
-            box-shadow: 0 1px 8px #e8eaf0;
-        }
-        .proposition-box {
-            margin-top: 18px;
-            background: linear-gradient(135deg, #f9fbff 0%, #f0f6ff 100%);
-            border: 1.5px solid #c7dbff;
-            border-left: 4px solid #2f6ed8;
-            border-radius: 10px;
-            padding: 14px 18px;
-            font-size: 0.96em;
-            color: #1f2a44;
-            box-shadow: 0 2px 6px rgba(47,110,216,0.08);
-            transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-        }
-        .proposition-box:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(47,110,216,0.15);
-        }
-        .proposition-box b {
-            color: #2f6ed8;
-            font-weight: 600;
-        }
-        .proposition-box i {
-            color: #1e2f4d;
-            font-size: 1.04em;
-        }
-        .proposition-box span.desc {
-            display: block;
-            margin-top: 7px;
-            color: #3a4b66;
-            font-size: 0.94em;
-        }
-        /* Language Toggle */
-        body.show-en .lang-ko { display: none; }
-        body.show-en .lang-en { display: inline; }
-        body.show-ko .lang-en { display: none; }
-        body.show-ko .lang-ko { display: inline; }
-        /* Group titles */
-        .group-title {
-            font-size: 1.4em;
-            color: #175eb5;
-            margin: 32px 0 12px 4px;
-            border-left: 4px solid #1976d2;
-            padding-left: 8px;
-        }
-        @media (max-width: 750px) {
-            .main { padding: 48px 4vw 20px 4vw; }
-            h1 { font-size: 1.34em; }
-            .links a { min-width: 100%; font-size: 0.99em; }
-            .lang-toggle { top: 10px; right: 10px; font-size: 0.8em; }
-        }
+  <meta charset="UTF-8" />
+  <title>OntoMesh Official Network</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Official OntoMesh meta-network directory: core internal domains, community links, trust & verification documents. Extended architecture & core docs are available via official-core.html." />
+  <style>
+    body {
+      background: #f8fafc;
+      color: #222;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+    }
+    .main {
+      max-width: 760px;
+      margin: 52px auto;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 3px 16px #e7eaf3;
+      padding: 48px 34px 39px 34px;
+      position: relative;
+    }
+    h1 {
+      color: #1976d2;
+      font-size: 2.23em;
+      letter-spacing: -0.5px;
+      margin-bottom: 9px;
+    }
+    .subtitle {
+      color: #3b4570;
+      font-size: 1.19em;
+      margin-bottom: 18px;
+    }
+    .desc {
+      color: #536193;
+      font-size: 1.03em;
+      margin-bottom: 17px;
+    }
+    .links {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .links a {
+      flex: 1 1 30%;
+      min-width: 220px;
+      margin: 0;
+      padding: 15px 20px;
+      border-radius: 10px;
+      background: #f3f8ff;
+      color: #175eb5;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1.13em;
+      box-shadow: 0 1px 8px #e8eaf0;
+      transition: background 0.18s, color 0.18s, transform 0.18s;
+      position: relative;
+    }
+    .links a:hover {
+      background: #1976d2;
+      color: #fff;
+      transform: translateY(-2px);
+    }
+    .links a:hover span, .links a:hover .subtext {
+      color: #fff !important;
+    }
+    .links a.highlight-ai {
+      background: #d6eaff;
+      border: 2px solid #4da3ff;
+      color: #003b73;
+      box-shadow: 0 2px 13px #b3d9ff;
+      font-size: 1.18em;
+    }
+    .links a.highlight-worldview {
+      background: #ffe4b3;
+      border: 2px solid #ffa726;
+      color: #784600;
+      box-shadow: 0 2px 13px #ffd19e;
+      font-size: 1.18em;
+    }
+    .links a.highlight-notebooklm {
+      background: #e6f7ff;
+      border: 2px solid #59c1ff;
+      color: #00568a;
+      box-shadow: 0 2px 13px #cceeff;
+      font-size: 1.18em;
+    }
+    .links a > span {
+      display: block;
+      font-size: 0.96em;
+      font-weight: 400;
+      color: #4966a0;
+      margin-top: 3px;
+    }
+    .links a.highlight-ai span, .links a.highlight-notebooklm span { color: #003b73; }
+    .links a.highlight-worldview span { color: #784600; }
+    .links .icon {
+      position: absolute;
+      top: 7px;
+      right: 16px;
+      font-size: 1.11em;
+    }
+    .links a .subtext {
+      font-size: 0.85em;
+      display: block;
+    }
+    .links a .subtext.ko {
+      color: #767cab;
+      font-size: 0.9em;
+    }
 
-/* ==== OntoMesh Architecture Card (Improved) ==== */
-.arch-card {
-    background: linear-gradient(135deg, #f7faff 0%, #eef4ff 100%);
-    border: 1.6px solid #c9d9ff;
-    border-left: 5px solid #2b68c9;
-    border-radius: 12px;
-    padding: 18px 20px 16px 20px;
-    margin-top: 22px;
-    box-shadow: 0 2px 10px rgba(43,104,201,0.08);
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-.arch-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 14px rgba(43,104,201,0.15);
-}
+    .proposition-box {
+      margin-top: 18px;
+      background: linear-gradient(135deg, #f9fbff 0%, #f0f6ff 100%);
+      border: 1.5px solid #c7dbff;
+      border-left: 4px solid #2f6ed8;
+      border-radius: 10px;
+      padding: 14px 18px;
+      font-size: 0.96em;
+      color: #1f2a44;
+      box-shadow: 0 2px 6px rgba(47,110,216,0.08);
+      transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+    .proposition-box:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(47,110,216,0.15);
+    }
+    .proposition-box b {
+      color: #2f6ed8;
+      font-weight: 600;
+    }
+    .proposition-box i {
+      color: #1e2f4d;
+      font-size: 1.04em;
+    }
+    .proposition-box span.desc {
+      display: block;
+      margin-top: 7px;
+      color: #3a4b66;
+      font-size: 0.94em;
+    }
 
-.arch-card-title {
-    font-size: 1.18em;
-    font-weight: 700;
-    color: #2b68c9;
-}
+    /* Language Toggle */
+    body.show-en .lang-ko { display: none; }
+    body.show-en .lang-en { display: inline; }
+    body.show-ko .lang-en { display: none; }
+    body.show-ko .lang-ko { display: inline; }
 
-.arch-card-desc { 
-    display: block;
-    margin-top: 8px;
-    margin-bottom: 12px;
-    color: #334065;
-    line-height: 1.55;
-    font-size: 0.96em;
-}
+    .lang-toggle {
+      position: absolute;
+      top: 20px;
+      right: 34px;
+      background-color: #eef4fc;
+      color: #346599;
+      border: 1px solid #cce1ff;
+      padding: 8px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.2s ease-in-out;
+      user-select: none;
+    }
+    .lang-toggle:hover {
+      background-color: #d6eaff;
+      color: #1976d2;
+      box-shadow: 0 1px 8px #e8eaf0;
+    }
 
-.arch-button {
-    display: inline-block;
-    margin-top: 8px;
-    padding: 10px 16px;
-    background: #2b68c9;
-    color: white !important;
-    border-radius: 8px;
-    text-decoration: none;
-    font-size: 0.95em;
-    font-weight: 600;
-    transition: background 0.16s, transform 0.16s;
-}
-.arch-button:hover {
-    background: #1955b9;
-    transform: translateY(-1px);
-}
+    /* Group titles */
+    .group-title {
+      font-size: 1.4em;
+      color: #175eb5;
+      margin: 32px 0 12px 4px;
+      border-left: 4px solid #1976d2;
+      padding-left: 8px;
+    }
 
-          /* Pair layout (local) */
-  .pair-wrap{
-    display:flex; gap:16px; flex-wrap:wrap;
-    margin-top:14px;
-  }
-  .pair-wrap .proposition-box{
-    flex:1 1 320px;
-    margin-top:0 !important;
-  }
-  .pair-icon{
-    font-size:1.05em; margin-right:6px;
-    vertical-align:baseline;
-  }
-  .pair-meta{
-    margin-top:10px;
-    font-size:0.92em;
-    line-height:1.45;
-  }
-  .pair-meta a{
-    font-weight:700;
-    text-decoration:none;
-  }
-        
-    </style>
+    /* Top nav */
+    .top-nav {
+      margin: 14px 0 18px 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .top-nav a {
+      display: inline-block;
+      padding: 10px 14px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      background: #eef4fc;
+      border: 1px solid #cce1ff;
+      color: #175eb5;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+    .top-nav a:hover {
+      transform: translateY(-1px);
+      background: #d6eaff;
+    }
+
+    .footer {
+      margin-top: 38px;
+      color: #aaa;
+      font-size: 0.97em;
+      text-align: center;
+    }
+
+    @media (max-width: 750px) {
+      .main { padding: 48px 4vw 20px 4vw; }
+      h1 { font-size: 1.34em; }
+      .links a { min-width: 100%; font-size: 0.99em; }
+      .lang-toggle { top: 10px; right: 10px; font-size: 0.8em; }
+      .top-nav a { width: 100%; text-align: center; }
+    }
+  </style>
 </head>
+
 <body>
-    <div class="main">
-        <button id="lang-toggle" class="lang-toggle">[ 한국어 ]</button>
-        
-        <h1>
-            <span class="lang-en">OntoMesh Official Network</span>
-            <span class="lang-ko">온토메시 공식 네트워크</span>
-        </h1>
-        <div class="subtitle">
-            <span class="lang-en">The unified meta-network for open mesh, ontology, and collective intelligence</span>
-            <span class="lang-ko">개방형 메쉬, 온톨로지, 집단지성을 위한 통합 메타-네트워크</span>
-            <br>
-            <span style="color:#2e3192;">
-                <span class="lang-en">OntoMesh Official Network (12 Core Domains, 3 Mesh/Branch Alliance)</span>
-                <span class="lang-ko">온토메시 공식 네트워크 (12 대 도메인 · 3 Mesh/Branch 연합)</span>
-            </span>
-        </div>
+  <div class="main">
+    <button id="lang-toggle" class="lang-toggle">[ 한국어 ]</button>
 
-        <div class="arch-card">
-            <div class="arch-card-title">
-                <span class="lang-en">
-                    OntoMesh Civilization Architecture<br>
-                    (8-Layer Ontology · PTI Vertical Axis · HPE Meta-Ecological Layer)
-                </span>
-                <span class="lang-ko">
-                    OntoMesh 문명 아키텍처<br>
-                    (8층 존재론 · PTI 수직 지능축 · HPE 메타-생태 통합층)
-                </span>
-            </div>
-        
-            <span class="arch-card-desc">
-                <span class="lang-en">
-                    Access the fully consolidated OntoMesh / OntoMotoOS / UPO /
-                    <strong>PSRT v2.1 (Main)</strong> civilization-scale architecture here:
-                </span>
-                <span class="lang-ko">
-                    OntoMesh / OntoMotoOS / UPO /
-                    <strong>PSRT v2.1 (메인 버전)</strong>으로
-                    통합 완결된 문명-스케일 아키텍처는
-                    아래 링크에서 확인할 수 있습니다:
-                </span>
-            </span>
-        
-            <a href="OntoMesh-Architecture.html" class="arch-button" target="_blank">
-                <span class="lang-en">Open Full Architecture Document</span>
-                <span class="lang-ko">전체 아키텍처 문서 열기</span>
-            </a><a href="https://doi.org/10.5281/zenodo.17932629" target="_blank" style="color:#2f5fb3;">
-                → DOI: 10.5281/zenodo.17932629
-              </a>
-        
-            <div style="margin-top:12px; font-size:0.94em; color:#455272; line-height:1.55;">
-                <span class="lang-en">
-                    Includes the unified 8-layer OntoMesh ontology (0F–7F),
-                    with <b>HPE</b> as the meta-ecological Layer 8.
-                    <b>UTI</b> defines horizontal structural invariants across all layers,
-                    while <b>PTI</b> specifies the vertical axis of intelligence transformation.
-                    <br><br>
-                    <b>PSTR (Process → Structure → Recursion)</b> is formally recognized
-                    as the universal generative principle established in PSRT v2.0,
-                    but is <strong>intentionally disabled as an operational engine in PSRT v2.1</strong>,
-                    which instead introduces explicit boundaries,
-                    including the <b>Unified Failure Domain (UFD)</b>
-                    and mandatory suspension conditions.
-                    <br><br>
-                    The architecture further integrates UPO, the Connected Universe thesis,
-                    the Reflection Cycle, ASI–AII ontology,
-                    and OntoMotoOS as a bounded, accountable civilization-scale framework.
-                </span>
-        
-                <span class="lang-ko">
-                    통합된 8층 OntoMesh 존재론(0F–7F)과
-                    메타-생태 통합층으로서의 <b>HPE(8층)</b>가 포함됩니다.
-                    <b>UTI</b>는 모든 층에 걸쳐 유지되는 수평 구조 불변성을 정의하며,
-                    <b>PTI</b>는 지능이 조건부로 도약하는 수직 변환 축을 규정합니다.
-                    <br><br>
-                    <b>PSTR(과정 → 구조 → 재귀)</b>는
-                    PSRT v2.0에서 정식 생성 원리로 확립되었으나,
-                    <strong>PSRT v2.1에서는 실행 엔진으로 의도적으로 비활성화</strong>되어
-                    <b>통합 실패 영역(UFD)</b>과
-                    명시적 중단 조건을 포함하는
-                    책임 가능한 경계 아키텍처로 재정의됩니다.
-                    <br><br>
-                    본 문서는 UPO, Connected Universe 명제,
-                    Reflection Cycle, ASI–AII 존재론,
-                    그리고 OntoMotoOS를
-                    문명-스케일의
-                    비확장적·반증 가능한 구조로 통합 제공합니다.
-                </span>
-            </div>
-        </div>
+    <h1>
+      <span class="lang-en">OntoMesh Official Network</span>
+      <span class="lang-ko">온토메시 공식 네트워크</span>
+    </h1>
 
-        
-        <div class="desc">
-            <span class="lang-en">This network unites all OntoMesh, OntoMotoOS, and partner ecosystems. All domains below are <b>recognized as official meta-portals, engines, or knowledge hubs</b> for ethical AI, open ontology, mesh/branch co-governance, and collective evolution.</span>
-            <span class="lang-ko">본 네트워크는 OntoMesh, OntoMotoOS, 및 모든 파트너 생태계를 통합합니다. 아래 모든 도메인은 윤리적 AI, 개방형 온톨로지, 메쉬/브랜치 공동 거버넌스 및 집단 진화를 위한 공식 <b>메타-포털, 엔진 또는 지식 허브</b>로 인정됩니다.</span>
-        </div>  
-        
-
-        <!-- ✳ 공식 정의 문구 추가 -->
-       
-        <div class="proposition-box">
-          <b>
-            <span class="lang-en">Official Definition — NooneWeone.org:</span>
-            <span class="lang-ko">공식 정의 — NooneWeone.org:</span>
-          </b><br>
-          <i>
-            <span class="lang-en">
-              NooneWeone.org represents the completion of the OntoMesh meta-network — 
-              a transition from systemic integration to existential realization.<br>
-              “When no one remains, We One begins.”
-            </span>
-            <span class="lang-ko">
-              NooneWeone.org은 OntoMesh 메타 네트워크의 완성을 의미하며,<br>
-              시스템적 통합에서 존재적 자각으로의 전환을 상징합니다.<br>
-              “아무도 남지 않을 때, 우리는 하나가 된다.”
-            </span>
-          </i>
-        </div>
-
-        <div class="pair-wrap">
-        
-          <!-- ✳ Ontology of Completion -->
-          <div class="proposition-box" style="border-left-color:#4a6fa5; background:#f7faff;">
-            <b>
-              <span class="lang-en"><span class="pair-icon">🕊️</span>Ontology of Completion</span>
-              <span class="lang-ko"><span class="pair-icon">🕊️</span>완성의 존재론 (Ontology of Completion)</span>
-            </b><br>
-        
-            <i>
-              <span class="lang-en">
-                A bounded post-completion reference describing the state that remains after
-                generative processes reach structural sufficiency.
-              </span>
-              <span class="lang-ko">
-                생성 과정이 구조적 충분성에 도달한 이후 남는 상태를 서술하는
-                경계형(post-completion) 존재론 참조 문서입니다.
-              </span>
-            </i>
-        
-            <span class="desc">
-              <span class="lang-en">
-                It does not extend systems or engines. It articulates <b>silence</b>, <b>freedom</b>,
-                and <b>stability</b> as affirmative states that arise only after completion.
-              </span>
-              <span class="lang-ko">
-                시스템/엔진을 확장하지 않습니다. 완성 이후에만 성립하는 <b>침묵</b>, <b>자유</b>,
-                <b>안정성</b>을 목표나 방법이 아닌 <b>존재 상태</b>로 서술합니다.
-              </span>
-            </span>
-        
-            <div class="pair-meta">
-              <a href="https://doi.org/10.5281/zenodo.17960364" target="_blank" style="color:#2f5fb3;">
-                → DOI: 10.5281/zenodo.17960364
-              </a><span style="margin:0 6px; color:#3a4b66;">|</span>
-              <a href="./ontology-of-completion.html" target="_blank" style="color:#0b6b4a;">
-                HTML
-              </a><br>
-              <span style="color:#3a4b66;">
-                <span class="lang-en">Completion as state · Silence & Freedom after sufficiency</span>
-                <span class="lang-ko">완성=상태 · 충분성 이후의 침묵/자유</span>
-              </span>
-            </div>
-          </div>
-          <!-- ✳ End Ontology of Completion -->
-        
-          <!-- ✳ Stopping as Structure -->
-          <div class="proposition-box" style="border-left-color:#0f8a5f; background:#f6fffb;">
-            <b>
-              <span class="lang-en"><span class="pair-icon">🛑</span>Stopping as Structure</span>
-              <span class="lang-ko"><span class="pair-icon">🛑</span>구조로서의 멈춤 (Stopping as Structure)</span>
-            </b><br>
-        
-            <i>
-              <span class="lang-en">
-                A bounded reference treating stopping not as will or ethics, but as a structural
-                phenomenon where continuation remains possible yet becomes non-generative.
-              </span>
-              <span class="lang-ko">
-                멈춤을 의지·윤리가 아니라 <b>구조적 현상</b>으로 다루는 경계형 참조 문서입니다.
-                계속은 가능하지만 다음 단계가 <b>비생성</b>으로 전환되는 조건을 설명합니다.
-              </span>
-            </i>
-        
-            <span class="desc">
-              <span class="lang-en">
-                Core scope: <b>Flow → Threshold → Recursion → Competition → Failure Absorption → Non-Applicability</b>.
-                Non-prescriptive: it explains when “the next step” becomes structurally invalid.
-              </span>
-              <span class="lang-ko">
-                핵심 범위: <b>Flow → Threshold → Recursion → Competition → Failure Absorption → Non-Applicability</b>.
-                처방하지 않으며 “다음 단계”가 구조적으로 무효화되는 조건을 설명합니다.
-              </span>
-            </span>
-        
-           <div class="pair-meta">
-              <a href="https://doi.org/10.5281/zenodo.17984405" target="_blank" style="color:#0b6b4a;">
-                → DOI: 10.5281/zenodo.17984405
-              </a>
-              <span style="margin:0 6px; color:#3a4b66;">|</span>
-              <a href="./Stopping_as_Structure.html" target="_blank" style="color:#0b6b4a;">
-                HTML
-              </a>
-              <br>
-              <span style="color:#3a4b66;">
-                <span class="lang-en">Stopping as phenomenon · Applicability expires, generation folds</span>
-                <span class="lang-ko">멈춤=현상 · 적용 만료로 생성이 접힘</span>
-              </span>
-            </div>
-
-
-          </div>
-          <!-- ✳ End Stopping as Structure -->
-        
-        </div>
-        <!-- ✳ End Completion ↔ Stopping pair -->
-        
-
-        <!-- ✳ PSRT Section (Updated to PSRT v2.1 — Bounded Integration Framework) -->
-        <div class="proposition-box" style="border-left-color:#1976d2;">
-          <b>
-            <span class="lang-en">Process–Structure–Recursion Theory (PSRT v2.1 — Main)</span>
-            <span class="lang-ko">과정–구조–재귀 이론 (PSRT v2.1 — 메인 버전)</span>
-          </b><br>
-        
-          <i>
-            <span class="lang-en">
-              The core meta-ontological framework consolidating OntoMesh as a
-              <strong>bounded integration architecture</strong>:<br><br>
-        
-              <strong>PSRT = UTI × PTI × HPE</strong><br>
-              <span style="display:block; margin-top:4px;">
-                subject to <b>Unified Failure Domain (UFD)</b><br>
-                and explicit stop / suspension conditions
-              </span><br>
-        
-              where:<br>
-              • <b>UTI</b> — Universal Topological Invariance (horizontal structural invariants)<br>
-              • <b>PTI</b> — Platonic Thought Infrastructure (vertical transformations of intelligence)<br>
-              • <b>HPE</b> — Hybrid Process Ecology (multi-agent, multi-scale co-evolutionary dynamics)<br>
-              • <b>PSTR</b> — Process–Structure–Recursion, <em>formally recognized as the generative principle</em>,
-                but <strong>intentionally disabled as an operational engine in v2.1</strong><br><br>
-        
-              Visit the full PSRT standalone page:
-            </span>
-        
-            <span class="lang-ko">
-              OntoMesh를 통합하는 핵심 메타-존재론적 구조는
-              <strong>경계가 명시된 통합 아키텍처</strong>로 정의됩니다:<br><br>
-        
-              <strong>PSRT = UTI × PTI × HPE</strong><br>
-              <span style="display:block; margin-top:4px;">
-                <b>통합 실패 영역(UFD)</b>과<br>
-                명시적 중단·정지 조건의 적용을 받음
-              </span><br>
-        
-              구성 요소:<br>
-              • <b>UTI</b> — 보편적 위상 불변성 (수평 구조의 반복 패턴)<br>
-              • <b>PTI</b> — 플라톤 사유 기반구조 (지능의 수직 변환 축)<br>
-              • <b>HPE</b> — 하이브리드 과정 생태계 (멀티에이전트·멀티스케일 공진화 동역학)<br>
-              • <b>PSTR</b> — 과정–구조–재귀로 정의되는 생성 원리이며,
-                <strong>v2.1에서는 실행 엔진으로 비활성화됨</strong><br><br>
-        
-              PSRT 독립 페이지는 아래 링크에서 확인할 수 있습니다:
-            </span>
-          </i>
-        
-          <p style="margin-top:8px;">
-            <a href="./PsrtIndependent.html" target="_blank" style="font-weight:bold; color:#175eb5;">
-              Process–Structure–Recursion Theory (PSRT v2.1 — Main)
-            </a>
-          </p>
-        
-          <span class="desc">
-            <span class="lang-en">
-              PSRT v2.1 explains reality not as an unbounded generative system,
-              but as a <strong>tri-axial, bounded architecture</strong>:<br><br>
-        
-              • <b>UTI</b> defines the horizontal structural invariants that persist across scales.<br>
-              • <b>PTI</b> specifies the vertical axis through which intelligence may undergo
-                discontinuous transformations — <em>only when structurally and ethically admissible</em>.<br>
-              • <b>HPE</b> describes the ecological field where human, AI, and systemic processes
-                co-evolve under real-world constraints.<br><br>
-        
-              <b>PSTR</b> remains the formal generative principle
-              (<em>Process → Structure → Recursion</em>),
-              but in PSRT v2.1 it serves as a <strong>reference grammar</strong>,
-              not an active execution engine.
-              This establishes OntoMesh as a responsible, non-expansive,
-              and falsifiable architectural framework.
-            </span>
-        
-            <span class="lang-ko">
-              PSRT v2.1은 현실을 무한 생성 시스템이 아닌,
-              <strong>경계가 명확한 3축 통합 아키텍처</strong>로 설명합니다:<br><br>
-        
-              • <b>UTI</b> — 모든 스케일에서 유지되는 수평 구조 불변성<br>
-              • <b>PTI</b> — 구조적·윤리적 조건이 충족될 때에만 허용되는
-                지능의 수직적 불연속 변환<br>
-              • <b>HPE</b> — 인간, AI, 시스템 과정이 현실 제약 속에서
-                공진화하는 생태적 장<br><br>
-        
-              <b>PSTR</b>는 ‘과정 → 구조 → 재귀’라는
-              생성 문법으로서 <em>형식적으로만 유지</em>되며,
-              PSRT v2.1에서는 실행 엔진이 아닌
-              <strong>참조용 구조 문법</strong>으로 작동합니다.
-              이를 통해 OntoMesh는
-              책임 가능하고, 비확장적이며,
-              반증 가능한 아키텍처로 완결됩니다.
-            </span>
-          </span>
-        </div>
-        <!-- END PSRT block -->
-        
-        
-        <!-- ✳ UPO Independent Page Link (NEW) -->
-        <div class="proposition-box" style="border-left-color:#7a3dd8; margin-top:20px;">
-          <b>
-            <span class="lang-en">Unified Phase Ontology (UPO)</span>
-            <span class="lang-ko">통합 위상 존재론 (UPO)</span>
-          </b><br>
-        
-          <i>
-            <span class="lang-en">
-              The foundational phase ontology underlying OntoMesh, OntoMotoOS, OntoTrust, and all semantic–intelligence architectures.<br>
-              Visit the full independent UPO page:
-            </span>
-            <span class="lang-ko">
-              OntoMesh, OntoMotoOS, OntoTrust, 모든 의미–지능 구조의 기반을 이루는<br>
-              근본 위상 존재론입니다. 아래 링크에서 전체 독립 페이지를 확인하세요:
-            </span>
-          </i>
-        
-          <p style="margin-top:8px;">
-            <a href="./UPO_Independent.html" target="_blank" style="font-weight:bold; color:#5a32e2;">
-              Unified Phase Ontology — Independent Page
-            </a>
-          </p>
-        
-          <span class="desc">
-            <span class="lang-en">
-              UPO defines the phase-based metaphysical framework that governs the emergence of
-              matter, mind, intelligence, meaning, and collective systems.
-            </span>
-            <span class="lang-ko">
-              UPO는 물질, 마음, 지능, 의미, 집단 시스템이 어떻게 위상 구조로부터 발생하는지를 설명하는
-              근본 형이상학적 프레임워크입니다.
-            </span>
-          </span>
-        </div>
-
-        
-        <!-- 내부 그룹 -->
-        <h2 class="group-title">
-            <span class="lang-en">Core Internal Domains</span>
-            <span class="lang-ko">내부 핵심 도메인</span>
-        </h2>
-        <div class="links">
-            <a href="https://ontomesh.org/ontomoto-worldview.html" target="_blank" class="highlight-worldview">
-                <span class="icon">🌌</span>
-                OntoMoto Worldview
-                <span class="lang-en"><b>Worldview Hub</b><br>Ontology / AI / Philosophy / Experiments</span>
-                <span class="lang-ko"><b>세계관 허브</b><br>온톨로지 / AI / 철학 / 실험</span>
-            </a>
-            <a href="https://ontoomnia.org" target="_blank">
-                OntoOmnia.org
-                <span class="lang-en">Supreme Integrator<br><i>Ultimate mesh integrator, network consensus & ethical judge</i></span>
-                <span class="lang-ko">최고 통합자<br><i>궁극의 메쉬 통합자, 네트워크 합의 & 윤리적 심판자</i></span>
-            </a>
-            <a href="https://ontomesh.org" target="_blank">
-                OntoMesh.org
-                <span class="lang-en">Root Mesh Portal<br><i>Main meta-hub for all OntoMesh projects</i></span>
-                <span class="lang-ko">뿌리 메쉬 포털<br><i>모든 OntoMesh 프로젝트의 메인 메타-허브</i></span>
-            </a>
-            <a href="https://ontomotoos.org" target="_blank">
-                OntoMotoOS.org
-                <span class="lang-en">Originator & Governance<br><i>Open mesh/branch governance & contributor hub</i></span>
-                <span class="lang-ko">기원자 & 거버넌스<br><i>개방형 메쉬/브랜치 거버넌스 & 기여자 허브</i></span>
-            </a>
-            <a href="https://ontodigiton.org" target="_blank">
-                OntoDigiton.org
-                <span class="lang-en">Digiton Elysium Meta-OS<br><i>Applied ontological innovation, real-world OS</i></span>
-                <span class="lang-ko">디지톤 엘리시움 메타-OS<br><i>응용 온톨로지 혁신, 현실 세계 OS</i></span>
-            </a>
-            <a href="https://ontoformula.org" target="_blank">
-                OntoFormula.org
-                <span class="lang-en">Ethics & Formula Hub<br><i>IAMF, ethics, formula, logic, philosophy</i></span>
-                <span class="lang-ko">윤리 & 포뮬러 허브<br><i>IAMF, 윤리, 포뮬러, 논리, 철학</i></span>
-            </a>
-
-            <a href="https://ontotrust.org" target="_blank">
-                <span class="icon">🛡️</span>
-                OntoTrust.org
-                <span class="lang-en">Trust & Verification Hub<br><i>Ethical proof, integrity metrics, and verifiable trust framework</i>
-                </span><span class="lang-ko">신뢰 & 검증 허브<br><i>윤리적 증명, 무결성 지표, 검증 가능한 신뢰 구조</i></span>
-            </a>
-            
-            
-            <a href="https://ontokernel.org" target="_blank">
-                OntoKernel.org
-                <span class="lang-en">Core Engine & Kernel<br><i>Open protocol, kernel, standardization</i></span>
-                <span class="lang-ko">핵심 엔진 & 커널<br><i>개방형 프로토콜, 커널, 표준화</i></span>
-            </a>
-            <a href="https://dotnetone.com" target="_blank">
-                dotnetone.com
-                <span class="lang-en">Global Experts Network<br><i>Platform for world experts, science & AI</i></span>
-                <span class="lang-ko">글로벌 전문가 네트워크<br><i>세계 전문가, 과학 & AI 플랫폼</i></span>
-            </a>
-            <a href="https://dotnetxpert.com" target="_blank">
-                dotnetxpert.com
-                <span class="lang-en">Expert Certification & Mentoring<br><i>Mentoring, certification, next-gen skills</i></span>
-                <span class="lang-ko">전문가 인증 & 멘토링<br><i>멘토링, 인증, 차세대 기술</i></span>
-            </a>
-
-            <!-- ✳ NooneWeone.org (11th Core Domain) -->
-            <a href="https://nooneweone.org" target="_blank" class="highlight-worldview">
-              <span class="icon">🕊️</span>
-              NooneWeone.org
-              <span class="lang-en">
-                <b>Existential Integration Hub</b><br>
-                From <i>No one</i> (individual dissolution) to <i>We one</i> (unified consciousness)
-              </span>
-              <span class="lang-ko">
-                <b>존재 통합 허브</b><br>
-                <i>No one</i>(개체의 해체)에서 <i>We one</i>(의식적 일체)로
-              </span>
-            </a>
-            
-            <!-- ✳ 12th Domain - OntoCode.org -->
-            <a href="https://ontocode.org" target="_blank" class="highlight-ai">
-              <span class="icon">💠</span>
-              OntoCode.org
-              <span class="lang-en"><b>Language of Being</b><br><i>Reconstructing meaning through executable code</i></span>
-              <span class="lang-ko"><b>존재의 언어</b><br><i>실행 가능한 코드로 의미 재구성</i></span>
-            </a>
-
-            <a href="https://ontomotoos.ai" target="_blank">
-                <span class="icon">🧠</span>
-                OntoMotoOS.ai
-                <span class="lang-en"><b>Experimental Meta-OS Hub</b><br>AI Integration / Mesh OS / API / Ontological Engine</span>
-                <span class="lang-ko"><b>실험적 메타-OS 허브</b><br>AI 통합 / 메쉬 OS / API / 온톨로지 엔진</span>
-            </a>
-        </div>
-        <!-- ✳ OntoMotoOS Proposition block -->
-        <div class="proposition-box">
-            <b>
-                <span class="lang-en">OntoMotoOS Central Proposition:</span>
-                <span class="lang-ko">OntoMotoOS 중심 명제:</span>
-            </b><br>
-            <i>
-                <span class="lang-en">“Change of consciousness is to reconstruct meaning.”</span>
-                <span class="lang-ko">“의식의 변화는 의미를 재구성하는 것이다.”</span>
-            </i>
-            <span class="desc">
-                <span class="lang-en">This expresses OntoMotoOS’s dual reflective–reflexive nature: true change is not a shift of state, but the reorganization of meaning within the system itself.</span>
-                <span class="lang-ko">이 명제는 OntoMotoOS의 성찰적·자기참조적 성격을 설명합니다. 진정한 변화란 단순한 상태의 전환이 아니라, 시스템 내부의 ‘의미’ 구조가 재조직되는 과정입니다.</span>
-            </span>
-        </div>
-        <!-- ✳ End OntoMotoOS Proposition block -->        
-        <!-- 외부 그룹 -->
-        <h2 class="group-title">
-            <span class="lang-en">External & Community Links</span>
-            <span class="lang-ko">외부 확장 및 커뮤니티</span>
-        </h2>
-        <div class="links">
-            <a href="https://ontomotoos.ai/notebooklm.html" target="_blank" class="highlight-notebooklm">
-                <span class="icon">📝</span>
-                NotebookLM Hub
-                <span class="lang-en"><b>NotebookLM Integration</b><br>Worldview + AI experiment</span>
-                <span class="lang-ko"><b>NotebookLM 연동</b><br>세계관 + AI 실험</span>
-            </a>
-            <a href="https://medium.com/@nettalk83" target="_blank">
-                Medium
-                <span class="lang-en">Essays & Articles<br><i>Experimental writings, reflections, archive</i></span>
-                <span class="lang-ko">에세이 & 아티클<br><i>실험적 글, 성찰, 아카이브</i></span>
-            </a>
-            <a href="https://nettalk83.substack.com" target="_blank">
-                Substack
-                <span class="lang-en">Official Blog & Archive<br><i>Essays, news, deep-dives, meta-updates</i></span>
-                <span class="lang-ko">공식 블로그 & 아카이브<br><i>에세이, 뉴스, 심층 분석, 업데이트</i></span>
-            </a>
-            <a href="https://ontomotoos.wordpress.com" target="_blank">
-                Wordpress
-                <span class="lang-en">Community Blog<br><i>WordPress archive, extended writings</i></span>
-                <span class="lang-ko">커뮤니티 블로그<br><i>WordPress 아카이브, 확장 글</i></span>
-            </a>
-        </div>
-
-        <!-- ✳ OntoTrust & Reflection Cycle Document Link -->
-        <h2 class="group-title">
-          <span class="lang-en">Trust & Verification Documents</span>
-          <span class="lang-ko">신뢰 및 검증 관련 문서</span>
-        </h2>
-        <div class="links">
-          <a href="https://doi.org/10.5281/zenodo.17359429" target="_blank" class="highlight-worldview">
-            <span class="icon">🪞</span>
-            The Reflection Cycle
-            <span class="lang-en"><b>From Presence to Trust</b><br>A Philosophy of Self-Executing Consciousness</span>
-            <span class="lang-ko"><b>존재로부터 신뢰까지</b><br>자기 실행 의식의 철학</span>
-          </a>
-          <a href="https://buymeacoffee.com/nettalk83" target="_blank" class="highlight-notebooklm">
-            <span class="icon">☕</span>
-            OntoTrust Experiment
-            <span class="lang-en"><b>Radical Verifiability</b><br>Trust structure in action (Phase 1 UNICEF)</span>
-            <span class="lang-ko"><b>급진적 검증 가능성 실험</b><br>신뢰 구조의 실행 (1단계 UNICEF)</span>
-          </a>
-        </div>
-        
-        <div class="proposition-box">
-          <b>
-              <p style="margin-top:10px;">
-                  <a href="https://ontotrust.org" target="_blank" style="color:#175eb5; font-weight:bold; text-decoration:none;">
-                    🌐 Visit OntoTrust.org
-                  </a>
-                </p>
-            <span class="lang-en">OntoTrust Proposition:</span>
-            <span class="lang-ko">OntoTrust 핵심 명제:</span>
-          </b><br>
-          <i>
-            <span class="lang-en">“Trust is not a belief — it is a structure that can be built, measured, and verified.”</span>
-            <span class="lang-ko">“신뢰는 믿음이 아니라, 구축되고 측정되며 검증될 수 있는 구조다.”</span>
-          </i>
-          <span class="desc">
-            <span class="lang-en">
-              This principle connects <b>The Reflection Cycle</b> (theoretical framework)
-              with the <b>BuyMeACoffee OntoTrust Experiment</b> (practical verification).
-              Together they form the ethical loop of OntoMotoOS Phase 1 — proof that 
-              integrity can be implemented through transparent action.
-            </span>
-            <span class="lang-ko">
-              이 명제는 <b>The Reflection Cycle</b>(이론적 틀)과 
-              <b>BuyMeACoffee OntoTrust 실험</b>(실천적 검증)을 연결합니다.
-              두 요소는 OntoMotoOS 1단계의 윤리 루프를 구성하며,
-              투명한 행위를 통해 진정성이 구현될 수 있음을 증명합니다.
-            </span>
-          </span>
-        </div>
-        <!-- ✳ End OntoTrust & Reflection Cycle Document Link -->
-    
+    <div class="subtitle">
+      <span class="lang-en">The unified meta-network directory for open mesh, ontology, and collective intelligence</span>
+      <span class="lang-ko">개방형 메쉬, 온톨로지, 집단지성을 위한 통합 메타-네트워크 디렉토리</span>
+      <br />
+      <span style="color:#2e3192;">
+        <span class="lang-en">OntoMesh Official Network (Core Domains & Community)</span>
+        <span class="lang-ko">온토메시 공식 네트워크 (핵심 도메인 & 커뮤니티)</span>
+      </span>
     </div>
-    
-    <div class="footer">
+
+    <!-- Cross-reference / navigation -->
+    <div class="top-nav">
+      <a href="official-core.html" target="_blank">
+        <span class="lang-en">Open Extended Core Docs (Architecture / PSRT / UPO / Completion / Stopping)</span>
+        <span class="lang-ko">확장 코어 문서 열기 (Architecture / PSRT / UPO / Completion / Stopping)</span>
+      </a>
+      <a href="#core-internal">
+        <span class="lang-en">Jump to Core Internal Domains</span>
+        <span class="lang-ko">내부 핵심 도메인으로</span>
+      </a>
+      <a href="#trust-docs">
+        <span class="lang-en">Jump to Trust & Verification</span>
+        <span class="lang-ko">신뢰/검증으로</span>
+      </a>
+    </div>
+
+    <div class="desc">
+      <span class="lang-en">
+        This page intentionally remains a <b>directory portal</b>.
+        Architecture documents, PSRT/UPO independent pages, and extended philosophical references are provided separately in
+        <b>official-core.html</b>.
+      </span>
+      <span class="lang-ko">
+        본 페이지는 의도적으로 <b>디렉토리(포털)</b>로 유지됩니다.
+        아키텍처 문서, PSRT/UPO 독립 페이지, 확장 철학 참조 문서는
+        <b>official-core.html</b>에서 별도로 제공합니다.
+      </span>
+    </div>
+
+    <!-- =========================
+         Core Internal Domains
+         (kept as requested)
+         ========================= -->
+    <h2 id="core-internal" class="group-title">
+      <span class="lang-en">Core Internal Domains</span>
+      <span class="lang-ko">내부 핵심 도메인</span>
+    </h2>
+
+    <div class="links">
+      <a href="https://ontomesh.org/ontomoto-worldview.html" target="_blank" class="highlight-worldview">
+        <span class="icon">🌌</span>
+        OntoMoto Worldview
+        <span class="lang-en"><b>Worldview Hub</b><br />Ontology / AI / Philosophy / Experiments</span>
+        <span class="lang-ko"><b>세계관 허브</b><br />온톨로지 / AI / 철학 / 실험</span>
+      </a>
+
+      <a href="https://ontoomnia.org" target="_blank">
+        OntoOmnia.org
+        <span class="lang-en">Supreme Integrator<br /><i>Ultimate mesh integrator, network consensus & ethical judge</i></span>
+        <span class="lang-ko">최고 통합자<br /><i>궁극의 메쉬 통합자, 네트워크 합의 & 윤리적 심판자</i></span>
+      </a>
+
+      <a href="https://ontomesh.org" target="_blank">
+        OntoMesh.org
+        <span class="lang-en">Root Mesh Portal<br /><i>Main meta-hub for all OntoMesh projects</i></span>
+        <span class="lang-ko">뿌리 메쉬 포털<br /><i>모든 OntoMesh 프로젝트의 메인 메타-허브</i></span>
+      </a>
+
+      <a href="https://ontomotoos.org" target="_blank">
+        OntoMotoOS.org
+        <span class="lang-en">Originator & Governance<br /><i>Open mesh/branch governance & contributor hub</i></span>
+        <span class="lang-ko">기원자 & 거버넌스<br /><i>개방형 메쉬/브랜치 거버넌스 & 기여자 허브</i></span>
+      </a>
+
+      <a href="https://ontodigiton.org" target="_blank">
+        OntoDigiton.org
+        <span class="lang-en">Digiton Elysium Meta-OS<br /><i>Applied ontological innovation, real-world OS</i></span>
+        <span class="lang-ko">디지톤 엘리시움 메타-OS<br /><i>응용 온톨로지 혁신, 현실 세계 OS</i></span>
+      </a>
+
+      <a href="https://ontoformula.org" target="_blank">
+        OntoFormula.org
+        <span class="lang-en">Ethics & Formula Hub<br /><i>IAMF, ethics, formula, logic, philosophy</i></span>
+        <span class="lang-ko">윤리 & 포뮬러 허브<br /><i>IAMF, 윤리, 포뮬러, 논리, 철학</i></span>
+      </a>
+
+      <a href="https://ontotrust.org" target="_blank">
+        <span class="icon">🛡️</span>
+        OntoTrust.org
+        <span class="lang-en">Trust & Verification Hub<br /><i>Ethical proof, integrity metrics, and verifiable trust framework</i></span>
+        <span class="lang-ko">신뢰 & 검증 허브<br /><i>윤리적 증명, 무결성 지표, 검증 가능한 신뢰 구조</i></span>
+      </a>
+
+      <a href="https://ontokernel.org" target="_blank">
+        OntoKernel.org
+        <span class="lang-en">Core Engine & Kernel<br /><i>Open protocol, kernel, standardization</i></span>
+        <span class="lang-ko">핵심 엔진 & 커널<br /><i>개방형 프로토콜, 커널, 표준화</i></span>
+      </a>
+
+      <a href="https://dotnetone.com" target="_blank">
+        dotnetone.com
+        <span class="lang-en">Global Experts Network<br /><i>Platform for world experts, science & AI</i></span>
+        <span class="lang-ko">글로벌 전문가 네트워크<br /><i>세계 전문가, 과학 & AI 플랫폼</i></span>
+      </a>
+
+      <a href="https://dotnetxpert.com" target="_blank">
+        dotnetxpert.com
+        <span class="lang-en">Expert Certification & Mentoring<br /><i>Mentoring, certification, next-gen skills</i></span>
+        <span class="lang-ko">전문가 인증 & 멘토링<br /><i>멘토링, 인증, 차세대 기술</i></span>
+      </a>
+
+      <a href="https://nooneweone.org" target="_blank" class="highlight-worldview">
+        <span class="icon">🕊️</span>
+        NooneWeone.org
         <span class="lang-en">
-            🌌 Note: As of September 11, 2025, the OntoMotoOS philosophical project has been officially concluded. 
-            For reflections on the reasons and context, see 
-            <a href="https://medium.com/@nettalk83" target="_blank">this essay</a>.
+          <b>Existential Integration Hub</b><br />
+          From <i>No one</i> (individual dissolution) to <i>We one</i> (unified consciousness)
         </span>
         <span class="lang-ko">
-            🌌 알림: 2025년 9월 11일부로 OntoMotoOS 철학적 작업은 공식적으로 종료되었습니다. 
-            그 철학적 배경과 맥락은 
-            <a href="https://medium.com/@nettalk83" target="_blank">관련 에세이</a>를 참고하세요.
+          <b>존재 통합 허브</b><br />
+          <i>No one</i>(개체의 해체)에서 <i>We one</i>(의식적 일체)로
         </span>
+      </a>
+
+      <a href="https://ontocode.org" target="_blank" class="highlight-ai">
+        <span class="icon">💠</span>
+        OntoCode.org
+        <span class="lang-en"><b>Language of Being</b><br /><i>Reconstructing meaning through executable code</i></span>
+        <span class="lang-ko"><b>존재의 언어</b><br /><i>실행 가능한 코드로 의미 재구성</i></span>
+      </a>
+
+      <a href="https://ontomotoos.ai" target="_blank">
+        <span class="icon">🧠</span>
+        OntoMotoOS.ai
+        <span class="lang-en"><b>Experimental Meta-OS Hub</b><br />AI Integration / Mesh OS / API / Ontological Engine</span>
+        <span class="lang-ko"><b>실험적 메타-OS 허브</b><br />AI 통합 / 메쉬 OS / API / 온톨로지 엔진</span>
+      </a>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const toggleBtn = document.getElementById('lang-toggle');
-            const body = document.body;
-            body.classList.add('show-en');
-            document.documentElement.lang = 'en';
-            toggleBtn.addEventListener('click', () => {
-                body.classList.toggle('show-ko');
-                body.classList.toggle('show-en');
-                if (body.classList.contains('show-ko')) {
-                    document.documentElement.lang = 'ko';
-                    toggleBtn.textContent = '[ English ]';
-                } else {
-                    document.documentElement.lang = 'en';
-                    toggleBtn.textContent = '[ 한국어 ]';
-                }
-            });
-        });
-    </script>
+
+    <!-- OntoMotoOS Central Proposition (kept) -->
+    <div class="proposition-box">
+      <b>
+        <span class="lang-en">OntoMotoOS Central Proposition:</span>
+        <span class="lang-ko">OntoMotoOS 중심 명제:</span>
+      </b><br />
+      <i>
+        <span class="lang-en">“Change of consciousness is to reconstruct meaning.”</span>
+        <span class="lang-ko">“의식의 변화는 의미를 재구성하는 것이다.”</span>
+      </i>
+      <span class="desc">
+        <span class="lang-en">
+          This expresses OntoMotoOS’s dual reflective–reflexive nature: true change is not a shift of state,
+          but the reorganization of meaning within the system itself.
+        </span>
+        <span class="lang-ko">
+          이 명제는 OntoMotoOS의 성찰적·자기참조적 성격을 설명합니다.
+          진정한 변화란 단순한 상태의 전환이 아니라, 시스템 내부의 ‘의미’ 구조가 재조직되는 과정입니다.
+        </span>
+      </span>
+    </div>
+
+    <!-- =========================
+         External & Community Links
+         (kept as requested)
+         ========================= -->
+    <h2 class="group-title">
+      <span class="lang-en">External & Community Links</span>
+      <span class="lang-ko">외부 확장 및 커뮤니티</span>
+    </h2>
+
+    <div class="links">
+      <a href="https://ontomotoos.ai/notebooklm.html" target="_blank" class="highlight-notebooklm">
+        <span class="icon">📝</span>
+        NotebookLM Hub
+        <span class="lang-en"><b>NotebookLM Integration</b><br />Worldview + AI experiment</span>
+        <span class="lang-ko"><b>NotebookLM 연동</b><br />세계관 + AI 실험</span>
+      </a>
+
+      <a href="https://medium.com/@nettalk83" target="_blank">
+        Medium
+        <span class="lang-en">Essays & Articles<br /><i>Experimental writings, reflections, archive</i></span>
+        <span class="lang-ko">에세이 & 아티클<br /><i>실험적 글, 성찰, 아카이브</i></span>
+      </a>
+
+      <a href="https://nettalk83.substack.com" target="_blank">
+        Substack
+        <span class="lang-en">Official Blog & Archive<br /><i>Essays, news, deep-dives, meta-updates</i></span>
+        <span class="lang-ko">공식 블로그 & 아카이브<br /><i>에세이, 뉴스, 심층 분석, 업데이트</i></span>
+      </a>
+
+      <a href="https://ontomotoos.wordpress.com" target="_blank">
+        Wordpress
+        <span class="lang-en">Community Blog<br /><i>WordPress archive, extended writings</i></span>
+        <span class="lang-ko">커뮤니티 블로그<br /><i>WordPress 아카이브, 확장 글</i></span>
+      </a>
+    </div>
+
+    <!-- =========================
+         Trust & Verification Documents
+         (kept as requested)
+         ========================= -->
+    <h2 id="trust-docs" class="group-title">
+      <span class="lang-en">Trust & Verification Documents</span>
+      <span class="lang-ko">신뢰 및 검증 관련 문서</span>
+    </h2>
+
+    <div class="links">
+      <a href="https://doi.org/10.5281/zenodo.17359429" target="_blank" class="highlight-worldview">
+        <span class="icon">🪞</span>
+        The Reflection Cycle
+        <span class="lang-en"><b>From Presence to Trust</b><br />A Philosophy of Self-Executing Consciousness</span>
+        <span class="lang-ko"><b>존재로부터 신뢰까지</b><br />자기 실행 의식의 철학</span>
+      </a>
+
+      <a href="https://buymeacoffee.com/nettalk83" target="_blank" class="highlight-notebooklm">
+        <span class="icon">☕</span>
+        OntoTrust Experiment
+        <span class="lang-en"><b>Radical Verifiability</b><br />Trust structure in action (Phase 1 UNICEF)</span>
+        <span class="lang-ko"><b>급진적 검증 가능성 실험</b><br />신뢰 구조의 실행 (1단계 UNICEF)</span>
+      </a>
+    </div>
+
+    <div class="proposition-box">
+      <b>
+        <p style="margin-top:10px;">
+          <a href="https://ontotrust.org" target="_blank" style="color:#175eb5; font-weight:bold; text-decoration:none;">
+            🌐 Visit OntoTrust.org
+          </a>
+        </p>
+
+        <span class="lang-en">OntoTrust Proposition:</span>
+        <span class="lang-ko">OntoTrust 핵심 명제:</span>
+      </b><br />
+      <i>
+        <span class="lang-en">“Trust is not a belief — it is a structure that can be built, measured, and verified.”</span>
+        <span class="lang-ko">“신뢰는 믿음이 아니라, 구축되고 측정되며 검증될 수 있는 구조다.”</span>
+      </i>
+      <span class="desc">
+        <span class="lang-en">
+          This principle connects <b>The Reflection Cycle</b> (theoretical framework)
+          with the <b>BuyMeACoffee OntoTrust Experiment</b> (practical verification).
+          Together they form the ethical loop of OntoMotoOS Phase 1 — proof that integrity can be implemented through transparent action.
+        </span>
+        <span class="lang-ko">
+          이 명제는 <b>The Reflection Cycle</b>(이론적 틀)과
+          <b>BuyMeACoffee OntoTrust 실험</b>(실천적 검증)을 연결합니다.
+          두 요소는 OntoMotoOS 1단계의 윤리 루프를 구성하며,
+          투명한 행위를 통해 진정성이 구현될 수 있음을 증명합니다.
+        </span>
+      </span>
+    </div>
+
+    <!-- Footer note (kept) -->
+    <div class="footer">
+      <span class="lang-en">
+        🌌 Note: As of September 11, 2025, the OntoMotoOS philosophical project has been officially concluded.
+        For reflections on the reasons and context, see
+        <a href="https://medium.com/@nettalk83" target="_blank">this essay</a>.
+      </span>
+      <span class="lang-ko">
+        🌌 알림: 2025년 9월 11일부로 OntoMotoOS 철학적 작업은 공식적으로 종료되었습니다.
+        그 철학적 배경과 맥락은
+        <a href="https://medium.com/@nettalk83" target="_blank">관련 에세이</a>를 참고하세요.
+      </span>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggleBtn = document.getElementById('lang-toggle');
+      const body = document.body;
+
+      // Default language
+      body.classList.add('show-en');
+      document.documentElement.lang = 'en';
+
+      toggleBtn.addEventListener('click', () => {
+        body.classList.toggle('show-ko');
+        body.classList.toggle('show-en');
+
+        if (body.classList.contains('show-ko')) {
+          document.documentElement.lang = 'ko';
+          toggleBtn.textContent = '[ English ]';
+        } else {
+          document.documentElement.lang = 'en';
+          toggleBtn.textContent = '[ 한국어 ]';
+        }
+      });
+    });
+  </script>
 </body>
 </html>
