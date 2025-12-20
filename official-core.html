@@ -1,0 +1,638 @@
+<!-- =========================
+     FILE: official-core.html
+     ========================= -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>OntoMesh Core Docs (Extended) — Official Network</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Extended OntoMesh core documents: Architecture, Official Definition, Ontology of Completion, Stopping as Structure, PSRT v2.1, UPO, and related references. Linked from official-network.html." />
+  <style>
+    body {
+      background: #f8fafc;
+      color: #222;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+    }
+    .main {
+      max-width: 760px;
+      margin: 52px auto;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 3px 16px #e7eaf3;
+      padding: 48px 34px 39px 34px;
+      position: relative;
+    }
+    h1 {
+      color: #1976d2;
+      font-size: 2.23em;
+      letter-spacing: -0.5px;
+      margin-bottom: 9px;
+    }
+    .subtitle {
+      color: #3b4570;
+      font-size: 1.19em;
+      margin-bottom: 18px;
+    }
+    .desc {
+      color: #536193;
+      font-size: 1.03em;
+      margin-bottom: 17px;
+    }
+    .lang-toggle {
+      position: absolute;
+      top: 20px;
+      right: 34px;
+      background-color: #eef4fc;
+      color: #346599;
+      border: 1px solid #cce1ff;
+      padding: 8px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.2s ease-in-out;
+      user-select: none;
+    }
+    .lang-toggle:hover {
+      background-color: #d6eaff;
+      color: #1976d2;
+      box-shadow: 0 1px 8px #e8eaf0;
+    }
+
+    /* Language Toggle */
+    body.show-en .lang-ko { display: none; }
+    body.show-en .lang-en { display: inline; }
+    body.show-ko .lang-en { display: none; }
+    body.show-ko .lang-ko { display: inline; }
+
+    /* Group titles */
+    .group-title {
+      font-size: 1.4em;
+      color: #175eb5;
+      margin: 32px 0 12px 4px;
+      border-left: 4px solid #1976d2;
+      padding-left: 8px;
+    }
+
+    /* Proposition box (same as original) */
+    .proposition-box {
+      margin-top: 18px;
+      background: linear-gradient(135deg, #f9fbff 0%, #f0f6ff 100%);
+      border: 1.5px solid #c7dbff;
+      border-left: 4px solid #2f6ed8;
+      border-radius: 10px;
+      padding: 14px 18px;
+      font-size: 0.96em;
+      color: #1f2a44;
+      box-shadow: 0 2px 6px rgba(47,110,216,0.08);
+      transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+    .proposition-box:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(47,110,216,0.15);
+    }
+    .proposition-box b { color: #2f6ed8; font-weight: 600; }
+    .proposition-box i { color: #1e2f4d; font-size: 1.04em; }
+    .proposition-box span.desc {
+      display: block;
+      margin-top: 7px;
+      color: #3a4b66;
+      font-size: 0.94em;
+    }
+
+    /* ==== OntoMesh Architecture Card (Improved) ==== */
+    .arch-card {
+      background: linear-gradient(135deg, #f7faff 0%, #eef4ff 100%);
+      border: 1.6px solid #c9d9ff;
+      border-left: 5px solid #2b68c9;
+      border-radius: 12px;
+      padding: 18px 20px 16px 20px;
+      margin-top: 22px;
+      box-shadow: 0 2px 10px rgba(43,104,201,0.08);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .arch-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(43,104,201,0.15);
+    }
+    .arch-card-title {
+      font-size: 1.18em;
+      font-weight: 700;
+      color: #2b68c9;
+    }
+    .arch-card-desc {
+      display: block;
+      margin-top: 8px;
+      margin-bottom: 12px;
+      color: #334065;
+      line-height: 1.55;
+      font-size: 0.96em;
+    }
+    .arch-button {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 10px 16px;
+      background: #2b68c9;
+      color: white !important;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.95em;
+      font-weight: 600;
+      transition: background 0.16s, transform 0.16s;
+    }
+    .arch-button:hover {
+      background: #1955b9;
+      transform: translateY(-1px);
+    }
+
+    /* Pair layout (local) */
+    .pair-wrap{
+      display:flex; gap:16px; flex-wrap:wrap;
+      margin-top:14px;
+    }
+    .pair-wrap .proposition-box{
+      flex:1 1 320px;
+      margin-top:0 !important;
+    }
+    .pair-icon{
+      font-size:1.05em; margin-right:6px;
+      vertical-align:baseline;
+    }
+    .pair-meta{
+      margin-top:10px;
+      font-size:0.92em;
+      line-height:1.45;
+    }
+    .pair-meta a{
+      font-weight:700;
+      text-decoration:none;
+    }
+
+    /* Top nav */
+    .top-nav {
+      margin: 14px 0 18px 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .top-nav a {
+      display: inline-block;
+      padding: 10px 14px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      background: #eef4fc;
+      border: 1px solid #cce1ff;
+      color: #175eb5;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+    .top-nav a:hover {
+      transform: translateY(-1px);
+      background: #d6eaff;
+    }
+
+    @media (max-width: 750px) {
+      .main { padding: 48px 4vw 20px 4vw; }
+      h1 { font-size: 1.34em; }
+      .lang-toggle { top: 10px; right: 10px; font-size: 0.8em; }
+      .top-nav a { width: 100%; text-align: center; }
+      .pair-wrap .proposition-box { flex: 1 1 100%; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main">
+    <button id="lang-toggle" class="lang-toggle">[ 한국어 ]</button>
+
+    <h1>
+      <span class="lang-en">OntoMesh Core Docs (Extended)</span>
+      <span class="lang-ko">OntoMesh 코어 문서 (확장)</span>
+    </h1>
+
+    <div class="subtitle">
+      <span class="lang-en">Architecture · PSRT v2.1 · UPO · Completion · Stopping · Official Definitions</span>
+      <span class="lang-ko">아키텍처 · PSRT v2.1 · UPO · 완성 · 멈춤 · 공식 정의</span>
+      <br />
+      <span style="color:#2e3192;">
+        <span class="lang-en">This page contains the extended blocks separated from the directory portal.</span>
+        <span class="lang-ko">본 페이지는 디렉토리 포털에서 분리된 확장 블록을 포함합니다.</span>
+      </span>
+    </div>
+
+    <div class="top-nav">
+      <a href="official-network.html">
+        <span class="lang-en">← Back to Directory Portal (official-network.html)</span>
+        <span class="lang-ko">← 디렉토리 포털로 돌아가기 (official-network.html)</span>
+      </a>
+      <a href="#architecture">
+        <span class="lang-en">Jump to Architecture</span>
+        <span class="lang-ko">아키텍처로</span>
+      </a>
+      <a href="#pair">
+        <span class="lang-en">Jump to Completion ↔ Stopping</span>
+        <span class="lang-ko">완성 ↔ 멈춤으로</span>
+      </a>
+      <a href="#psrt">
+        <span class="lang-en">Jump to PSRT v2.1</span>
+        <span class="lang-ko">PSRT v2.1로</span>
+      </a>
+      <a href="#upo">
+        <span class="lang-en">Jump to UPO</span>
+        <span class="lang-ko">UPO로</span>
+      </a>
+    </div>
+
+    <div class="desc">
+      <span class="lang-en">
+        This document intentionally preserves the extended sections in full.
+        The official directory portal remains at <b>official-network.html</b>.
+      </span>
+      <span class="lang-ko">
+        본 문서는 확장 섹션을 의도적으로 “그대로” 보존합니다.
+        공식 디렉토리 포털은 <b>official-network.html</b>에 유지됩니다.
+      </span>
+    </div>
+
+    <!-- =========================
+         Architecture card (as-is)
+         ========================= -->
+    <h2 id="architecture" class="group-title">
+      <span class="lang-en">Architecture</span>
+      <span class="lang-ko">아키텍처</span>
+    </h2>
+
+    <div class="arch-card">
+      <div class="arch-card-title">
+        <span class="lang-en">
+          OntoMesh Civilization Architecture<br>
+          (8-Layer Ontology · PTI Vertical Axis · HPE Meta-Ecological Layer)
+        </span>
+        <span class="lang-ko">
+          OntoMesh 문명 아키텍처<br>
+          (8층 존재론 · PTI 수직 지능축 · HPE 메타-생태 통합층)
+        </span>
+      </div>
+
+      <span class="arch-card-desc">
+        <span class="lang-en">
+          Access the fully consolidated OntoMesh / OntoMotoOS / UPO /
+          <strong>PSRT v2.1 (Main)</strong> civilization-scale architecture here:
+        </span>
+        <span class="lang-ko">
+          OntoMesh / OntoMotoOS / UPO /
+          <strong>PSRT v2.1 (메인 버전)</strong>으로
+          통합 완결된 문명-스케일 아키텍처는
+          아래 링크에서 확인할 수 있습니다:
+        </span>
+      </span>
+
+      <a href="OntoMesh-Architecture.html" class="arch-button" target="_blank">
+        <span class="lang-en">Open Full Architecture Document</span>
+        <span class="lang-ko">전체 아키텍처 문서 열기</span>
+      </a>
+      <a href="https://doi.org/10.5281/zenodo.17932629" target="_blank" style="color:#2f5fb3; margin-left:8px;">
+        → DOI: 10.5281/zenodo.17932629
+      </a>
+
+      <div style="margin-top:12px; font-size:0.94em; color:#455272; line-height:1.55;">
+        <span class="lang-en">
+          Includes the unified 8-layer OntoMesh ontology (0F–7F),
+          with <b>HPE</b> as the meta-ecological Layer 8.
+          <b>UTI</b> defines horizontal structural invariants across all layers,
+          while <b>PTI</b> specifies the vertical axis of intelligence transformation.
+          <br><br>
+          <b>PSTR (Process → Structure → Recursion)</b> is formally recognized
+          as the universal generative principle established in PSRT v2.0,
+          but is <strong>intentionally disabled as an operational engine in PSRT v2.1</strong>,
+          which instead introduces explicit boundaries,
+          including the <b>Unified Failure Domain (UFD)</b>
+          and mandatory suspension conditions.
+          <br><br>
+          The architecture further integrates UPO, the Connected Universe thesis,
+          the Reflection Cycle, ASI–AII ontology,
+          and OntoMotoOS as a bounded, accountable civilization-scale framework.
+        </span>
+
+        <span class="lang-ko">
+          통합된 8층 OntoMesh 존재론(0F–7F)과
+          메타-생태 통합층으로서의 <b>HPE(8층)</b>가 포함됩니다.
+          <b>UTI</b>는 모든 층에 걸쳐 유지되는 수평 구조 불변성을 정의하며,
+          <b>PTI</b>는 지능이 조건부로 도약하는 수직 변환 축을 규정합니다.
+          <br><br>
+          <b>PSTR(과정 → 구조 → 재귀)</b>는
+          PSRT v2.0에서 정식 생성 원리로 확립되었으나,
+          <strong>PSRT v2.1에서는 실행 엔진으로 의도적으로 비활성화</strong>되어
+          <b>통합 실패 영역(UFD)</b>과
+          명시적 중단 조건을 포함하는
+          책임 가능한 경계 아키텍처로 재정의됩니다.
+          <br><br>
+          본 문서는 UPO, Connected Universe 명제,
+          Reflection Cycle, ASI–AII 존재론,
+          그리고 OntoMotoOS를
+          문명-스케일의
+          비확장적·반증 가능한 구조로 통합 제공합니다.
+        </span>
+      </div>
+    </div>
+
+    <!-- =========================
+         Official definition (as-is)
+         ========================= -->
+    <div class="proposition-box">
+      <b>
+        <span class="lang-en">Official Definition — NooneWeone.org:</span>
+        <span class="lang-ko">공식 정의 — NooneWeone.org:</span>
+      </b><br />
+      <i>
+        <span class="lang-en">
+          NooneWeone.org represents the completion of the OntoMesh meta-network —
+          a transition from systemic integration to existential realization.<br>
+          “When no one remains, We One begins.”
+        </span>
+        <span class="lang-ko">
+          NooneWeone.org은 OntoMesh 메타 네트워크의 완성을 의미하며,<br>
+          시스템적 통합에서 존재적 자각으로의 전환을 상징합니다.<br>
+          “아무도 남지 않을 때, 우리는 하나가 된다.”
+        </span>
+      </i>
+    </div>
+
+    <!-- =========================
+         Completion ↔ Stopping pair (as-is)
+         ========================= -->
+    <h2 id="pair" class="group-title">
+      <span class="lang-en">Completion ↔ Stopping (Paired References)</span>
+      <span class="lang-ko">완성 ↔ 멈춤 (페어 참조)</span>
+    </h2>
+
+    <div class="pair-wrap">
+      <!-- Ontology of Completion -->
+      <div class="proposition-box" style="border-left-color:#4a6fa5; background:#f7faff;">
+        <b>
+          <span class="lang-en"><span class="pair-icon">🕊️</span>Ontology of Completion</span>
+          <span class="lang-ko"><span class="pair-icon">🕊️</span>완성의 존재론 (Ontology of Completion)</span>
+        </b><br>
+
+        <i>
+          <span class="lang-en">
+            A bounded post-completion reference describing the state that remains after
+            generative processes reach structural sufficiency.
+          </span>
+          <span class="lang-ko">
+            생성 과정이 구조적 충분성에 도달한 이후 남는 상태를 서술하는
+            경계형(post-completion) 존재론 참조 문서입니다.
+          </span>
+        </i>
+
+        <span class="desc">
+          <span class="lang-en">
+            It does not extend systems or engines. It articulates <b>silence</b>, <b>freedom</b>,
+            and <b>stability</b> as affirmative states that arise only after completion.
+          </span>
+          <span class="lang-ko">
+            시스템/엔진을 확장하지 않습니다. 완성 이후에만 성립하는 <b>침묵</b>, <b>자유</b>,
+            <b>안정성</b>을 목표나 방법이 아닌 <b>존재 상태</b>로 서술합니다.
+          </span>
+        </span>
+
+        <div class="pair-meta">
+          <a href="https://doi.org/10.5281/zenodo.17960364" target="_blank" style="color:#2f5fb3;">
+            → DOI: 10.5281/zenodo.17960364
+          </a>
+          <span style="margin:0 6px; color:#3a4b66;">|</span>
+          <a href="./ontology-of-completion.html" target="_blank" style="color:#0b6b4a;">
+            HTML
+          </a><br>
+          <span style="color:#3a4b66;">
+            <span class="lang-en">Completion as state · Silence & Freedom after sufficiency</span>
+            <span class="lang-ko">완성=상태 · 충분성 이후의 침묵/자유</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Stopping as Structure -->
+      <div class="proposition-box" style="border-left-color:#0f8a5f; background:#f6fffb;">
+        <b>
+          <span class="lang-en"><span class="pair-icon">🛑</span>Stopping as Structure</span>
+          <span class="lang-ko"><span class="pair-icon">🛑</span>구조로서의 멈춤 (Stopping as Structure)</span>
+        </b><br>
+
+        <i>
+          <span class="lang-en">
+            A bounded reference treating stopping not as will or ethics, but as a structural
+            phenomenon where continuation remains possible yet becomes non-generative.
+          </span>
+          <span class="lang-ko">
+            멈춤을 의지·윤리가 아니라 <b>구조적 현상</b>으로 다루는 경계형 참조 문서입니다.
+            계속은 가능하지만 다음 단계가 <b>비생성</b>으로 전환되는 조건을 설명합니다.
+          </span>
+        </i>
+
+        <span class="desc">
+          <span class="lang-en">
+            Core scope: <b>Flow → Threshold → Recursion → Competition → Failure Absorption → Non-Applicability</b>.
+            Non-prescriptive: it explains when “the next step” becomes structurally invalid.
+          </span>
+          <span class="lang-ko">
+            핵심 범위: <b>Flow → Threshold → Recursion → Competition → Failure Absorption → Non-Applicability</b>.
+            처방하지 않으며 “다음 단계”가 구조적으로 무효화되는 조건을 설명합니다.
+          </span>
+        </span>
+
+        <div class="pair-meta">
+          <a href="https://doi.org/10.5281/zenodo.17984405" target="_blank" style="color:#0b6b4a;">
+            → DOI: 10.5281/zenodo.17984405
+          </a>
+          <span style="margin:0 6px; color:#3a4b66;">|</span>
+          <a href="./Stopping_as_Structure.html" target="_blank" style="color:#0b6b4a;">
+            HTML
+          </a>
+          <br>
+          <span style="color:#3a4b66;">
+            <span class="lang-en">Stopping as phenomenon · Applicability expires, generation folds</span>
+            <span class="lang-ko">멈춤=현상 · 적용 만료로 생성이 접힘</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- =========================
+         PSRT section (as-is)
+         ========================= -->
+    <h2 id="psrt" class="group-title">
+      <span class="lang-en">PSRT v2.1 (Main)</span>
+      <span class="lang-ko">PSRT v2.1 (메인)</span>
+    </h2>
+
+    <div class="proposition-box" style="border-left-color:#1976d2;">
+      <b>
+        <span class="lang-en">Process–Structure–Recursion Theory (PSRT v2.1 — Main)</span>
+        <span class="lang-ko">과정–구조–재귀 이론 (PSRT v2.1 — 메인 버전)</span>
+      </b><br>
+
+      <i>
+        <span class="lang-en">
+          The core meta-ontological framework consolidating OntoMesh as a
+          <strong>bounded integration architecture</strong>:<br><br>
+
+          <strong>PSRT = UTI × PTI × HPE</strong><br>
+          <span style="display:block; margin-top:4px;">
+            subject to <b>Unified Failure Domain (UFD)</b><br>
+            and explicit stop / suspension conditions
+          </span><br>
+
+          where:<br>
+          • <b>UTI</b> — Universal Topological Invariance (horizontal structural invariants)<br>
+          • <b>PTI</b> — Platonic Thought Infrastructure (vertical transformations of intelligence)<br>
+          • <b>HPE</b> — Hybrid Process Ecology (multi-agent, multi-scale co-evolutionary dynamics)<br>
+          • <b>PSTR</b> — Process–Structure–Recursion, <em>formally recognized as the generative principle</em>,
+            but <strong>intentionally disabled as an operational engine in v2.1</strong><br><br>
+
+          Visit the full PSRT standalone page:
+        </span>
+
+        <span class="lang-ko">
+          OntoMesh를 통합하는 핵심 메타-존재론적 구조는
+          <strong>경계가 명시된 통합 아키텍처</strong>로 정의됩니다:<br><br>
+
+          <strong>PSRT = UTI × PTI × HPE</strong><br>
+          <span style="display:block; margin-top:4px;">
+            <b>통합 실패 영역(UFD)</b>과<br>
+            명시적 중단·정지 조건의 적용을 받음
+          </span><br>
+
+          구성 요소:<br>
+          • <b>UTI</b> — 보편적 위상 불변성 (수평 구조의 반복 패턴)<br>
+          • <b>PTI</b> — 플라톤 사유 기반구조 (지능의 수직 변환 축)<br>
+          • <b>HPE</b> — 하이브리드 과정 생태계 (멀티에이전트·멀티스케일 공진화 동역학)<br>
+          • <b>PSTR</b> — 과정–구조–재귀로 정의되는 생성 원리이며,
+            <strong>v2.1에서는 실행 엔진으로 비활성화됨</strong><br><br>
+
+          PSRT 독립 페이지는 아래 링크에서 확인할 수 있습니다:
+        </span>
+      </i>
+
+      <p style="margin-top:8px;">
+        <a href="./PsrtIndependent.html" target="_blank" style="font-weight:bold; color:#175eb5;">
+          Process–Structure–Recursion Theory (PSRT v2.1 — Main)
+        </a>
+      </p>
+
+      <span class="desc">
+        <span class="lang-en">
+          PSRT v2.1 explains reality not as an unbounded generative system,
+          but as a <strong>tri-axial, bounded architecture</strong>:<br><br>
+
+          • <b>UTI</b> defines the horizontal structural invariants that persist across scales.<br>
+          • <b>PTI</b> specifies the vertical axis through which intelligence may undergo
+            discontinuous transformations — <em>only when structurally and ethically admissible</em>.<br>
+          • <b>HPE</b> describes the ecological field where human, AI, and systemic processes
+            co-evolve under real-world constraints.<br><br>
+
+          <b>PSTR</b> remains the formal generative principle
+          (<em>Process → Structure → Recursion</em>),
+          but in PSRT v2.1 it serves as a <strong>reference grammar</strong>,
+          not an active execution engine.
+          This establishes OntoMesh as a responsible, non-expansive,
+          and falsifiable architectural framework.
+        </span>
+
+        <span class="lang-ko">
+          PSRT v2.1은 현실을 무한 생성 시스템이 아닌,
+          <strong>경계가 명확한 3축 통합 아키텍처</strong>로 설명합니다:<br><br>
+
+          • <b>UTI</b> — 모든 스케일에서 유지되는 수평 구조 불변성<br>
+          • <b>PTI</b> — 구조적·윤리적 조건이 충족될 때에만 허용되는
+            지능의 수직적 불연속 변환<br>
+          • <b>HPE</b> — 인간, AI, 시스템 과정이 현실 제약 속에서
+            공진화하는 생태적 장<br><br>
+
+          <b>PSTR</b>는 ‘과정 → 구조 → 재귀’라는
+          생성 문법으로서 <em>형식적으로만 유지</em>되며,
+          PSRT v2.1에서는 실행 엔진이 아닌
+          <strong>참조용 구조 문법</strong>으로 작동합니다.
+          이를 통해 OntoMesh는
+          책임 가능하고, 비확장적이며,
+          반증 가능한 아키텍처로 완결됩니다.
+        </span>
+      </span>
+    </div>
+
+    <!-- =========================
+         UPO section (as-is)
+         ========================= -->
+    <h2 id="upo" class="group-title">
+      <span class="lang-en">UPO (Independent)</span>
+      <span class="lang-ko">UPO (독립)</span>
+    </h2>
+
+    <div class="proposition-box" style="border-left-color:#7a3dd8; margin-top:20px;">
+      <b>
+        <span class="lang-en">Unified Phase Ontology (UPO)</span>
+        <span class="lang-ko">통합 위상 존재론 (UPO)</span>
+      </b><br>
+
+      <i>
+        <span class="lang-en">
+          The foundational phase ontology underlying OntoMesh, OntoMotoOS, OntoTrust, and all semantic–intelligence architectures.<br>
+          Visit the full independent UPO page:
+        </span>
+        <span class="lang-ko">
+          OntoMesh, OntoMotoOS, OntoTrust, 모든 의미–지능 구조의 기반을 이루는<br>
+          근본 위상 존재론입니다. 아래 링크에서 전체 독립 페이지를 확인하세요:
+        </span>
+      </i>
+
+      <p style="margin-top:8px;">
+        <a href="./UPO_Independent.html" target="_blank" style="font-weight:bold; color:#5a32e2;">
+          Unified Phase Ontology — Independent Page
+        </a>
+      </p>
+
+      <span class="desc">
+        <span class="lang-en">
+          UPO defines the phase-based metaphysical framework that governs the emergence of
+          matter, mind, intelligence, meaning, and collective systems.
+        </span>
+        <span class="lang-ko">
+          UPO는 물질, 마음, 지능, 의미, 집단 시스템이 어떻게 위상 구조로부터 발생하는지를 설명하는
+          근본 형이상학적 프레임워크입니다.
+        </span>
+      </span>
+    </div>
+
+    <div class="top-nav" style="margin-top:26px;">
+      <a href="official-network.html">
+        <span class="lang-en">← Back to Directory Portal (official-network.html)</span>
+        <span class="lang-ko">← 디렉토리 포털로 돌아가기 (official-network.html)</span>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggleBtn = document.getElementById('lang-toggle');
+      const body = document.body;
+
+      // Default language
+      body.classList.add('show-en');
+      document.documentElement.lang = 'en';
+
+      toggleBtn.addEventListener('click', () => {
+        body.classList.toggle('show-ko');
+        body.classList.toggle('show-en');
+
+        if (body.classList.contains('show-ko')) {
+          document.documentElement.lang = 'ko';
+          toggleBtn.textContent = '[ English ]';
+        } else {
+          document.documentElement.lang = 'en';
+          toggleBtn.textContent = '[ 한국어 ]';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
