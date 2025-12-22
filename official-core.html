@@ -1,6 +1,3 @@
-<!-- =========================
-     FILE: official-core.html
-     ========================= -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,7 +72,7 @@
       padding-left: 8px;
     }
 
-    /* Proposition box (same as original) */
+    /* Proposition box */
     .proposition-box {
       margin-top: 18px;
       background: linear-gradient(135deg, #f9fbff 0%, #f0f6ff 100%);
@@ -101,7 +98,7 @@
       font-size: 0.94em;
     }
 
-    /* ==== OntoMesh Architecture Card (Improved) ==== */
+    /* ==== OntoMesh Architecture Card ==== */
     .arch-card {
       background: linear-gradient(135deg, #f7faff 0%, #eef4ff 100%);
       border: 1.6px solid #c9d9ff;
@@ -146,7 +143,7 @@
       transform: translateY(-1px);
     }
 
-    /* Pair layout (local) */
+    /* Pair layout */
     .pair-wrap{
       display:flex; gap:16px; flex-wrap:wrap;
       margin-top:14px;
@@ -199,107 +196,112 @@
       .top-nav a { width: 100%; text-align: center; }
       .pair-wrap .proposition-box { flex: 1 1 100%; }
     }
-       
-   /* ==== Architecture Figure (image) ==== */
-  .arch-figure {
-    margin-top: 16px;
-    background: #ffffff;
-    border: 1.5px solid #d9e6ff;
-    border-radius: 12px;
-    padding: 14px 14px 10px 14px;
-    box-shadow: 0 2px 10px rgba(25,118,210,0.06);
-  }
-  .arch-figure img {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 10px;
-  }
-  .arch-figure .caption {
-    margin-top: 10px;
-    font-size: 0.94em;
-    line-height: 1.55;
-    color: #455272;
-  }
-  .arch-figure .caption b {
-    color: #175eb5;
-  }
-  .arch-figure .caption a {
-    font-weight: 800;
-    text-decoration: none;
-  }
-  .arch-figure .actions {
-    margin-top: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  .arch-figure .actions a {
-    display: inline-block;
-    padding: 10px 12px;
-    border-radius: 10px;
-    background: #eef4fc;
-    border: 1px solid #cce1ff;
-    color: #175eb5;
-    text-decoration: none;
-    font-weight: 800;
-    transition: transform 0.15s ease, background 0.15s ease;
-  }
-  .arch-figure .actions a:hover {
-    transform: translateY(-1px);
-    background: #d6eaff;
-  }
-       
-/* === Click-to-zoom (Lightbox) === */
-.arch-figure img {
-  cursor: zoom-in;
-}
 
-/* Modal backdrop */
-.image-modal {
-  display: none;
-  position: fixed;
-  z-index: 9999;
-  inset: 0;
-  background: rgba(0,0,0,0.92);
-  cursor: zoom-out;
-}
+    /* ==== Architecture Figure (image) ==== */
+    .arch-figure {
+      margin-top: 16px;
+      background: #ffffff;
+      border: 1.5px solid #d9e6ff;
+      border-radius: 12px;
+      padding: 14px 14px 10px 14px;
+      box-shadow: 0 2px 10px rgba(25,118,210,0.06);
+    }
+    .arch-figure img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 10px;
+      cursor: zoom-in;
+    }
+    .arch-figure .caption {
+      margin-top: 10px;
+      font-size: 0.94em;
+      line-height: 1.55;
+      color: #455272;
+    }
+    .arch-figure .caption b { color: #175eb5; }
+    .arch-figure .actions {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .arch-figure .actions a {
+      display: inline-block;
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: #eef4fc;
+      border: 1px solid #cce1ff;
+      color: #175eb5;
+      text-decoration: none;
+      font-weight: 800;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+    .arch-figure .actions a:hover {
+      transform: translateY(-1px);
+      background: #d6eaff;
+    }
 
-/* Modal image */
-.image-modal img {
-  display: block;
-  max-width: 96vw;
-  max-height: 96vh;
-  width: auto;
-  height: auto;
-  position: absolute;
-  inset: 0;
-  margin: auto;
-  border-radius: 8px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
-}
+    /* Modal backdrop */
+    .image-modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      cursor: zoom-out;
+    }
+    /* Modal image */
+    .image-modal img {
+      display: block;
+      max-width: 96vw;
+      max-height: 96vh;
+      width: auto;
+      height: auto;
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      border-radius: 8px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+    }
+    /* Close hint */
+    .image-modal .hint {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      color: rgba(255,255,255,0.8);
+      font-size: 14px;
+      font-family: 'Segoe UI', sans-serif;
+      user-select: none;
+    }
+    .image-modal .hint kbd {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 6px;
+      padding: 2px 6px;
+      margin-left: 6px;
+      color: rgba(255,255,255,0.85);
+    }
 
-/* Close hint */
-.image-modal .hint {
-  position: fixed;
-  top: 12px;
-  left: 12px;
-  color: rgba(255,255,255,0.8);
-  font-size: 14px;
-  font-family: 'Segoe UI', sans-serif;
-  user-select: none;
-}
-
-/* Optional: Esc 안내 */
-.image-modal .hint kbd {
-  background: rgba(255,255,255,0.12);
-  border: 1px solid rgba(255,255,255,0.18);
-  border-radius: 6px;
-  padding: 2px 6px;
-  margin-left: 6px;
-  color: rgba(255,255,255,0.85);
-}
-
+    /* ===== NEW: Archived separator + small link stack ===== */
+    .archived-sep{
+      margin: 24px 0 10px 0;
+      padding-top: 8px;
+      border-top: 1px solid #e6eefc;
+      color: #6a7aa6;
+      font-size: 0.92em;
+      letter-spacing: 0.2px;
+      text-transform: uppercase;
+    }
+    .archive-links{
+      margin-top: 10px;
+      font-size: 0.94em;
+      line-height: 1.55;
+    }
+    .archive-links a{
+      font-weight: 800;
+      text-decoration: none;
+    }
   </style>
 </head>
 
@@ -312,59 +314,58 @@
       <span class="lang-ko">OntoMesh 코어 문서 (확장)</span>
     </h1>
 
-     <!-- =========================
-          Official Network Context
-          ========================= -->
-     <div class="proposition-box" style="border-left-color:#175eb5; background:#f6f9ff;">
-       <b>
-         <span class="lang-en">About the Official Network (Directory Portal)</span>
-         <span class="lang-ko">공식 네트워크 안내 (디렉토리 포털)</span>
-       </b><br>
-     
-       <i>
-         <span class="lang-en">
-           <b>official-network.html</b> serves as the <b>directory and access layer</b>
-           of the OntoMesh ecosystem.
-         </span>
-         <span class="lang-ko">
-           <b>official-network.html</b>은 OntoMesh 생태계의
-           <b>디렉토리 및 접근 계층</b>으로 기능합니다.
-         </span>
-       </i>
-     
-       <span class="desc">
-         <span class="lang-en">
-           It intentionally aggregates <b>core internal domains</b>, community extensions,
-           trust & verification references, and external hubs
-           without embedding architectural or philosophical exposition.
-           <br><br>
-           This separation preserves clarity:
-           the <b>Official Network</b> answers <i>“where to go”</i>,
-           while the <b>Core Docs</b> answer <i>“what is structurally defined”</i>.
-         </span>
-         <span class="lang-ko">
-           해당 포털은 아키텍처나 철학적 서술을 포함하지 않고,
-           <b>내부 핵심 도메인</b>, 커뮤니티 확장,
-           신뢰·검증 문서, 외부 허브를
-           <b>접근 중심</b>으로 집약합니다.
-           <br><br>
-           이러한 분리는 역할을 명확히 합니다:
-           <b>공식 네트워크</b>는 <i>“어디로 가는가”</i>를 안내하고,
-           <b>코어 문서</b>는 <i>“무엇이 구조적으로 정의되는가”</i>를 규정합니다.
-         </span>
-       </span>
-     
-       <p style="margin-top:10px;">
-         <a href="official-network.html" style="font-weight:800; color:#175eb5; text-decoration:none;">
-           ↗ <span class="lang-en">Open Official Network (Directory Portal)</span>
-           <span class="lang-ko">공식 네트워크 열기 (디렉토리 포털)</span>
-         </a>
-       </p>
-     </div>
+    <!-- =========================
+         Official Network Context
+         ========================= -->
+    <div class="proposition-box" style="border-left-color:#175eb5; background:#f6f9ff;">
+      <b>
+        <span class="lang-en">About the Official Network (Directory Portal)</span>
+        <span class="lang-ko">공식 네트워크 안내 (디렉토리 포털)</span>
+      </b><br>
 
+      <i>
+        <span class="lang-en">
+          <b>official-network.html</b> serves as the <b>directory and access layer</b>
+          of the OntoMesh ecosystem.
+        </span>
+        <span class="lang-ko">
+          <b>official-network.html</b>은 OntoMesh 생태계의
+          <b>디렉토리 및 접근 계층</b>으로 기능합니다.
+        </span>
+      </i>
+
+      <span class="desc">
+        <span class="lang-en">
+          It intentionally aggregates <b>core internal domains</b>, community extensions,
+          trust & verification references, and external hubs
+          without embedding architectural or philosophical exposition.
+          <br><br>
+          This separation preserves clarity:
+          the <b>Official Network</b> answers <i>“where to go”</i>,
+          while the <b>Core Docs</b> answer <i>“what is structurally defined”</i>.
+        </span>
+        <span class="lang-ko">
+          해당 포털은 아키텍처나 철학적 서술을 포함하지 않고,
+          <b>내부 핵심 도메인</b>, 커뮤니티 확장,
+          신뢰·검증 문서, 외부 허브를
+          <b>접근 중심</b>으로 집약합니다.
+          <br><br>
+          이러한 분리는 역할을 명확히 합니다:
+          <b>공식 네트워크</b>는 <i>“어디로 가는가”</i>를 안내하고,
+          <b>코어 문서</b>는 <i>“무엇이 구조적으로 정의되는가”</i>를 규정합니다.
+        </span>
+      </span>
+
+      <p style="margin-top:10px;">
+        <a href="official-network.html" style="font-weight:800; color:#175eb5; text-decoration:none;">
+          ↗ <span class="lang-en">Open Official Network (Directory Portal)</span>
+          <span class="lang-ko">공식 네트워크 열기 (디렉토리 포털)</span>
+        </a>
+      </p>
+    </div>
 
     <!-- =========================
-         Architecture card (as-is)
+         Architecture card
          ========================= -->
     <h2 id="architecture" class="group-title">
       <span class="lang-en">Architecture</span>
@@ -445,57 +446,52 @@
       </div>
     </div>
 
-     <!-- ✅ (2) arch-card 바로 아래에 추가: Architecture image block -->
-     <div class="arch-figure" id="architecture-figure">
-<img
-  src="./meta/OntoMesh_Arch.jpg"
-  alt="Mapping Meaning: The OntoMesh PSRT Civilization Architecture — Bounded Stability Over Generative Expansion"
-  loading="lazy"
-  onclick="openImageModal(this.src)"
-/>
+    <!-- Architecture image block -->
+    <div class="arch-figure" id="architecture-figure">
+      <img
+        src="./meta/OntoMesh_Arch.jpg"
+        alt="Mapping Meaning: The OntoMesh PSRT Civilization Architecture — Bounded Stability Over Generative Expansion"
+        loading="lazy"
+        onclick="openImageModal(this.src)"
+      />
 
-     
-       <div class="caption">
-         <span class="lang-en">
-           <b>Architecture Map (Visual Summary)</b><br>
-           A condensed visual reference of the OntoMesh PSRT civilization architecture:
-           UTI (horizontal invariants), PTI (vertical intelligence transformation), HPE (meta-ecological field),
-           the 0F–7F layer system, and the PSRT evolution toward <b>bounded completion (v2.1)</b>.
-           This figure is provided as a navigational aid, not as an executable specification.
-         </span>
-     
-         <span class="lang-ko">
-           <b>아키텍처 맵(시각 요약)</b><br>
-           OntoMesh PSRT 문명 아키텍처를 한 장으로 요약한 참조 도식입니다:
-           UTI(수평 불변성), PTI(수직 지능 변환축), HPE(메타-생태적 장),
-           0F–7F 레이어 구조, 그리고 <b>경계형 완결(PSRT v2.1)</b>로의 진화를 포함합니다.
-           본 이미지는 실행 사양이 아니라 이해/탐색을 위한 구조적 안내용입니다.
-         </span>
-       </div>
-     
-       <div class="actions">
-<a href="./meta/OntoMesh_Arch.jpg" target="_blank">
-  <span class="lang-en">Open Image (Full Size)</span>
-  <span class="lang-ko">이미지 크게 보기</span>
-</a>
+      <div class="caption">
+        <span class="lang-en">
+          <b>Architecture Map (Visual Summary)</b><br>
+          A condensed visual reference of the OntoMesh PSRT civilization architecture:
+          UTI (horizontal invariants), PTI (vertical intelligence transformation), HPE (meta-ecological field),
+          the 0F–7F layer system, and the PSRT evolution toward <b>bounded completion (v2.1)</b>.
+          This figure is provided as a navigational aid, not as an executable specification.
+        </span>
 
-     
-         <a href="OntoMesh-Architecture.html" target="_blank">
-           <span class="lang-en">Open Full Architecture Document</span>
-           <span class="lang-ko">전체 아키텍처 문서 열기</span>
-         </a>
-     
-         <a href="#psrt">
-           <span class="lang-en">Jump to PSRT v2.1</span>
-           <span class="lang-ko">PSRT v2.1로 이동</span>
-         </a>
-       </div>
-     </div>
+        <span class="lang-ko">
+          <b>아키텍처 맵(시각 요약)</b><br>
+          OntoMesh PSRT 문명 아키텍처를 한 장으로 요약한 참조 도식입니다:
+          UTI(수평 불변성), PTI(수직 지능 변환축), HPE(메타-생태적 장),
+          0F–7F 레이어 구조, 그리고 <b>경계형 완결(PSRT v2.1)</b>로의 진화를 포함합니다.
+          본 이미지는 실행 사양이 아니라 이해/탐색을 위한 구조적 안내용입니다.
+        </span>
+      </div>
 
-       
-    <!-- =========================
-         Official definition (as-is)
-         ========================= -->
+      <div class="actions">
+        <a href="./meta/OntoMesh_Arch.jpg" target="_blank">
+          <span class="lang-en">Open Image (Full Size)</span>
+          <span class="lang-ko">이미지 크게 보기</span>
+        </a>
+
+        <a href="OntoMesh-Architecture.html" target="_blank">
+          <span class="lang-en">Open Full Architecture Document</span>
+          <span class="lang-ko">전체 아키텍처 문서 열기</span>
+        </a>
+
+        <a href="#psrt">
+          <span class="lang-en">Jump to PSRT v2.1</span>
+          <span class="lang-ko">PSRT v2.1로 이동</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Official definition -->
     <div class="proposition-box">
       <b>
         <span class="lang-en">Official Definition — NooneWeone.org:</span>
@@ -515,9 +511,7 @@
       </i>
     </div>
 
-    <!-- =========================
-         Completion ↔ Stopping pair (as-is)
-         ========================= -->
+    <!-- Completion ↔ Stopping pair -->
     <h2 id="pair" class="group-title">
       <span class="lang-en">Completion ↔ Stopping (Paired References)</span>
       <span class="lang-ko">완성 ↔ 멈춤 (페어 참조)</span>
@@ -614,9 +608,7 @@
       </div>
     </div>
 
-    <!-- =========================
-         PSRT section (as-is)
-         ========================= -->
+    <!-- PSRT section -->
     <h2 id="psrt" class="group-title">
       <span class="lang-en">PSRT v2.1 (Main)</span>
       <span class="lang-ko">PSRT v2.1 (메인)</span>
@@ -716,9 +708,7 @@
       </span>
     </div>
 
-    <!-- =========================
-         UPO section (as-is)
-         ========================= -->
+    <!-- UPO section -->
     <h2 id="upo" class="group-title">
       <span class="lang-en">UPO (Independent)</span>
       <span class="lang-ko">UPO (독립)</span>
@@ -759,126 +749,137 @@
       </span>
     </div>
 
-     <!-- =========================
-          Archival Reference (Zenodo)
-          ========================= -->
-     <div class="proposition-box" style="border-left-color:#7a7a7a; background:#fafafa;">
-       <b>
-         <span class="lang-en">Archival Reference (Fixed)</span>
-         <span class="lang-ko">아카이브 참조 (고정)</span>
-       </b><br>
-     
-       <i>
-         <span class="lang-en">
-           The structural state of OntoMesh, PSRT v2.1, and related core documents
-           has been archived as a non-executable reference artifact.
-         </span>
-         <span class="lang-ko">
-           OntoMesh, PSRT v2.1 및 관련 코어 문서의 구조적 상태는
-           비실행 참조 아카이브로 고정 보존되었습니다.
-         </span>
-       </i>
-     
-       <span class="desc">
-         <span class="lang-en">
-           This archive records completion and bounded stability.
-           It does not extend, revise, or supersede the Core Docs presented on this page.
-         </span>
-         <span class="lang-ko">
-           본 아카이브는 완결과 경계적 안정 상태를 기록합니다.
-           이 페이지의 코어 문서를 확장·수정·대체하지 않습니다.
-         </span>
-       </span>
-     
-       <p style="margin-top:10px;">
-         <a href="https://doi.org/10.5281/zenodo.18012519"
-            target="_blank"
-            style="font-weight:800; color:#555; text-decoration:none;">
-           → OntoMesh Structural Map (Zenodo DOI: 10.5281/zenodo.18012519)
-         </a>
-       </p>
-     </div>
-       
+    <!-- =========================
+         NEW: Archival Reference (Fixed)
+         (Inserted here: after UPO, before Back link)
+         ========================= -->
+    <div class="archived-sep">
+      <span class="lang-en">— Archived Reference —</span>
+      <span class="lang-ko">— 아카이브 참조 —</span>
+    </div>
 
+    <div class="proposition-box" style="border-left-color:#6a7aa6; background:#fbfcff;">
+      <b>
+        <span class="lang-en">Archival Reference (Fixed Snapshot)</span>
+        <span class="lang-ko">아카이브 참조 (고정 스냅샷)</span>
+      </b><br>
+
+      <i>
+        <span class="lang-en">
+          The structural state of OntoMesh, PSRT v2.1, and related core materials has been archived
+          as a <b>non-executable reference snapshot</b>.
+        </span>
+        <span class="lang-ko">
+          OntoMesh, PSRT v2.1 및 관련 코어 자료의 구조적 상태는
+          <b>비실행(Non-executable) 참조 스냅샷</b>으로 아카이브되었습니다.
+        </span>
+      </i>
+
+      <span class="desc">
+        <span class="lang-en">
+          This archive is intended for <b>citation and stable referencing</b>.
+          It mirrors the Core Docs as a fixed snapshot,
+          while this page remains the <b>navigational / explanatory layer</b>.
+        </span>
+        <span class="lang-ko">
+          본 아카이브는 <b>인용 및 안정적 참조</b>를 위한 것입니다.
+          코어 문서를 고정 스냅샷 형태로 미러링하며,
+          이 페이지는 계속해서 <b>탐색/설명 레이어</b>로 유지됩니다.
+        </span>
+      </span>
+
+      <div class="archive-links">
+        <div>
+          <a href="https://doi.org/10.5281/zenodo.18012519" target="_blank" style="color:#2f5fb3;">
+            → <span class="lang-en">Zenodo DOI: 10.5281/zenodo.18012519 (Zenodo record)</span>
+            <span class="lang-ko">Zenodo DOI: 10.5281/zenodo.18012519 (Zenodo 레코드)</span>
+          </a>
+        </div>
+        <div style="margin-top:6px;">
+          <a href="./OntoMesh-Structural_Map.html" target="_blank" style="color:#175eb5;">
+            → <span class="lang-en">Local HTML: OntoMesh-Structural_Map.html</span>
+            <span class="lang-ko">로컬 HTML: OntoMesh-Structural_Map.html</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Back link -->
     <div class="top-nav" style="margin-top:26px;">
       <a href="official-network.html">
         <span class="lang-en">← Back to Directory Portal (official-network.html)</span>
         <span class="lang-ko">← 디렉토리 포털로 돌아가기 (official-network.html)</span>
       </a>
     </div>
+
   </div>
 
-<!-- Image Lightbox Modal -->
-<div id="image-modal" class="image-modal" aria-hidden="true">
-  <div class="hint">
-    Click anywhere to close <kbd>Esc</kbd>
+  <!-- Image Lightbox Modal -->
+  <div id="image-modal" class="image-modal" aria-hidden="true">
+    <div class="hint">
+      Click anywhere to close <kbd>Esc</kbd>
+    </div>
+    <img id="image-modal-img" alt="Expanded architecture image" />
   </div>
-  <img id="image-modal-img" alt="Expanded architecture image" />
-</div>
-
 
   <script>
- document.addEventListener('DOMContentLoaded', () => {
-    const toggleBtn = document.getElementById('lang-toggle');
-    const body = document.body;
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggleBtn = document.getElementById('lang-toggle');
+      const body = document.body;
 
-    // Default language
-    body.classList.add('show-en');
-    document.documentElement.lang = 'en';
+      // Default language
+      body.classList.add('show-en');
+      document.documentElement.lang = 'en';
 
-    toggleBtn.addEventListener('click', () => {
-      body.classList.toggle('show-ko');
-      body.classList.toggle('show-en');
+      toggleBtn.addEventListener('click', () => {
+        body.classList.toggle('show-ko');
+        body.classList.toggle('show-en');
 
-      if (body.classList.contains('show-ko')) {
-        document.documentElement.lang = 'ko';
-        toggleBtn.textContent = '[ English ]';
-      } else {
-        document.documentElement.lang = 'en';
-        toggleBtn.textContent = '[ 한국어 ]';
+        if (body.classList.contains('show-ko')) {
+          document.documentElement.lang = 'ko';
+          toggleBtn.textContent = '[ English ]';
+        } else {
+          document.documentElement.lang = 'en';
+          toggleBtn.textContent = '[ 한국어 ]';
+        }
+      });
+    });
+
+    // ===== Lightbox functions =====
+    function openImageModal(src) {
+      const modal = document.getElementById('image-modal');
+      const img = document.getElementById('image-modal-img');
+      img.src = src;
+      modal.style.display = 'block';
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeImageModal() {
+      const modal = document.getElementById('image-modal');
+      const img = document.getElementById('image-modal-img');
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
+      img.src = '';
+      document.body.style.overflow = '';
+    }
+
+    // Close on click
+    document.addEventListener('click', (e) => {
+      const modal = document.getElementById('image-modal');
+      if (!modal) return;
+      if (modal.style.display === 'block' && e.target === modal) {
+        closeImageModal();
       }
     });
-  });
 
-  // ===== Lightbox functions =====
-  function openImageModal(src) {
-    const modal = document.getElementById('image-modal');
-    const img = document.getElementById('image-modal-img');
-    img.src = src;
-    modal.style.display = 'block';
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden'; // prevent background scroll
-  }
-
-  function closeImageModal() {
-    const modal = document.getElementById('image-modal');
-    const img = document.getElementById('image-modal-img');
-    modal.style.display = 'none';
-    modal.setAttribute('aria-hidden', 'true');
-    img.src = '';
-    document.body.style.overflow = ''; // restore scroll
-  }
-
-  // Close on click
-  document.addEventListener('click', (e) => {
-    const modal = document.getElementById('image-modal');
-    if (!modal) return;
-    if (modal.style.display === 'block' && e.target === modal) {
-      closeImageModal();
-    }
-  });
-
-  // Close on ESC
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      const modal = document.getElementById('image-modal');
-      if (modal && modal.style.display === 'block') closeImageModal();
-    }
-  });
+    // Close on ESC
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const modal = document.getElementById('image-modal');
+        if (modal && modal.style.display === 'block') closeImageModal();
+      }
+    });
   </script>
 </body>
 </html>
-
-
-
-
