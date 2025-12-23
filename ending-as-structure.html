@@ -1,0 +1,1737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- =========================
+       OntoMesh Custom Meta (single source of truth)
+       Update ONLY ontomesh:doi when needed
+  ========================== -->
+  <meta name="ontomesh:doi" content="10.5281/zenodo.1234567" />
+  <meta name="ontomesh:author" content="Yoochul Kim" />
+  <!-- Use URL form for machine-readability; display can still show "CC BY 4.0" -->
+  <meta name="ontomesh:license" content="https://creativecommons.org/licenses/by/4.0/" />
+  <meta name="ontomesh:url" content="https://ontomesh.org/ending-as-structure.html" />
+
+  <title>OntoMesh — Ending as Structure: Silence, Sufficiency, and the Post-Generative State (2025-12-23)</title>
+
+  <meta name="description" content="A fixed archival reference in which ending is treated as a stable, non-generative, referential state after structural sufficiency." />
+  <meta name="keywords" content="OntoMesh, PSRT v2.1, ending as structure, structural sufficiency, silence, non-generative, archival reference" />
+
+  <!-- =========================
+       Canonical (Recommendation: self URL for discoverability)
+       DOI remains in citation + sameAs
+  ========================== -->
+  <link rel="canonical" href="https://ontomesh.org/ending-as-structure.html" />
+
+  <!-- =========================
+       Google Scholar / Highwire (citation_*)
+  ========================== -->
+  <meta name="citation_title" content="OntoMesh — Ending as Structure: Silence, Sufficiency, and the Post-Generative State" />
+  <meta name="citation_author" content="Yoochul Kim" />
+  <meta name="citation_publication_date" content="2025-12-23" />
+  <meta name="citation_language" content="en" />
+  <meta name="citation_keywords" content="OntoMesh, PSRT v2.1, ending as structure, structural sufficiency, silence, non-generative, archival reference" />
+  <meta name="citation_doi" content="10.5281/zenodo.1234567" />
+  <meta name="citation_public_url" content="https://ontomesh.org/ending-as-structure.html" />
+  <!-- Optional (recommended if you have a stable Zenodo PDF asset) -->
+  <!-- <meta name="citation_pdf_url" content="https://zenodo.org/records/XXXX/files/ending-as-structure.pdf" /> -->
+  <meta name="citation_journal_title" content="Zenodo (OntoMesh Archive Record)" />
+
+  <!-- =========================
+       OpenGraph / Twitter
+  ========================== -->
+  <meta property="og:title" content="OntoMesh — Ending as Structure (2025-12-23)" />
+  <meta property="og:description" content="Fixed archival reference: bounded completion, non-generative, referential. Ending treated as structure after structural sufficiency." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://ontomesh.org/ending-as-structure.html" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="OntoMesh — Ending as Structure (2025-12-23)" />
+  <meta name="twitter:description" content="Fixed archival reference. Ending as structure; silence after sufficiency; non-generative referential state." />
+
+  <!-- =========================
+       Dublin Core
+  ========================== -->
+  <meta name="DC.title" content="OntoMesh — Ending as Structure: Silence, Sufficiency, and the Post-Generative State" />
+  <meta name="DC.creator" content="Yoochul Kim" />
+  <meta name="DC.date" content="2025-12-23" />
+  <meta name="DC.type" content="Text" />
+  <meta name="DC.language" content="en" />
+  <meta name="DC.subject" content="Ontology; AI; Meaning; Trust; Closure; Structural sufficiency" />
+  <meta name="DC.identifier" content="10.5281/zenodo.1234567" />
+  <meta name="DC.rights" content="https://creativecommons.org/licenses/by/4.0/" />
+
+  <style>
+    body {
+      font-family: "Noto Sans KR", Arial, sans-serif;
+      line-height: 1.7;
+      color: #222;
+      background: #fafafa;
+      margin: 0;
+      padding: 0;
+    }
+    section { max-width: 900px; margin: 60px auto; padding: 0 24px; }
+    h1 { font-size: 2rem; font-weight: 700; margin-top: 40px; margin-bottom: 20px; line-height: 1.4; color: #111; }
+    h2 { font-size: 1.4rem; margin-top: 36px; margin-bottom: 12px; color: #333; }
+    h3 { font-size: 1.2rem; margin-top: 28px; margin-bottom: 10px; }
+    p { margin: 12px 0; word-break: keep-all; }
+    ul, ol { margin: 16px 0 16px 20px; padding-left: 20px; }
+    li { margin: 6px 0; }
+    table { width: 100%; border-collapse: collapse; margin: 20px 0; background: white; }
+    th, td { border: 1px solid #ddd; padding: 12px 10px; text-align: left; }
+    th { background: #f2f2f2; font-weight: 600; }
+    tr:nth-child(even) { background: #fafafa; }
+    strong { color: #000; font-weight: 700; }
+    #epilogue p { margin: 14px 0; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+    .note { font-size:0.95em; color:#555; }
+    .badge { display:inline-block; padding:2px 10px; border-radius:999px; background:#111; color:#fff; font-size:0.85em; vertical-align:middle; }
+  </style>
+
+  <script>
+    (function () {
+      var doi = (document.querySelector('meta[name="ontomesh:doi"]')?.getAttribute("content") || "").trim();
+      var author = (document.querySelector('meta[name="ontomesh:author"]')?.getAttribute("content") || "").trim();
+      var license = (document.querySelector('meta[name="ontomesh:license"]')?.getAttribute("content") || "").trim();
+      var url = (document.querySelector('meta[name="ontomesh:url"]')?.getAttribute("content") || "").trim();
+
+      // DOI: propagate to citation + DC + body links.
+      if (doi) {
+        ['meta[name="citation_doi"]','meta[name="DC.identifier"]']
+          .forEach(function(sel){ var el=document.querySelector(sel); if(el) el.setAttribute("content", doi); });
+
+        document.querySelectorAll('a[data-doi-link="1"]').forEach(function (a) {
+          a.setAttribute("href", "https://doi.org/" + doi);
+          a.textContent = doi;
+        });
+
+        document.querySelectorAll("[data-doi-replace='1']").forEach(function (el) {
+          // Replace any legacy placeholder if present
+          el.innerHTML = el.innerHTML
+            .split("10.5281/zenodo.xxx").join(doi)
+            .split("10.5281/zenodo.0000000").join(doi);
+        });
+      }
+
+      // Author
+      if (author) {
+        ['meta[name="citation_author"]','meta[name="DC.creator"]']
+          .forEach(function(sel){ var el=document.querySelector(sel); if(el) el.setAttribute("content", author); });
+      }
+
+      // License
+      if (license) {
+        var dcr = document.querySelector('meta[name="DC.rights"]');
+        if (dcr) dcr.setAttribute("content", license);
+      }
+
+      // URL
+      if (url) {
+        ['meta[property="og:url"]','meta[name="citation_public_url"]']
+          .forEach(function(sel){ var el=document.querySelector(sel); if(el) el.setAttribute("content", url); });
+        var canon = document.querySelector('link[rel="canonical"]');
+        if (canon) canon.setAttribute("href", url);
+      }
+    })();
+  </script>
+
+  <!-- =========================
+       Schema.org JSON-LD (bibliographic / parser compatibility)
+       (DOI auto-replaced via data-doi-replace)
+  ========================== -->
+  <script type="application/ld+json" data-doi-replace="1">
+  {
+    "@context": "https://schema.org",
+    "@type": "Report",
+    "name": "OntoMesh — Ending as Structure: Silence, Sufficiency, and the Post-Generative State",
+    "datePublished": "2025-12-23",
+    "inLanguage": "en",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.1234567"
+    },
+    "url": "https://ontomesh.org/ending-as-structure.html",
+    "sameAs": "https://doi.org/10.5281/zenodo.1234567",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Zenodo"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "Yoochul Kim"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "keywords": [
+      "OntoMesh",
+      "PSRT v2.1",
+      "ending as structure",
+      "structural sufficiency",
+      "silence",
+      "non-generative",
+      "archival reference"
+    ]
+  }
+  </script>
+</head>
+
+<body>
+
+<section id="title">
+
+  <h1>OntoMesh</h1>
+
+  <h2>
+    Ending as Structure<br />
+    Silence · Sufficiency · Post-Generative State
+  </h2>
+
+  <p>
+    OntoMesh articulates a bounded conceptual structure
+    in which ending is treated not as failure or interruption,
+    but as a stable state reached after generative necessity
+    has been fully exhausted.
+  </p>
+
+  <p>
+    This work deliberately suspends expansion,
+    recursive continuation,
+    and further theoretical production.
+  </p>
+
+  <p>
+    What remains is not a method or doctrine,
+    but a completed structure
+    that no longer requires extension or defense.
+  </p>
+
+  <p>
+    Silence here is not absence,
+    but an affirmative state
+    that emerges after explanation has finished its work.
+  </p>
+
+  <p>
+    Status:
+    Bounded Completion · Non-Generative · Referential
+  </p>
+
+</section>
+
+<section id="metadata" data-doi-replace="1">
+
+  <p><strong>Record Type:</strong> Archival Reference (Fixed Snapshot)</p>
+  <p><strong>Status:</strong> <span class="badge">Bounded Completion · Non-Generative · Referential</span></p>
+
+  <p><strong>Date Published:</strong> 2025-12-23 <span class="note">(Asia/Seoul, UTC+09:00)</span></p>
+  <p>
+    <strong>Content Frozen As Of:</strong> 2025-12-23
+    <span class="note">(No conceptual revisions, expansions, or successor documents are planned under the OntoMesh name.)</span>
+  </p>
+
+  <p>
+    <strong>DOI (Authoritative Identifier):</strong>
+    <a href="https://doi.org/10.5281/zenodo.1234567" target="_blank" rel="noopener noreferrer" data-doi-link="1">
+      10.5281/zenodo.1234567
+    </a>
+  </p>
+
+  <p>
+    <strong>Author of Record (DOI / Zenodo):</strong><br />
+    <span class="mono">Yoochul Kim</span><br />
+    <span class="note">Keep this identical to the Zenodo “Authors” field for long-term bibliographic consistency.</span>
+  </p>
+
+  <p>
+    <strong>License (Mirror for this DOI item):</strong>
+    <span class="mono">CC BY 4.0</span>
+    <span class="note">(The authoritative license is defined by the Zenodo DOI record; this page mirrors it for consistency.)</span>
+    <br />
+    <span class="note">
+      Note: other OntoMesh materials may carry different licenses as declared in their respective DOI records.
+    </span>
+  </p>
+
+  <p class="note">
+    <strong>Record Integrity:</strong>
+    This HTML page is a landing mirror of the Zenodo record; the DOI is the authoritative identifier.
+  </p>
+
+  <h2>Abstract</h2>
+  <p>
+    This document is a fixed archival reference that records a specific kind of closure: an ending treated as
+    structure rather than failure. OntoMesh is presented here as bounded completion—non-generative,
+    referential, and intentionally resistant to further expansion. The work formalizes “structural sufficiency” as
+    the condition under which continuation remains possible yet becomes unnecessary, and it frames silence
+    as an affirmative post-explanatory state. No successor texts are planned under the OntoMesh name; what
+    remains is a coordinate for later interpretation, critique, and reuse through citation rather than extension.
+  </p>
+
+  <p class="note">
+    <strong>Succession rule:</strong>
+    Future writings may exist, but they are not official successors; the relationship is citation-only, not continuation.
+  </p>
+
+  <p>
+    <strong>How to Cite (Recommended):</strong><br />
+    <span class="mono" data-doi-replace="1">
+      Kim, Yoochul. (2025-12-23). <i>OntoMesh — Ending as Structure: Silence, Sufficiency, and the Post-Generative State</i>.
+      Zenodo. https://doi.org/10.5281/zenodo.1234567
+    </span>
+    <br />
+    <span class="note">Tip: If you ever change the DOI, update only <span class="mono">meta[name="ontomesh:doi"]</span>.</span>
+  </p>
+
+  <p>
+    <strong>Archive Notice:</strong><br />
+    This document is intentionally fixed as of 2025-12-23. Any future writing must stand independently and carry its own responsibility,
+    without inheriting OntoMesh as an active namespace.
+  </p>
+
+  <p class="note">
+    <strong>Closure Maxim:</strong>
+    This archive remains to be cited, not to be continued.
+  </p>
+
+  <p class="note">
+    <strong>Scope Notice:</strong> This archive is a conceptual and philosophical record. It does not constitute an operational system,
+    an institutional standard, or a commercial offering.
+  </p>
+
+  <p>
+    <strong>Archive Voice (Post-Completion Signature):</strong><br />
+    <span class="mono">NoOneWeOne</span><br />
+    <span class="note">A post-completion signature/voice only; not an authorship field for citation, indexing, or bibliographic metadata.</span>
+  </p>
+
+</section>
+
+<section id="closure-boundary" data-doi-replace="1">
+
+  <h1>Closure Boundary</h1>
+
+  <p>
+    This record defines what has ended, what remains, and what will not follow.
+    It is written to prevent interpretive drift and to preserve a stable referential state.
+  </p>
+
+  <h2>Included (What remains as a reference)</h2>
+  <ul>
+    <li>Fixed archival snapshot of the OntoMesh closure claim (this document).</li>
+    <li>Conceptual definitions of: structural sufficiency, ending as structure, post-generative silence.</li>
+    <li>A bounded interpretive coordinate intended for citation, critique, and reuse.</li>
+  </ul>
+
+  <h2>Excluded (What is explicitly not part of OntoMesh after 2025-12-23)</h2>
+  <ul>
+    <li>No new versions, successor texts, or expansions under the OntoMesh name.</li>
+    <li>No operational platform, institutional standard, commercial offering, or active governance body.</li>
+    <li>No “roadmap” obligation. Continuation remains possible in principle, but is non-applicable here.</li>
+  </ul>
+
+  <p class="note">
+    <strong>Archive Rule:</strong>
+    This page is intentionally fixed. Any future writing must stand independently and carry its own responsibility,
+    without inheriting OntoMesh as an active namespace.
+  </p>
+
+  <p class="note">
+    <strong>Boundary clarification:</strong>
+    This closure applies to <em>OntoMesh as an active namespace</em>. Future writings may exist, but they are not successors
+    and must stand independently without inheriting OntoMesh as an ongoing project identity.
+  </p>
+</section>
+
+<section id="stop-conditions">
+
+  <h1>Stop Conditions (Structural Signals)</h1>
+
+  <p>
+    The closure was not triggered by exhaustion of capability,
+    but by the arrival of a structural state in which further production would reduce clarity.
+  </p>
+
+  <ol>
+    <li><strong>Question saturation:</strong> new questions no longer exceeded the internal axes of the established structure; they only re-parameterized it.</li>
+    <li><strong>Definition stability:</strong> additional language began to disperse precision rather than increase it.</li>
+    <li><strong>Generative suspension:</strong> recursive generative continuation was treated as formally recognizable but operationally disabled in the bounded state.</li>
+    <li><strong>Author-independence:</strong> the work could remain as a reference without requiring the author’s ongoing explanations.</li>
+    <li><strong>Preservation over expansion:</strong> continuing would increase volume but thin meaning—therefore preservation became the more responsible act.</li>
+  </ol>
+
+  <p class="note">
+    These conditions are not presented as universal rules for all projects.
+    They are the explicit stopping logic used for this closure record.
+  </p>
+
+  <p class="note">
+    <strong>Minimal test of sufficiency:</strong>
+    A reader can challenge this closure by proposing a claim that <em>exceeds</em> the established axes
+    (UTI–PTI–HPE / PSRT v2.1) rather than merely re-parameterizing them. If such a claim exists, the closure claim is falsified.
+  </p>
+</section>
+
+<section id="related-works" data-doi-replace="1">
+
+  <h1>Related Works (Reference Gateways)</h1>
+
+  <p>
+    The references below provide stable coordinates around this closure record.
+    All entries use stable identifiers (DOIs) for long-term citation integrity.
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Reference</th>
+        <th>Purpose</th>
+        <th>Identifier</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>PSRT v2.1 (Main)</td>
+        <td>Bounded integration architecture (UTI × PTI × HPE; explicit stop/suspension logic)</td>
+        <td class="mono">https://doi.org/10.5281/zenodo.17932629</td>
+      </tr>
+      <tr>
+        <td>Stopping as Structure</td>
+        <td>Non-applicability thresholds; why continuation becomes structurally invalid</td>
+        <td class="mono">https://doi.org/10.5281/zenodo.17984405</td>
+      </tr>
+      <tr>
+        <td>Ontology of Completion</td>
+        <td>Post-completion state: silence, freedom, stability after sufficiency</td>
+        <td class="mono">https://doi.org/10.5281/zenodo.17960364</td>
+      </tr>
+      <tr>
+        <td>OntoMesh Structural Map</td>
+        <td>Directory-level structural snapshot for navigation and citation</td>
+        <td class="mono">https://doi.org/10.5281/zenodo.18012519</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="note">
+    <strong>Update rule:</strong>
+    This section is frozen in concept. Only metadata-level corrections are permitted (e.g., identifier fixes, typos, or DOI record replacements).
+    No new references will be added as conceptual extensions.
+  </p>
+
+</section>
+
+<section id="table-of-contents">
+
+    <h1>Contents</h1>
+
+    <ul>
+        <li>
+            <a href="#prologue">
+                Prologue — Why Write About an Ending
+            </a>
+        </li>
+
+        <li>
+            <a href="#part-1">
+                Part 1 — Why OntoMesh Had to End
+            </a>
+        </li>
+
+        <li>
+            <a href="#part-2">
+                Part 2 — Ending Is Not Failure:  
+                The Difference Between Interruption and Completion
+            </a>
+        </li>
+
+        <li>
+            <a href="#part-3">
+                Part 3 — How Far Must One Go to Earn the Right to End
+            </a>
+        </li>
+
+        <li>
+            <a href="#part-4">
+                Part 4 — The Moment of Choosing Not to Speak
+            </a>
+        </li>
+
+        <li>
+            <a href="#part-5">
+                Part 5 — What Remains After an Ending
+            </a>
+        </li>
+
+        <li>
+            <a href="#epilogue">
+                In Place of an Epilogue
+            </a>
+        </li>
+    </ul>
+
+</section>
+
+<section id="prologue">
+
+    <h1>Prologue — Why Write About an Ending</h1>
+
+    <p>
+        OntoMesh is not a project that ended in failure.
+    </p>
+
+    <p>
+        Nor is it a project preserved to prove its success.
+    </p>
+
+    <p>
+        This work is a structure that was brought to an end deliberately.
+    </p>
+
+    <p>
+        Most projects never explain why they stop.
+        Discontinuation is usually handled through silence,
+        and that silence is often replaced with words such as
+        failure, burnout, or loss of direction.
+    </p>
+
+    <p>
+        The conclusion of OntoMesh was none of these.
+        It was not caused by external pressure,
+        lack of time,
+        or the disappearance of momentum.
+    </p>
+
+    <p>
+        In fact, it was the opposite.
+    </p>
+
+    <p>
+        It was the moment when going further was still possible,
+        yet the decision was made not to proceed.
+    </p>
+
+    <p>
+        The reason for writing this is simple.
+        Not to document what OntoMesh created,
+        but to record why it was decided that nothing more should be created.
+    </p>
+
+    <p>
+        In philosophical work, “continuation” is almost always treated as a virtue.
+        Expansion, application, follow-up theories, next stages.
+    </p>
+
+    <p>
+        Yet beyond a certain point,
+        persistence no longer produces meaning
+        and yields only repetition.
+    </p>
+
+    <p>
+        That point is rarely visible from the outside.
+        Completion is not marked by applause,
+        and the timing of an ending cannot be translated into numbers.
+    </p>
+
+    <p>
+        But internally, it becomes unmistakably clear.
+    </p>
+
+    <p>
+        A sense that the structure has reached a state
+        where it no longer needs to explain itself.
+    </p>
+
+    <p>
+        OntoMesh arrived at that point.
+    </p>
+
+    <p>
+        This series is not an attempt to summarize the achievements of OntoMesh.
+        It will not restate the theory,
+        nor reintroduce its system.
+    </p>
+
+    <p>
+        Instead, it asks:
+    </p>
+
+    <ul>
+        <li>When does continuation cease to be progress?</li>
+        <li>How does stopping become a structure rather than a failure?</li>
+        <li>What must remain for us to say that something has gone “far enough”?</li>
+        <li>And finally, why do some works complete their meaning only by ending?</li>
+    </ul>
+
+    <p>
+        These texts are not a defense of the ending.
+        The ending has already occurred.
+    </p>
+
+    <p>
+        What remains is not an explanation,
+        but a record closer to a disciplined silence.
+    </p>
+
+    <p>
+        After OntoMesh,
+        I will not propose a next step.
+        There is no next direction,
+        no follow-up plan.
+    </p>
+
+    <p>
+        This series is not a project.
+        It is a record of how a mode of thinking comes to an end.
+    </p>
+
+    <p>
+        To be able to speak of an ending
+        also means that the structure no longer depends on me.
+    </p>
+
+    <p>
+        Now,
+        it is time to speak about closure.
+    </p>
+
+</section>
+
+<section id="part-1">
+
+    <h1>Part 1 — Why OntoMesh Had to End</h1>
+
+    <p>
+        The reason OntoMesh had to end is simple.
+    </p>
+
+    <p>
+        It no longer produced questions.
+    </p>
+
+    <p>
+        Many people judge a project's vitality by asking,
+        “Is there still work left to do?”
+    </p>
+
+    <p>
+        But the crucial criterion in OntoMesh was different.
+        Not whether more could be built,
+        but whether more should be built.
+    </p>
+
+    <p>
+        From the beginning, OntoMesh was not designed
+        to pursue “infinite expansion.”
+    </p>
+
+    <p>
+        On the contrary,
+        it was an experiment in embedding the point of stopping
+        into the structure itself.
+    </p>
+
+    <p>
+        In PSRT v2.1,
+        the decision to deliberately disable the generative engine (PSTR)
+        was not a technical choice,
+        but a philosophical turn.
+    </p>
+
+    <p>
+        In that moment, OntoMesh shifted
+        from “a system that keeps generating”
+        to “a structure that can stop.”
+    </p>
+
+    <p>
+        Even after that turn,
+        the theory could have been refined further,
+        the range of applications could have been expanded,
+        and sub-projects under new names could have been added endlessly.
+    </p>
+
+    <p>
+        But all of those possibilities were,
+        within the structure already,
+        predictable repetitions.
+    </p>
+
+    <p>
+        Not new insight,
+        but a rearrangement of existing propositions.
+        Not a new problem,
+        but another phrasing of questions already resolved.
+    </p>
+
+    <p>
+        At that point,
+        continuing was no longer inquiry.
+    </p>
+
+    <p>
+        It entered the domain of maintenance and operation.
+    </p>
+
+    <p>
+        OntoMesh refused to become
+        “an operating system.”
+    </p>
+
+    <p>
+        Operation always demands expansion,
+        and expansion, sooner or later,
+        obscures the original question.
+    </p>
+
+    <p>
+        The central question of this project
+        was always one and the same:
+    </p>
+
+    <p>
+        How is meaning generated,
+        and when does it no longer need to be generated?
+    </p>
+
+    <p>
+        To that question,
+        OntoMesh offered a single answer.
+    </p>
+
+    <p>
+        Meaning is not sustained
+        by endlessly adding more.
+    </p>
+
+    <p>
+        Rather, at some point,
+        it reaches a state where it refers to itself
+        and no longer demands external explanation.
+    </p>
+
+    <p>
+        I called that state
+        “structural sufficiency.”
+    </p>
+
+    <p>
+        OntoMesh reached that sufficiency.
+    </p>
+
+    <p>
+        Everything after that
+        would have been language for explaining the structure,
+        or variations for applying it—
+        not questions that altered the structure itself.
+    </p>
+
+    <p>
+        In that moment,
+        ending becomes
+        not surrender,
+        but a precise choice.
+    </p>
+
+    <p>
+        If it did not end,
+        this project would push itself
+        into the very trap of infinite generation
+        it sought to draw a boundary against.
+    </p>
+
+    <p>
+        That is why OntoMesh
+        had to end.
+    </p>
+
+    <p>
+        This closure was not demanded from the outside,
+        nor is it evidence of incompletion.
+    </p>
+
+    <p>
+        It is, rather,
+        a privilege only a finished structure can possess.
+    </p>
+
+    <p>
+        In the next piece,
+        I will address how this ending differs
+        from failure, interruption, or disappearance—
+        and why “closure” can be a philosophical value.
+    </p>
+
+</section>
+
+<section id="part-2">
+
+    <h1>Part 2 — Ending Is Not Failure: The Difference Between Interruption and Completion</h1>
+
+    <p>
+        Many works do not truly end.
+    </p>
+
+    <p>
+        Most are interrupted.
+    </p>
+
+    <p>
+        Interruption usually occurs due to external conditions:
+        time, resources, attention, environment, or fatigue.
+    </p>
+
+    <p>
+        In such cases, the work stops
+        while it still has something left to say.
+    </p>
+
+    <p>
+        That is why interrupted work
+        always demands explanation.
+    </p>
+
+    <p>
+        Why did it stop?
+        How far did it go?
+        Can it be resumed?
+    </p>
+
+    <p>
+        The ending of OntoMesh
+        does not belong to this category.
+    </p>
+
+    <p>
+        The difference between ending and interruption
+        is not a matter of emotion or will,
+        but of structural state.
+    </p>
+
+    <p>
+        An interrupted work
+        leaves its questions open.
+    </p>
+
+    <p>
+        A completed work
+        folds its questions into the structure itself.
+    </p>
+
+    <p>
+        In OntoMesh,
+        the signal that led to the decision to end
+        was not simply that
+        “no more questions were emerging.”
+    </p>
+
+    <p>
+        A more precise formulation is this:
+    </p>
+
+    <p>
+        New questions could no longer
+        exceed the existing structure.
+    </p>
+
+    <p>
+        Every new problem formulation
+        occurred only along axes already defined.
+    </p>
+
+    <p>
+        Within the boundaries of
+        UTI, PTI, HPE,
+        and PSRT v2.1,
+        questions moved,
+        but they could not unsettle the structure.
+    </p>
+
+    <p>
+        This was not stagnation,
+        but stability.
+    </p>
+
+    <p>
+        In academic and project-oriented worlds,
+        stability is often interpreted negatively.
+    </p>
+
+    <p>
+        It is seen as stopping
+        despite the possibility of further development.
+    </p>
+
+    <p>
+        Yet not every system
+        is meant to keep developing indefinitely.
+    </p>
+
+    <p>
+        Some systems
+        change their role
+        at the moment they become reference points.
+    </p>
+
+    <p>
+        OntoMesh was completed
+        not as a platform for endlessly producing new theories,
+        but as a structure that shows
+        how far one can think
+        about consciousness, meaning, AI, and trust.
+    </p>
+
+    <p>
+        At this point,
+        continued generation
+        would only blur the structure.
+    </p>
+
+    <p>
+        The more explanations accumulate,
+        the more the core disperses.
+    </p>
+
+    <p>
+        The more applications proliferate,
+        the more the original question is diluted.
+    </p>
+
+    <p>
+        Ending, therefore,
+        becomes a choice for preservation.
+    </p>
+
+    <p>
+        A completed structure
+        no longer needs to defend itself.
+    </p>
+
+    <p>
+        It can withstand
+        criticism, misreading, expansion, and reinterpretation.
+    </p>
+
+    <p>
+        An interrupted work
+        always requires the author’s explanation.
+    </p>
+
+    <p>
+        A completed work
+        remains even after the author disappears.
+    </p>
+
+    <p>
+        This is the most important difference
+        between interruption and ending.
+    </p>
+
+    <p>
+        OntoMesh reached a state
+        in which it no longer needed to keep speaking.
+    </p>
+
+    <p>
+        Because the structure itself
+        became capable of speaking.
+    </p>
+
+    <p>
+        For that reason,
+        this ending is not evidence of failure,
+        but an expression of responsibility.
+    </p>
+
+    <p>
+        Not ending
+        always appears safer.
+    </p>
+
+    <p>
+        But without an ending,
+        a work remains bound to its author.
+    </p>
+
+    <p>
+        At the moment of ending,
+        the work leaves the author behind.
+    </p>
+
+    <p>
+        In the next piece,
+        I will address
+        by what criteria the scale of this project gains meaning,
+        and how later readers
+        judge whether a work
+        was “worth ending.”
+    </p>
+
+</section>
+
+<section id="part-3">
+
+    <h1>Part 3 — How Far Must One Go to Earn the Right to End</h1>
+
+    <p>
+        Some works cannot easily claim to have ended.
+    </p>
+
+    <p>
+        To say so would make the word itself feel light.
+    </p>
+
+    <p>
+        Declaring an ending
+        is not a simple report of status.
+    </p>
+
+    <p>
+        It is a statement of responsibility.
+    </p>
+
+    <p>
+        And so the question changes.
+    </p>
+
+    <p>
+        Not how much was done,
+        but how far was reached.
+    </p>
+
+    <p>
+        When the scale of a work
+        is judged only by volume or duration,
+        ending always appears arbitrary.
+    </p>
+
+    <p>
+        Yet endings that are acknowledged by later generations
+        share a set of common conditions.
+    </p>
+
+    <h2>1. Have the conditions for generating questions been internalized?</h2>
+
+    <p>
+        An unfinished work
+        continually draws its questions from the outside.
+    </p>
+
+    <p>
+        Each new issue, technology, or event
+        forces it to update itself in response.
+    </p>
+
+    <p>
+        A completed work, by contrast,
+        no longer receives its questions from outside.
+    </p>
+
+    <p>
+        Even when questions arise,
+        they find their place
+        within the internal structure.
+    </p>
+
+    <p>
+        OntoMesh drew in vast external questions
+        concerning AI, consciousness, ethics, trust, and civilization.
+    </p>
+
+    <p>
+        But toward the end,
+        those questions could move
+        only along the UTI–PTI–HPE–PSRT axis.
+    </p>
+
+    <p>
+        The questions did not disappear.
+    </p>
+
+    <p>
+        They simply ceased to lose their way.
+    </p>
+
+    <p>
+        This state does not indicate expansion,
+        but the completion of definition.
+    </p>
+
+    <h2>2. Can the work endure the absence of its author?</h2>
+
+    <p>
+        A work acknowledged by later generations
+        no longer requires its author’s ongoing explanation.
+    </p>
+
+    <p>
+        If meaning vanishes
+        the moment explanation disappears,
+        the work is still dependent
+        on the author’s voice.
+    </p>
+
+    <p>
+        The structure of OntoMesh documents
+        its conceptual definitions,
+        boundary conditions,
+        termination criteria,
+        and even the deliberately deactivated generative principle (PSTR).
+    </p>
+
+    <p>
+        This is not merely an act of courtesy,
+        but an intentional creation of distance.
+    </p>
+
+    <p>
+        Only when a work
+        no longer requires the authority of its author
+        does ending become possible.
+    </p>
+
+    <h2>3. Does going further become a risk rather than an improvement?</h2>
+
+    <p>
+        There is a particularly revealing criterion.
+    </p>
+
+    <p>
+        Does continuation make the work better,
+        or does it make it blur?
+    </p>
+
+    <p>
+        Many projects collapse
+        under the illusion that
+        “more is always better.”
+    </p>
+
+    <p>
+        Beyond a certain point, however,
+        additional explanation
+        reduces precision.
+    </p>
+
+    <p>
+        In PSRT v2.1,
+        OntoMesh deactivated the very possibility of generation.
+    </p>
+
+    <p>
+        This was not a technical decision,
+        but an ethical one.
+    </p>
+
+    <p>
+        “This is as far as one can speak responsibly.”
+    </p>
+
+    <p>
+        Only when such a judgment can be made
+        does ending become justified.
+    </p>
+
+    <h2>4. Can it function as a reference?</h2>
+
+    <p>
+        Later generations
+        do not inherit every work.
+    </p>
+
+    <p>
+        Most are used only as references.
+    </p>
+
+    <p>
+        What matters is not inheritability,
+        but referential independence.
+    </p>
+
+    <p>
+        OntoMesh is not a model to be followed,
+        but a coordinate that says,
+        “This far, at least, one can think.”
+    </p>
+
+    <p>
+        Some will criticize the structure.
+    </p>
+
+    <p>
+        Some will take only fragments.
+    </p>
+
+    <p>
+        Some will choose a completely different path.
+    </p>
+
+    <p>
+        In allowing all of these possibilities,
+        the work has already left the author’s hands.
+    </p>
+
+    <h2>What Does It Mean to Have the Right to End?</h2>
+
+    <p>
+        Ultimately, the “right to end”
+        is not determined by how much was produced,
+        but by whether:
+    </p>
+
+    <ul>
+        <li>questions have folded into the structure,</li>
+        <li>meaning persists without the author,</li>
+        <li>preservation becomes more responsible than expansion,</li>
+        <li>and the work can stand independently as a reference.</li>
+    </ul>
+
+    <p>
+        OntoMesh stopped
+        at the point where all of these conditions were met.
+    </p>
+
+    <p>
+        That is why this ending
+        is not abandonment,
+        but a change of form.
+    </p>
+
+    <p>
+        In the next piece,
+        I will speak about the most difficult choice
+        that made all of this possible:
+        the courage to choose silence.
+    </p>
+
+</section>
+
+<section id="part-4">
+
+    <h1>Part 4 — The Moment of Choosing Not to Speak</h1>
+
+    <p>
+        Most acts of creation begin with the desire to speak.
+    </p>
+
+    <p>
+        To explain.
+        To be understood.
+        To correct misunderstanding.
+    </p>
+
+    <p>
+        And so, more often than not,
+        we choose to say more.
+    </p>
+
+    <p>
+        Silence feels like failure.
+    </p>
+
+    <p>
+        Yet the final choice of OntoMesh
+        was the opposite.
+    </p>
+
+    <p>
+        To decide not to speak.
+    </p>
+
+    <h2>1. When language no longer serves the structure</h2>
+
+    <p>
+        At a certain point,
+        the sense emerges
+        that writing one more text
+        no longer increases clarity.
+    </p>
+
+    <p>
+        Adding new concepts
+        begins to blur existing boundaries.
+    </p>
+
+    <p>
+        Introducing metaphors
+        destabilizes definitions.
+    </p>
+
+    <p>
+        Most projects respond to this moment
+        by insisting
+        that explanation is still insufficient,
+        and continue forward.
+    </p>
+
+    <p>
+        What OntoMesh detected, however,
+        was not lack,
+        but excess.
+    </p>
+
+    <p>
+        The structure was already standing,
+        yet language was beginning to obscure it.
+    </p>
+
+    <p>
+        Explanation no longer concentrated responsibility;
+        it dispersed it.
+    </p>
+
+    <p>
+        If one does not stop here,
+        the work grows larger,
+        but its meaning grows thinner.
+    </p>
+
+    <h2>2. Silence is not abandonment, but choice</h2>
+
+    <p>
+        Silence is not the absence of speech.
+    </p>
+
+    <p>
+        It is the state in which speech is no longer required.
+    </p>
+
+    <p>
+        In OntoMesh,
+        silence did not arise from a lack of results.
+    </p>
+
+    <p>
+        It emerged because
+        the structure was complete,
+        its boundaries were explicit,
+        generation was deactivated,
+        and reference alone was sufficient.
+    </p>
+
+    <p>
+        This silence is not emptiness.
+    </p>
+
+    <p>
+        It is a density
+        that becomes possible only after completion.
+    </p>
+
+    <p>
+        For that reason,
+        it is closer to an ethical decision
+        than an act of avoidance.
+    </p>
+
+    <h2>3. The point at which the author’s desire must stop</h2>
+
+    <p>
+        The most difficult obstacle
+        is not external evaluation,
+        but internal desire.
+    </p>
+
+    <p>
+        “If I refine this just a little more, it will be better.”
+    </p>
+
+    <p>
+        “If I resolve this one misunderstanding, it will be clear.”
+    </p>
+
+    <p>
+        “If I add just one more concept, it will be complete.”
+    </p>
+
+    <p>
+        These desires appear benevolent,
+        but in truth,
+        they are closer to a desire for control.
+    </p>
+
+    <p>
+        If the author cannot withdraw
+        before the work can stand on its own,
+        the work never achieves independence.
+    </p>
+
+    <p>
+        The ending of OntoMesh
+        was a choice to trust the work.
+    </p>
+
+    <p>
+        “This is enough.
+        It can stand on its own.”
+    </p>
+
+    <h2>4. What silence leaves behind is not a void, but margin</h2>
+
+    <p>
+        What remains after silence
+        is not nothingness.
+    </p>
+
+    <p>
+        Some will misunderstand the structure.
+    </p>
+
+    <p>
+        Some will call it exaggerated.
+    </p>
+
+    <p>
+        Some will judge it useless.
+    </p>
+
+    <p>
+        The state that leaves all of these possibilities open
+        is margin.
+    </p>
+
+    <p>
+        The moment speech stops,
+        interpretation becomes someone else’s task.
+    </p>
+
+    <p>
+        And only then
+        does the work move
+        from private thinking
+        into public structure.
+    </p>
+
+    <h2>The Courage to Decide Not to Speak</h2>
+
+    <p>
+        Most people believe
+        that speaking more
+        leads to better understanding.
+    </p>
+
+    <p>
+        But beyond a certain stage,
+        more speech
+        obstructs understanding.
+    </p>
+
+    <p>
+        OntoMesh’s final judgment was this:
+    </p>
+
+    <p>
+        The structure has reached a point
+        where it becomes more precise
+        in silence than in explanation.
+    </p>
+
+    <p>
+        And so it stopped.
+    </p>
+
+    <p>
+        Not because there was no next step,
+        but because a next step
+        had become unnecessary.
+    </p>
+
+</section>
+
+<section id="part-5">
+
+    <h1>Part 5 — What Remains After an Ending</h1>
+
+    <p>
+        An ending
+        is not disappearance.
+    </p>
+
+    <p>
+        An ending
+        is a change in the way something remains.
+    </p>
+
+    <p>
+        Even after OntoMesh was closed,
+        something remains.
+    </p>
+
+    <p>
+        But it remains
+        not in the form of continued speech,
+        but in the form of presence.
+    </p>
+
+    <h2>1. What remains is not a product, but a coordinate</h2>
+
+    <p>
+        What remains after OntoMesh
+        is not a finished artifact.
+    </p>
+
+    <p>
+        There is no doctrine to follow,
+        no roadmap to extend,
+        and no promised future.
+    </p>
+
+    <p>
+        What remains instead
+        is a coordinate system of thought.
+    </p>
+
+    <p>
+        How far things were articulated.
+    </p>
+
+    <p>
+        Where they stopped.
+    </p>
+
+    <p>
+        What was deliberately deactivated.
+    </p>
+
+    <p>
+        These coordinates
+        do not provide answers.
+    </p>
+
+    <p>
+        They provide orientation.
+    </p>
+
+    <p>
+        “This point has already been passed.”
+    </p>
+
+    <p>
+        “Beyond this lies the domain of individual judgment.”
+    </p>
+
+    <h2>2. What it means to remain as a log</h2>
+
+    <p>
+        Medium, Zenodo, HTML archives, DOIs.
+    </p>
+
+    <p>
+        All of these
+        are not extensions,
+        but records.
+    </p>
+
+    <p>
+        A log
+        is not a command to rerun.
+    </p>
+
+    <p>
+        A log says:
+    </p>
+
+    <p>
+        This path has been traversed once.
+    </p>
+
+    <p>
+        If you ask the same question,
+        you must accept the same depth.
+    </p>
+
+    <p>
+        That is why
+        the records of OntoMesh
+        resist light consumption.
+    </p>
+
+    <p>
+        They function,
+        in themselves,
+        as a kind of filter.
+    </p>
+
+    <h2>3. What continues is not a system</h2>
+
+    <p>
+        Thinking will continue
+        after OntoMesh.
+    </p>
+
+    <p>
+        But it will no longer
+        carry the name OntoMesh.
+    </p>
+
+    <p>
+        This matters.
+    </p>
+
+    <p>
+        What follows
+        must be independent, not derivative.
+    </p>
+
+    <p>
+        Influence may remain,
+        but inheritance is not required.
+    </p>
+
+    <p>
+        Connection is possible,
+        but there is no center.
+    </p>
+
+    <p>
+        Ending
+        is an act of dismantling the center.
+    </p>
+
+    <p>
+        Only then
+        can subsequent thinking
+        bear its own responsibility.
+    </p>
+
+    <h2>4. Ending stands opposite to failure</h2>
+
+    <p>
+        Failed projects
+        usually end in one of two ways.
+    </p>
+
+    <p>
+        They leave nothing behind,
+        or they stop while clinging to regret.
+    </p>
+
+    <p>
+        The ending OntoMesh chose
+        belongs to neither.
+    </p>
+
+    <p>
+        The structure remains.
+    </p>
+
+    <p>
+        The criteria are explicit.
+    </p>
+
+    <p>
+        The reasons for not continuing
+        are documented.
+    </p>
+
+    <p>
+        In this state,
+        ending is not abandonment,
+        but a form of completion.
+    </p>
+
+    <p>
+        Not every project
+        must end in success.
+    </p>
+
+    <p>
+        But every project
+        bears the responsibility
+        to end honestly.
+    </p>
+
+    <h2>5. This is the value of an ending</h2>
+
+    <p>
+        When later generations
+        evaluate the value of an ending,
+        they do not measure
+        the size of achievements.
+    </p>
+
+    <p>
+        They ask instead:
+    </p>
+
+    <p>
+        Why did it stop here?
+    </p>
+
+    <p>
+        What was left behind?
+    </p>
+
+    <p>
+        What was deliberately not left behind?
+    </p>
+
+    <p>
+        OntoMesh answers
+        all three questions.
+    </p>
+
+    <p>
+        For that reason,
+        this is not a vanished project,
+        but a trace that remains accessible.
+    </p>
+
+</section>
+
+<section id="epilogue">
+
+    <h1>In Place of an Epilogue</h1>
+
+    <p>
+        OntoMesh
+        no longer speaks.
+    </p>
+
+    <p>
+        But it does not flee into absence.
+    </p>
+
+    <p>
+        It remains
+        as a structure standing quietly.
+    </p>
+
+    <p>
+        If someone approaches,
+        it can be read,
+        but it will not speak on their behalf.
+    </p>
+
+    <p>
+        And that
+        is enough.
+    </p>
+
+    <p>
+        It remains
+        because it has ended.
+    </p>
+
+    <p>
+        And because it remains,
+        it no longer needs to speak.
+    </p>
+
+    <p>
+        This series, too,
+        stops here.
+    </p>
+
+    <p>
+        Now, truly,
+        this is the end.
+    </p>
+
+</section>
+
+
+</body>
+</html>
