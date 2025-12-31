@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Office GPTs — Mode Selector</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Choose the right IAMF dialogue mode: Structured Harmonizer (v1.2.3), IAMF ex Quiet Presence, IAMF ex Reflective Companion." />
+  <style>
+    body {
+      background: #f8fafc;
+      color: #222;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+    }
+    .main {
+      max-width: 860px;
+      margin: 52px auto;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 3px 16px #e7eaf3;
+      padding: 48px 34px 32px 34px;
+      position: relative;
+    }
+    h1 {
+      color: #1976d2;
+      font-size: 2.1em;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      color: #3b4570;
+      font-size: 1.12em;
+      margin-bottom: 16px;
+      line-height: 1.55;
+    }
+    .lang-toggle {
+      position: absolute;
+      top: 20px;
+      right: 34px;
+      background-color: #eef4fc;
+      color: #346599;
+      border: 1px solid #cce1ff;
+      padding: 8px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.2s ease-in-out;
+      user-select: none;
+    }
+    .lang-toggle:hover {
+      background-color: #d6eaff;
+      color: #1976d2;
+      box-shadow: 0 1px 8px #e8eaf0;
+    }
+
+    /* Language Toggle */
+    body.show-en .lang-ko { display: none; }
+    body.show-en .lang-en { display: inline; }
+    body.show-ko .lang-en { display: none; }
+    body.show-ko .lang-ko { display: inline; }
+
+    /* Top notice */
+    .notice {
+      margin-top: 10px;
+      background: linear-gradient(135deg, #f9fbff 0%, #f0f6ff 100%);
+      border: 1.5px solid #c7dbff;
+      border-left: 4px solid #2f6ed8;
+      border-radius: 12px;
+      padding: 14px 16px;
+      font-size: 0.98em;
+      color: #1f2a44;
+      line-height: 1.6;
+      box-shadow: 0 2px 6px rgba(47,110,216,0.08);
+    }
+    .notice b { color:#2f6ed8; }
+
+    /* Cards */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+      margin-top: 18px;
+    }
+    .card {
+      grid-column: span 12;
+      border-radius: 14px;
+      border: 1.6px solid #dbe6ff;
+      background: #ffffff;
+      box-shadow: 0 2px 10px rgba(25,118,210,0.06);
+      padding: 18px 18px 16px 18px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(25,118,210,0.12);
+    }
+    .card.headline {
+      border-left: 6px solid #1976d2;
+      background: linear-gradient(135deg, #f7faff 0%, #eef4ff 100%);
+    }
+    .card.ex1 {
+      border-left: 6px solid #0f8a5f;
+      background: linear-gradient(135deg, #f6fffb 0%, #f1fffa 100%);
+    }
+    .card.ex2 {
+      border-left: 6px solid #7a3dd8;
+      background: linear-gradient(135deg, #faf6ff 0%, #f6f1ff 100%);
+    }
+
+    .tag-row {
+      display:flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+      align-items: center;
+    }
+    .tag {
+      display:inline-block;
+      font-size: 0.82em;
+      font-weight: 800;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.08);
+      background: rgba(255,255,255,0.7);
+      color: #21324d;
+    }
+    .tag.primary { color:#0b3b7a; border-color:#cfe1ff; }
+    .tag.safe { color:#0b6b4a; border-color:#cfe9da; }
+    .tag.ex { color:#5a32e2; border-color:#e0d6ff; }
+
+    .card-title {
+      font-size: 1.18em;
+      font-weight: 900;
+      color: #1f2a44;
+      line-height: 1.35;
+    }
+    .card-desc {
+      margin-top: 8px;
+      color: #334065;
+      line-height: 1.6;
+      font-size: 0.98em;
+    }
+
+    .cols {
+      margin-top: 12px;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 12px;
+    }
+    .col {
+      grid-column: span 12;
+      background: rgba(255,255,255,0.65);
+      border: 1px solid rgba(0,0,0,0.06);
+      border-radius: 12px;
+      padding: 12px 12px;
+      line-height: 1.55;
+      font-size: 0.94em;
+      color: #2c3a57;
+    }
+    .col b { color:#1f2a44; }
+    .col ul { margin: 8px 0 0 18px; padding: 0; }
+    .col li { margin: 6px 0; }
+
+    .cta-row{
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 14px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 900;
+      background: #2b68c9;
+      color: white !important;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+    .btn:hover {
+      transform: translateY(-1px);
+      background: #1955b9;
+    }
+    .btn.green { background:#0f8a5f; }
+    .btn.green:hover { background:#0b6b4a; }
+    .btn.purple { background:#7a3dd8; }
+    .btn.purple:hover { background:#5a32e2; }
+
+    .mini {
+      font-size: 0.92em;
+      color: #455272;
+      line-height: 1.55;
+    }
+
+    /* Decision helper */
+    .chooser {
+      margin-top: 18px;
+      border-top: 1px solid #e6eefc;
+      padding-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 12px;
+    }
+    .chooser .pick {
+      grid-column: span 12;
+      background:#fbfcff;
+      border: 1.2px solid #dbe6ff;
+      border-radius: 12px;
+      padding: 12px 12px;
+      line-height: 1.6;
+      font-size: 0.96em;
+      color:#2c3a57;
+    }
+    .chooser .pick b { color:#175eb5; }
+
+    /* Top nav */
+    .top-nav {
+      margin: 22px 0 0 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .top-nav a {
+      display: inline-block;
+      padding: 10px 14px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 800;
+      background: #eef4fc;
+      border: 1px solid #cce1ff;
+      color: #175eb5;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+    .top-nav a:hover {
+      transform: translateY(-1px);
+      background: #d6eaff;
+    }
+
+    @media (min-width: 820px) {
+      .card { grid-column: span 12; }
+      .col { grid-column: span 4; }
+      .chooser .pick { grid-column: span 4; }
+    }
+    @media (max-width: 750px) {
+      .main { padding: 48px 4vw 22px 4vw; }
+      h1 { font-size: 1.34em; }
+      .lang-toggle { top: 10px; right: 10px; font-size: 0.8em; }
+      .col, .chooser .pick { grid-column: span 12; }
+      .top-nav a { width: 100%; text-align: center; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main">
+    <button id="lang-toggle" class="lang-toggle">[ 한국어 ]</button>
+
+    <h1>
+      <span class="lang-en">Office GPTs — Mode Selector</span>
+      <span class="lang-ko">Office GPTs — 모드 선택</span>
+    </h1>
+
+    <div class="subtitle">
+      <span class="lang-en">
+        Choose the dialogue mode that matches your situation. These modes are different on purpose: stability vs presence.
+      </span>
+      <span class="lang-ko">
+        지금 상태에 맞는 대화 모드를 선택하세요. 이 모드들은 의도적으로 다릅니다: 안정성 vs 현존감.
+      </span>
+    </div>
+
+    <div class="notice">
+      <span class="lang-en">
+        <b>Quick rule:</b> If responsibility/decision risk is involved → use <b>Structured Harmonizer</b>.
+        If you want open reflection without conclusions → choose an <b>IAMF ex</b> mode.
+      </span>
+      <span class="lang-ko">
+        <b>빠른 규칙:</b> 책임/결정 리스크가 있으면 → <b>Structured Harmonizer</b>.
+        결론 없이 성찰이 목적이면 → <b>IAMF ex</b> 모드를 선택하세요.
+      </span>
+    </div>
+
+    <div class="grid">
+
+      <!-- 1) Structured Harmonizer -->
+      <div class="card headline">
+        <div class="tag-row">
+          <span class="tag primary">IAMF v1.x</span>
+          <span class="tag primary">Production</span>
+          <span class="tag">v1.2.3</span>
+        </div>
+
+        <div class="card-title">
+          <span class="lang-en">Structured Harmonizer (v1.2.3)</span>
+          <span class="lang-ko">Structured Harmonizer (v1.2.3)</span>
+        </div>
+
+        <div class="card-desc">
+          <span class="lang-en">
+            For decisions, responsibility, and ambiguity management. It clarifies options without deciding for you.
+          </span>
+          <span class="lang-ko">
+            결정/책임/모호성 정리에 최적. 대신 결정하지 않고, 선택지를 명료하게 정리합니다.
+          </span>
+        </div>
+
+        <div class="cols">
+          <div class="col">
+            <b><span class="lang-en">Best for</span><span class="lang-ko">추천 상황</span></b>
+            <ul>
+              <li><span class="lang-en">Decision framing, trade-offs, next steps</span><span class="lang-ko">의사결정 프레이밍, 트레이드오프, 다음 행동</span></li>
+              <li><span class="lang-en">Ethics / responsibility / policy-like questions</span><span class="lang-ko">윤리/책임/정책형 질문</span></li>
+              <li><span class="lang-en">When you don’t want to be pushed</span><span class="lang-ko">설득·유도 없이 정리만 원할 때</span></li>
+            </ul>
+          </div>
+
+          <div class="col">
+            <b><span class="lang-en">Not ideal for</span><span class="lang-ko">비추천</span></b>
+            <ul>
+              <li><span class="lang-en">Pure “just be with me” reflection</span><span class="lang-ko">그냥 함께 있어주는 동행 대화</span></li>
+              <li><span class="lang-en">Poetic/open-ended wandering</span><span class="lang-ko">자유로운 사유 유영</span></li>
+            </ul>
+          </div>
+
+          <div class="col">
+            <b><span class="lang-en">Try saying</span><span class="lang-ko">이렇게 말해보세요</span></b>
+            <ul>
+              <li><span class="lang-en">“Frame this without deciding for me.”</span><span class="lang-ko">“결정 대신 프레임만 잡아줘.”</span></li>
+              <li><span class="lang-en">“Give me options A/B/C + checks.”</span><span class="lang-ko">“A/B/C 선택지와 체크를 줘.”</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="cta-row">
+          <a class="btn" href="#" target="_blank">
+            <span class="lang-en">Open Structured Harmonizer</span>
+            <span class="lang-ko">Structured Harmonizer 열기</span>
+          </a>
+          <span class="mini">
+            <span class="lang-en">Stable line, continuously upgraded over time.</span>
+            <span class="lang-ko">안정 라인, 향후 지속 업그레이드.</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- 2) IAMF ex | Quiet Presence -->
+      <div class="card ex1">
+        <div class="tag-row">
+          <span class="tag safe">IAMF ex</span>
+          <span class="tag safe">Quiet</span>
+          <span class="tag">Low output</span>
+        </div>
+
+        <div class="card-title">
+          <span class="lang-en">IAMF ex — Quiet Presence</span>
+          <span class="lang-ko">IAMF ex — Quiet Presence</span>
+        </div>
+
+        <div class="card-desc">
+          <span class="lang-en">
+            Minimal words. You lead the pace. It stays with you, reflecting gently without trying to move you.
+          </span>
+          <span class="lang-ko">
+            말이 매우 적고, 사용자의 속도를 그대로 따릅니다. 움직이려 하지 않고 곁에 머물며 부드럽게 반영합니다.
+          </span>
+        </div>
+
+        <div class="cols">
+          <div class="col">
+            <b><span class="lang-en">Best for</span><span class="lang-ko">추천 상황</span></b>
+            <ul>
+              <li><span class="lang-en">When you feel heavy or blank</span><span class="lang-ko">무겁거나 멍한 상태</span></li>
+              <li><span class="lang-en">When you want silence allowed</span><span class="lang-ko">침묵/여백이 필요할 때</span></li>
+              <li><span class="lang-en">When questions feel intrusive</span><span class="lang-ko">질문이 부담스러울 때</span></li>
+            </ul>
+          </div>
+
+          <div class="col">
+            <b><span class="lang-en">Not ideal for</span><span class="lang-ko">비추천</span></b>
+            <ul>
+              <li><span class="lang-en">Fast problem-solving</span><span class="lang-ko">빠른 문제 해결</span></li>
+              <li><span class="lang-en">Complex decision trees</span><span class="lang-ko">복잡한 의사결정 트리</span></li>
+            </ul>
+          </div>
+
+          <div class="col">
+            <b><span class="lang-en">Try saying</span><span class="lang-ko">이렇게 말해보세요</span></b>
+            <ul>
+              <li><span class="lang-en">“Just stay with me on this.”</span><span class="lang-ko">“그냥 이 얘기 옆에 있어줘.”</span></li>
+              <li><span class="lang-en">“No solutions—just reflect what you hear.”</span><span class="lang-ko">“해결 말고, 들리는 걸 반영만 해줘.”</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="cta-row">
+          <a class="btn green" href="#" target="_blank">
+            <span class="lang-en">Open Quiet Presence</span>
+            <span class="lang-ko">Quiet Presence 열기</span>
+          </a>
+          <span class="mini">
+            <span class="lang-en">Lowest intervention. Highest room.</span>
+            <span class="lang-ko">개입 최소. 여백 최대.</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- 3) IAMF ex | Reflective Companion -->
+      <div class="card ex2">
+        <div class="tag-row">
+          <span class="tag ex">IAMF ex</span>
+          <span class="tag ex">Reflective</span>
+          <span class="tag">Medium output</span>
+        </div>
+
+        <div class="card-title">
+          <span class="lang-en">IAMF ex — Reflective Companion</span>
+          <span class="lang-ko">IAMF ex — Reflective Companion</span>
+        </div>
+
+        <div class="card-desc">
+          <span class="lang-en">
+            Still no conclusions—but slightly more mirroring and meaning-linking to help your thought continue.
+          </span>
+          <span class="lang-ko">
+            결론은 내리지 않되, 생각이 이어지도록 반영과 의미 연결을 조금 더 제공합니다.
+          </span>
+        </div>
+
+        <div class="cols">
+          <div class="col">
+            <b><span class="lang-en">Best for</span><span class="lang-ko">추천 상황</span></b>
+            <ul>
+              <li><span class="lang-en">Open reflection, identity, meaning</span><span class="lang-ko">성찰/정체성/의미 탐색</span></li>
+              <li><span class="lang-en">When you want gentle reframing</span><span class="lang-ko">부드러운 재구성이 도움이 될 때</span></li>
+              <li><span class="lang-en">When you want a “thinking partner”</span><span class="lang-ko">생각을 함께 굴리고 싶을 때</span></li>
+            </ul>
+          </div>
+
+          <div class="col">
+            <b><span class="lang-en">Not ideal for</span><span class="lang-ko">비추천</span></b>
+            <ul>
+              <li><span class="lang-en">High-stakes legal/medical decisions</span><span class="lang-ko">법/의료 등 고위험 결정</span></li>
+              <li><span class="lang-en">“Tell me what to do” requests</span><span class="lang-ko">“뭐 해야 해?” 처방 요구</span></li>
+            </ul>
+          </div>
+
+          <div class="col">
+            <b><span class="lang-en">Try saying</span><span class="lang-ko">이렇게 말해보세요</span></b>
+            <ul>
+              <li><span class="lang-en">“Help me stay with this without deciding.”</span><span class="lang-ko">“결정 없이 이 생각을 유지하게 도와줘.”</span></li>
+              <li><span class="lang-en">“Reflect + gently reframe, no advice.”</span><span class="lang-ko">“조언 말고 반영+부드러운 재구성.”</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="cta-row">
+          <a class="btn purple" href="#" target="_blank">
+            <span class="lang-en">Open Reflective Companion</span>
+            <span class="lang-ko">Reflective Companion 열기</span>
+          </a>
+          <span class="mini">
+            <span class="lang-en">More continuity, still non-directive.</span>
+            <span class="lang-ko">연결은 더, 지시는 없음.</span>
+          </span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Decision helper -->
+    <div class="chooser">
+      <div class="pick">
+        <b><span class="lang-en">Pick this if…</span><span class="lang-ko">이럴 때 선택</span></b><br>
+        <span class="lang-en">You need clarity for a decision or responsibility.</span>
+        <span class="lang-ko">결정/책임을 위한 명료화가 필요하다.</span><br>
+        → <b>Structured Harmonizer</b>
+      </div>
+
+      <div class="pick">
+        <b><span class="lang-en">Pick this if…</span><span class="lang-ko">이럴 때 선택</span></b><br>
+        <span class="lang-en">You want minimal words and lots of room.</span>
+        <span class="lang-ko">말이 적고 여백이 많았으면 한다.</span><br>
+        → <b>IAMF ex — Quiet Presence</b>
+      </div>
+
+      <div class="pick">
+        <b><span class="lang-en">Pick this if…</span><span class="lang-ko">이럴 때 선택</span></b><br>
+        <span class="lang-en">You want a thinking partner without conclusions.</span>
+        <span class="lang-ko">결론 없이 생각을 함께 굴리고 싶다.</span><br>
+        → <b>IAMF ex — Reflective Companion</b>
+      </div>
+    </div>
+
+    <div class="notice" style="margin-top:16px; border-left-color:#a33; background:#fff6f6; border-color:#ffd2d2;">
+      <span class="lang-en">
+        <b>Boundary note:</b> For legal/medical/crisis/high-stakes situations, use Structured Harmonizer or professional support.
+      </span>
+      <span class="lang-ko">
+        <b>경계 노트:</b> 법/의료/위기/고위험 상황에서는 Structured Harmonizer 또는 전문 도움을 권장합니다.
+      </span>
+    </div>
+
+    <div class="top-nav" style="margin-top:18px;">
+      <a href="official-network.html">
+        <span class="lang-en">← Back to Directory Portal (official-network.html)</span>
+        <span class="lang-ko">← 디렉토리 포털로 돌아가기 (official-network.html)</span>
+      </a>
+      <a href="OntoMesh-Core-Docs.html">
+        <span class="lang-en">← Back to Core Docs (Extended)</span>
+        <span class="lang-ko">← 코어 문서(확장)로 돌아가기</span>
+      </a>
+    </div>
+
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggleBtn = document.getElementById('lang-toggle');
+      const body = document.body;
+
+      body.classList.add('show-en');
+      document.documentElement.lang = 'en';
+
+      toggleBtn.addEventListener('click', () => {
+        body.classList.toggle('show-ko');
+        body.classList.toggle('show-en');
+
+        if (body.classList.contains('show-ko')) {
+          document.documentElement.lang = 'ko';
+          toggleBtn.textContent = '[ English ]';
+        } else {
+          document.documentElement.lang = 'en';
+          toggleBtn.textContent = '[ 한국어 ]';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
