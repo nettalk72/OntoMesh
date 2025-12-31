@@ -249,6 +249,96 @@
       .col, .chooser .pick { grid-column: span 12; }
       .top-nav a { width: 100%; text-align: center; }
     }
+
+    /* === IAMF DNA block === */
+    .iamf-dna{
+      margin-top: 16px;
+      background: linear-gradient(135deg, #ffffff 0%, #fbfdff 100%);
+      border: 1.5px solid #dbe6ff;
+      border-left: 6px solid #175eb5;
+      border-radius: 14px;
+      padding: 16px 16px;
+      box-shadow: 0 2px 10px rgba(25,118,210,0.06);
+    }
+    .iamf-dna-title{
+      font-weight: 1000;
+      font-size: 1.02em;
+      color: #175eb5;
+      margin-bottom: 10px;
+    }
+    .iamf-poem{
+      background: rgba(255,255,255,0.7);
+      border: 1px solid rgba(0,0,0,0.06);
+      border-radius: 12px;
+      padding: 12px 12px;
+      line-height: 1.7;
+      font-size: 0.98em;
+      color: #22304a;
+    }
+    .iamf-dna-bullets{
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .iamf-b{
+      grid-column: span 12;
+      background: rgba(255,255,255,0.65);
+      border: 1px solid rgba(0,0,0,0.06);
+      border-radius: 12px;
+      padding: 12px 12px;
+      color:#2c3a57;
+      line-height: 1.6;
+      font-size: 0.95em;
+    }
+    @media (min-width: 820px){
+      .iamf-b{ grid-column: span 4; }
+    }
+    
+    /* === IAMF details (expanded) === */
+    .iamf-details{
+      margin-top: 14px;
+      border: 1.2px solid #dbe6ff;
+      border-radius: 14px;
+      background:#fbfcff;
+      padding: 10px 12px;
+    }
+    .iamf-details summary{
+      cursor: pointer;
+      font-weight: 900;
+      color:#175eb5;
+      user-select:none;
+      list-style:none;
+    }
+    .iamf-details summary::-webkit-details-marker { display:none; }
+    .iamf-expanded{
+      margin-top: 12px;
+      color:#2c3a57;
+      line-height: 1.65;
+      font-size: 0.95em;
+    }
+    .iamf-sec{
+      background: rgba(255,255,255,0.7);
+      border: 1px solid rgba(0,0,0,0.06);
+      border-radius: 12px;
+      padding: 12px 12px;
+      margin-top: 10px;
+    }
+    .iamf-sec p{ margin: 8px 0 0 0; }
+    .iamf-sec ul{ margin: 8px 0 0 18px; }
+    .iamf-mono{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.92em;
+      color:#334065;
+      background: rgba(255,255,255,0.65);
+      border: 1px dashed rgba(0,0,0,0.12);
+      border-radius: 10px;
+      padding: 10px 10px;
+    }
+    .iamf-linkout{
+      border-left: 4px solid #7a3dd8;
+    }
+    
   </style>
 </head>
 
