@@ -200,7 +200,7 @@
       background: #d6eaff;
     }
 
-    /* NEW: Core Snapshot layout */
+    /* Core Snapshot layout */
     .core-snapshot {
       margin-top: 14px;
       border-radius: 14px;
@@ -275,6 +275,16 @@
       transform: translateY(-1px);
       background: #d6eaff;
     }
+    /* NEW: Entry highlight button */
+    .core-cta a.entry {
+      background: #7a3dd8;
+      color: #fff !important;
+      border: 1px solid #7a3dd8;
+    }
+    .core-cta a.entry:hover {
+      background: #5a32e2;
+    }
+
     .core-mini {
       margin-top: 10px;
       color: #536193;
@@ -320,7 +330,7 @@
       </span>
     </div>
 
-    <!-- NEW: Core Snapshot (fills the "empty" feeling) -->
+    <!-- Core Snapshot -->
     <div class="core-snapshot">
       <h3>
         <span class="lang-en">Core Snapshot (Why the Core Docs exist)</span>
@@ -376,10 +386,17 @@
       </div>
 
       <div class="core-cta">
+        <!-- NEW: Official Entry -->
+        <a class="entry" href="official-entry.html">
+          <span class="lang-en">Start Here (Official Entry)</span>
+          <span class="lang-ko">여기서 시작 (Official Entry)</span>
+        </a>
+
         <a class="primary" href="official-core.html">
           <span class="lang-en">Open Core Docs (Full)</span>
           <span class="lang-ko">코어 문서 열기 (전체)</span>
         </a>
+
         <a href="official-core.html#architecture">
           <span class="lang-en">Architecture</span>
           <span class="lang-ko">아키텍처</span>
@@ -394,7 +411,7 @@
         </a>
       </div>
     </div>
-    <!-- END NEW -->
+    <!-- END Core Snapshot -->
 
     <div class="desc" style="margin-top:16px;">
       <span class="lang-en">
@@ -409,10 +426,7 @@
       </span>
     </div>
 
-    <!-- =========================
-         Core Internal Domains
-         (kept as requested)
-         ========================= -->
+    <!-- Core Internal Domains -->
     <h2 id="core-internal" class="group-title">
       <span class="lang-en">Core Internal Domains</span>
       <span class="lang-ko">내부 핵심 도메인</span>
