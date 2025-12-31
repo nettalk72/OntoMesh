@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>Official GPTs — Mode Selector</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Choose the right IAMF dialogue mode: Structured Harmonizer (v1.2.3), IAMF ex Quiet Presence, IAMF ex Reflective Companion." />
+  <meta name="description" content="Choose the right dialogue mode: Structured Harmonizer (v1.2.3), IAMF ex Quiet Presence, IAMF ex Reflective Companion, and Harmony — Adaptive Presence (Unified Mode)." />
   <style>
     body {
       background: #f8fafc;
@@ -106,6 +106,15 @@
       border-left: 6px solid #7a3dd8;
       background: linear-gradient(135deg, #faf6ff 0%, #f6f1ff 100%);
     }
+
+    .card.unified {
+      border-left: 6px solid #ff8c00;
+      background: linear-gradient(135deg, #fff8ef 0%, #fff3e0 100%);
+    }
+    .tag.unified { color:#8a4b00; border-color:#ffd8b5; }
+    .btn.orange { background:#ff8c00; }
+    .btn.orange:hover { background:#e57c00; }
+
 
     .tag-row {
       display:flex;
@@ -608,29 +617,71 @@
 
     </div>
 
-    <!-- Decision helper -->
-    <div class="chooser">
-      <div class="pick">
-        <b><span class="lang-en">Pick this if…</span><span class="lang-ko">이럴 때 선택</span></b><br>
-        <span class="lang-en">You need clarity for a decision or responsibility.</span>
-        <span class="lang-ko">결정/책임을 위한 명료화가 필요하다.</span><br>
-        → <b>Structured Harmonizer</b>
+    <!-- 4) Harmony | Adaptive Presence (Unified Mode) -->
+    <div class="card unified">
+      <div class="tag-row">
+        <span class="tag unified">Unified</span>
+        <span class="tag unified">Adaptive</span>
+        <span class="tag">One GPT</span>
       </div>
 
-      <div class="pick">
-        <b><span class="lang-en">Pick this if…</span><span class="lang-ko">이럴 때 선택</span></b><br>
-        <span class="lang-en">You want minimal words and lots of room.</span>
-        <span class="lang-ko">말이 적고 여백이 많았으면 한다.</span><br>
-        → <b>IAMF ex — Quiet Presence</b>
+      <div class="card-title">
+        <span class="lang-en">Harmony — Adaptive Presence</span>
+        <span class="lang-ko">Harmony — Adaptive Presence</span>
       </div>
 
-      <div class="pick">
-        <b><span class="lang-en">Pick this if…</span><span class="lang-ko">이럴 때 선택</span></b><br>
-        <span class="lang-en">You want a thinking partner without conclusions.</span>
-        <span class="lang-ko">결론 없이 생각을 함께 굴리고 싶다.</span><br>
-        → <b>IAMF ex — Reflective Companion</b>
+      <div class="card-desc">
+        <span class="lang-en">
+          A unified mode that adapts its “intervention level” to your situation—without exposing the framework.
+          It can stay quiet, reflect more, or structure decisions when risk is present.
+        </span>
+        <span class="lang-ko">
+          상황에 따라 ‘개입 레벨’을 자연스럽게 조절하는 통합 모드입니다(프레임워크를 드러내지 않음).
+          조용히 머물 수도, 더 반영할 수도, 리스크가 있으면 구조화도 가능합니다.
+        </span>
       </div>
-    </div>
+
+      <div class="cols">
+        <div class="col">
+          <b><span class="lang-en">Best for</span><span class="lang-ko">추천 상황</span></b>
+          <ul>
+            <li><span class="lang-en">You don’t want to choose a mode manually</span><span class="lang-ko">모드를 직접 고르기 싫을 때</span></li>
+            <li><span class="lang-en">Mixed situations: reflection + practical clarity</span><span class="lang-ko">성찰 + 실무적 명료화가 섞인 상황</span></li>
+            <li><span class="lang-en">Long threads that change tone over time</span><span class="lang-ko">대화가 길어지며 톤이 변하는 흐름</span></li>
+          </ul>
+        </div>
+
+        <div class="col">
+          <b><span class="lang-en">Not ideal for</span><span class="lang-ko">비추천</span></b>
+          <ul>
+            <li><span class="lang-en">If you want strict, fixed behavior only</span><span class="lang-ko">항상 고정된 행동만 원할 때</span></li>
+            <li><span class="lang-en">If you prefer a clearly labeled “quiet-only” space</span><span class="lang-ko">명확히 ‘조용한 모드만’ 원할 때</span></li>
+          </ul>
+        </div>
+
+        <div class="col">
+          <b><span class="lang-en">Try saying</span><span class="lang-ko">이렇게 말해보세요</span></b>
+          <ul>
+            <li><span class="lang-en">“Start quiet, then adapt if needed.”</span><span class="lang-ko">“조용히 시작하고, 필요하면 조절해줘.”</span></li>
+            <li><span class="lang-en">“If this becomes high-stakes, structure it.”</span><span class="lang-ko">“고위험이면 구조화로 전환해줘.”</span></li>
+            <li><span class="lang-en">“No advice—only clarity and reflection.”</span><span class="lang-ko">“조언 말고 명료화와 반영만.”</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cta-row">
+        <a class="btn orange"
+           href="https://chatgpt.com/g/g-695517758e608191a109be0a515d5ee5-harmony-adaptive-presence"
+           target="_blank" rel="noopener noreferrer">
+          <span class="lang-en">Open Adaptive Presence</span>
+          <span class="lang-ko">Adaptive Presence 열기</span>
+        </a>
+        <span class="mini">
+          <span class="lang-en">Unified: quiet ↔ reflective ↔ structured, as needed.</span>
+          <span class="lang-ko">통합형: 조용함 ↔ 반영 ↔ 구조화를 필요에 따라.</span>
+        </span>
+      </div>
+    </div>    
 
     <details class="iamf-details">
       <summary>
