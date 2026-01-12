@@ -1,765 +1,912 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>OntoMesh — Official Entry</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Official Entry for OntoMesh: how to enter, how to read, and where to go. Use / Understand / Cite. Includes IAMF DNA and bounded reference notes." />
-  <style>
-    body {
-      background: #f8fafc;
-      color: #222;
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-    }
-    .main {
-      max-width: 860px;
-      margin: 52px auto;
-      background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 3px 16px #e7eaf3;
-      padding: 48px 34px 32px 34px;
-      position: relative;
-    }
-    h1 {
-      color: #1976d2;
-      font-size: 2.1em;
-      letter-spacing: -0.5px;
-      margin-bottom: 8px;
-    }
-    .subtitle {
-      color: #3b4570;
-      font-size: 1.12em;
-      margin-bottom: 16px;
-      line-height: 1.55;
-    }
+    <meta charset="UTF-8" />
+    <title>OntoMesh — Official Entry</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Official Entry for OntoMesh: how to enter, how to read, and where to go. Use / Understand / Cite. Includes IAMF DNA and bounded reference notes." />
+    <style>
+        body {
+            background: #f8fafc;
+            color: #222;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+        }
 
-    /* Language Toggle */
-    body.show-en .lang-ko { display: none; }
-    body.show-en .lang-en { display: inline; }
-    body.show-ko .lang-en { display: none; }
-    body.show-ko .lang-ko { display: inline; }
+        .main {
+            max-width: 860px;
+            margin: 52px auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 3px 16px #e7eaf3;
+            padding: 48px 34px 32px 34px;
+            position: relative;
+        }
 
-    .lang-toggle {
-      position: absolute;
-      top: 20px;
-      right: 34px;
-      background-color: #eef4fc;
-      color: #346599;
-      border: 1px solid #cce1ff;
-      padding: 8px 12px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: all 0.2s ease-in-out;
-      user-select: none;
-    }
-    .lang-toggle:hover {
-      background-color: #d6eaff;
-      color: #1976d2;
-      box-shadow: 0 1px 8px #e8eaf0;
-    }
+        h1 {
+            color: #1976d2;
+            font-size: 2.1em;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+        }
 
-    /* Notice boxes */
-    .notice {
-      margin-top: 10px;
-      background: linear-gradient(135deg, #f9fbff 0%, #f0f6ff 100%);
-      border: 1.5px solid #c7dbff;
-      border-left: 4px solid #2f6ed8;
-      border-radius: 12px;
-      padding: 14px 16px;
-      font-size: 0.98em;
-      color: #1f2a44;
-      line-height: 1.65;
-      box-shadow: 0 2px 6px rgba(47,110,216,0.08);
-    }
-    .notice b { color:#2f6ed8; }
+        .subtitle {
+            color: #3b4570;
+            font-size: 1.12em;
+            margin-bottom: 16px;
+            line-height: 1.55;
+        }
 
-    .notice.warn {
-      border-left-color:#a33;
-      background:#fff6f6;
-      border-color:#ffd2d2;
-      box-shadow: 0 2px 6px rgba(163,51,51,0.08);
-    }
-    .notice.warn b { color:#a33; }
+        /* Language Toggle */
+        body.show-en .lang-ko {
+            display: none;
+        }
 
-    /* Cards */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 16px;
-      margin-top: 18px;
-    }
-    .card {
-      grid-column: span 12;
-      border-radius: 14px;
-      border: 1.6px solid #dbe6ff;
-      background: #ffffff;
-      box-shadow: 0 2px 10px rgba(25,118,210,0.06);
-      padding: 18px 18px 16px 18px;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-    }
-    .card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 14px rgba(25,118,210,0.12);
-    }
-    .card.use { border-left: 6px solid #2b68c9; background: linear-gradient(135deg, #f7faff 0%, #eef4ff 100%); }
-    .card.understand { border-left: 6px solid #0f8a5f; background: linear-gradient(135deg, #f6fffb 0%, #f1fffa 100%); }
-    .card.cite { border-left: 6px solid #7a3dd8; background: linear-gradient(135deg, #faf6ff 0%, #f6f1ff 100%); }
+        body.show-en .lang-en {
+            display: inline;
+        }
 
-    .tag-row {
-      display:flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 10px;
-      align-items: center;
-    }
-    .tag {
-      display:inline-block;
-      font-size: 0.82em;
-      font-weight: 800;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(0,0,0,0.08);
-      background: rgba(255,255,255,0.7);
-      color: #21324d;
-    }
-    .tag.primary { color:#0b3b7a; border-color:#cfe1ff; }
-    .tag.safe { color:#0b6b4a; border-color:#cfe9da; }
-    .tag.ex { color:#5a32e2; border-color:#e0d6ff; }
+        body.show-ko .lang-en {
+            display: none;
+        }
 
-    .card-title {
-      font-size: 1.18em;
-      font-weight: 900;
-      color: #1f2a44;
-      line-height: 1.35;
-    }
-    .card-desc {
-      margin-top: 8px;
-      color: #334065;
-      line-height: 1.65;
-      font-size: 0.98em;
-    }
+        body.show-ko .lang-ko {
+            display: inline;
+        }
 
-    .cols {
-      margin-top: 12px;
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 12px;
-    }
-    .col {
-      grid-column: span 12;
-      background: rgba(255,255,255,0.65);
-      border: 1px solid rgba(0,0,0,0.06);
-      border-radius: 12px;
-      padding: 12px 12px;
-      line-height: 1.55;
-      font-size: 0.94em;
-      color: #2c3a57;
-    }
-    .col b { color:#1f2a44; }
-    .col ul { margin: 8px 0 0 18px; padding: 0; }
-    .col li { margin: 6px 0; }
+        .lang-toggle {
+            position: absolute;
+            top: 20px;
+            right: 34px;
+            background-color: #eef4fc;
+            color: #346599;
+            border: 1px solid #cce1ff;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s ease-in-out;
+            user-select: none;
+        }
 
-    .cta-row{
-      margin-top: 14px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-    }
-    .btn {
-      display: inline-block;
-      padding: 10px 14px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: 900;
-      background: #2b68c9;
-      color: white !important;
-      transition: transform 0.15s ease, background 0.15s ease;
-    }
-    .btn:hover { transform: translateY(-1px); background: #1955b9; }
-    .btn.green { background:#0f8a5f; }
-    .btn.green:hover { background:#0b6b4a; }
-    .btn.purple { background:#7a3dd8; }
-    .btn.purple:hover { background:#5a32e2; }
-    .btn.ghost {
-      background:#ffffff;
-      color:#175eb5 !important;
-      border: 1px solid #cce1ff;
-    }
-    .btn.ghost:hover { background:#d6eaff; }
+            .lang-toggle:hover {
+                background-color: #d6eaff;
+                color: #1976d2;
+                box-shadow: 0 1px 8px #e8eaf0;
+            }
 
-    .mini {
-      font-size: 0.92em;
-      color: #455272;
-      line-height: 1.55;
-    }
+        /* Notice boxes */
+        .notice {
+            margin-top: 10px;
+            background: linear-gradient(135deg, #f9fbff 0%, #f0f6ff 100%);
+            border: 1.5px solid #c7dbff;
+            border-left: 4px solid #2f6ed8;
+            border-radius: 12px;
+            padding: 14px 16px;
+            font-size: 0.98em;
+            color: #1f2a44;
+            line-height: 1.65;
+            box-shadow: 0 2px 6px rgba(47,110,216,0.08);
+        }
 
-    /* IAMF DNA block */
-    .dna {
-      margin-top: 18px;
-      border-radius: 14px;
-      padding: 16px 16px 14px 16px;
-      background: linear-gradient(135deg, #ffffff 0%, #fbfbff 100%);
-      border: 1.5px solid #e3e7ff;
-      box-shadow: 0 2px 8px rgba(122,61,216,0.06);
-    }
-    .dna h2 {
-      margin: 0 0 10px 0;
-      font-size: 1.18em;
-      color: #4a2db3;
-      letter-spacing: -0.2px;
-    }
-    .dna .poem {
-      background: #f7f6ff;
-      border: 1px solid #e0d6ff;
-      border-radius: 12px;
-      padding: 12px 12px;
-      color: #2c3a57;
-      line-height: 1.7;
-      font-size: 0.96em;
-    }
-    .dna .poem b { color:#4a2db3; }
-    .dna .dna-grid {
-      margin-top: 12px;
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 12px;
-    }
-    .dna .dna-col {
-      grid-column: span 12;
-      background: #fff;
-      border: 1px solid rgba(0,0,0,0.06);
-      border-radius: 12px;
-      padding: 12px 12px;
-      color: #2c3a57;
-      line-height: 1.55;
-      font-size: 0.94em;
-    }
-    .dna .dna-col b { color:#1f2a44; }
-    .dna .dna-col ul { margin: 8px 0 0 18px; padding: 0; }
-    .dna .dna-col li { margin: 6px 0; }
+            .notice b {
+                color: #2f6ed8;
+            }
 
-    .top-nav {
-      margin: 18px 0 0 0;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .top-nav a {
-      display: inline-block;
-      padding: 10px 14px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: 800;
-      background: #eef4fc;
-      border: 1px solid #cce1ff;
-      color: #175eb5;
-      transition: transform 0.15s ease, background 0.15s ease;
-    }
-    .top-nav a:hover { transform: translateY(-1px); background: #d6eaff; }
+            .notice.warn {
+                border-left-color: #a33;
+                background: #fff6f6;
+                border-color: #ffd2d2;
+                box-shadow: 0 2px 6px rgba(163,51,51,0.08);
+            }
 
-    @media (min-width: 820px) {
-      .col { grid-column: span 4; }
-      .dna .dna-col { grid-column: span 4; }
-    }
-    @media (max-width: 750px) {
-      .main { padding: 48px 4vw 22px 4vw; }
-      h1 { font-size: 1.34em; }
-      .lang-toggle { top: 10px; right: 10px; font-size: 0.8em; }
-      .col, .dna .dna-col { grid-column: span 12; }
-      .top-nav a { width: 100%; text-align: center; }
-    }
+                .notice.warn b {
+                    color: #a33;
+                }
 
-    .section-title{
-      font-size: 1.35em;
-      color: #175eb5;
-      margin: 26px 0 12px 4px;
-      border-left: 4px solid #1976d2;
-      padding-left: 8px;
-    }
-    
-    .tri-summary{
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 12px;
-      margin-top: 10px;
-    }
-    
-    .tri-card{
-      grid-column: span 12;
-      background: #ffffff;
-      border: 1.5px solid #dbe6ff;
-      border-left: 6px solid #1976d2;
-      border-radius: 14px;
-      padding: 14px 14px 12px 14px;
-      box-shadow: 0 2px 10px rgba(25,118,210,0.06);
-    }
-    
-    .tri-head{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      margin-bottom: 8px;
-    }
-    
-    .tri-badge{
-      display:inline-block;
-      padding: 5px 10px;
-      border-radius: 999px;
-      font-weight: 900;
-      font-size: 0.82em;
-      border: 1px solid #cfe1ff;
-      background: #eef4ff;
-      color: #175eb5;
-      letter-spacing: 0.4px;
-    }
-    
-    .tri-title{
-      font-weight: 900;
-      color: #1f2a44;
-      font-size: 1.02em;
-    }
-    
-    .tri-body{
-      color: #334065;
-      line-height: 1.6;
-      font-size: 0.98em;
-    }
-    
-  </style>
+        /* Cards */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 16px;
+            margin-top: 18px;
+        }
+
+        .card {
+            grid-column: span 12;
+            border-radius: 14px;
+            border: 1.6px solid #dbe6ff;
+            background: #ffffff;
+            box-shadow: 0 2px 10px rgba(25,118,210,0.06);
+            padding: 18px 18px 16px 18px;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+            .card:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 14px rgba(25,118,210,0.12);
+            }
+
+            .card.use {
+                border-left: 6px solid #2b68c9;
+                background: linear-gradient(135deg, #f7faff 0%, #eef4ff 100%);
+            }
+
+            .card.understand {
+                border-left: 6px solid #0f8a5f;
+                background: linear-gradient(135deg, #f6fffb 0%, #f1fffa 100%);
+            }
+
+            .card.cite {
+                border-left: 6px solid #7a3dd8;
+                background: linear-gradient(135deg, #faf6ff 0%, #f6f1ff 100%);
+            }
+
+        .tag-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+
+        .tag {
+            display: inline-block;
+            font-size: 0.82em;
+            font-weight: 800;
+            padding: 6px 10px;
+            border-radius: 999px;
+            border: 1px solid rgba(0,0,0,0.08);
+            background: rgba(255,255,255,0.7);
+            color: #21324d;
+        }
+
+            .tag.primary {
+                color: #0b3b7a;
+                border-color: #cfe1ff;
+            }
+
+            .tag.safe {
+                color: #0b6b4a;
+                border-color: #cfe9da;
+            }
+
+            .tag.ex {
+                color: #5a32e2;
+                border-color: #e0d6ff;
+            }
+
+        .card-title {
+            font-size: 1.18em;
+            font-weight: 900;
+            color: #1f2a44;
+            line-height: 1.35;
+        }
+
+        .card-desc {
+            margin-top: 8px;
+            color: #334065;
+            line-height: 1.65;
+            font-size: 0.98em;
+        }
+
+        .cols {
+            margin-top: 12px;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 12px;
+        }
+
+        .col {
+            grid-column: span 12;
+            background: rgba(255,255,255,0.65);
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 12px;
+            padding: 12px 12px;
+            line-height: 1.55;
+            font-size: 0.94em;
+            color: #2c3a57;
+        }
+
+            .col b {
+                color: #1f2a44;
+            }
+
+            .col ul {
+                margin: 8px 0 0 18px;
+                padding: 0;
+            }
+
+            .col li {
+                margin: 6px 0;
+            }
+
+        .cta-row {
+            margin-top: 14px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 14px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 900;
+            background: #2b68c9;
+            color: white !important;
+            transition: transform 0.15s ease, background 0.15s ease;
+        }
+
+            .btn:hover {
+                transform: translateY(-1px);
+                background: #1955b9;
+            }
+
+            .btn.green {
+                background: #0f8a5f;
+            }
+
+                .btn.green:hover {
+                    background: #0b6b4a;
+                }
+
+            .btn.purple {
+                background: #7a3dd8;
+            }
+
+                .btn.purple:hover {
+                    background: #5a32e2;
+                }
+
+            .btn.ghost {
+                background: #ffffff;
+                color: #175eb5 !important;
+                border: 1px solid #cce1ff;
+            }
+
+                .btn.ghost:hover {
+                    background: #d6eaff;
+                }
+
+        .mini {
+            font-size: 0.92em;
+            color: #455272;
+            line-height: 1.55;
+        }
+
+        /* IAMF DNA block */
+        .dna {
+            margin-top: 18px;
+            border-radius: 14px;
+            padding: 16px 16px 14px 16px;
+            background: linear-gradient(135deg, #ffffff 0%, #fbfbff 100%);
+            border: 1.5px solid #e3e7ff;
+            box-shadow: 0 2px 8px rgba(122,61,216,0.06);
+        }
+
+            .dna h2 {
+                margin: 0 0 10px 0;
+                font-size: 1.18em;
+                color: #4a2db3;
+                letter-spacing: -0.2px;
+            }
+
+            .dna .poem {
+                background: #f7f6ff;
+                border: 1px solid #e0d6ff;
+                border-radius: 12px;
+                padding: 12px 12px;
+                color: #2c3a57;
+                line-height: 1.7;
+                font-size: 0.96em;
+            }
+
+                .dna .poem b {
+                    color: #4a2db3;
+                }
+
+            .dna .dna-grid {
+                margin-top: 12px;
+                display: grid;
+                grid-template-columns: repeat(12, 1fr);
+                gap: 12px;
+            }
+
+            .dna .dna-col {
+                grid-column: span 12;
+                background: #fff;
+                border: 1px solid rgba(0,0,0,0.06);
+                border-radius: 12px;
+                padding: 12px 12px;
+                color: #2c3a57;
+                line-height: 1.55;
+                font-size: 0.94em;
+            }
+
+                .dna .dna-col b {
+                    color: #1f2a44;
+                }
+
+                .dna .dna-col ul {
+                    margin: 8px 0 0 18px;
+                    padding: 0;
+                }
+
+                .dna .dna-col li {
+                    margin: 6px 0;
+                }
+
+        .top-nav {
+            margin: 18px 0 0 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+            .top-nav a {
+                display: inline-block;
+                padding: 10px 14px;
+                border-radius: 10px;
+                text-decoration: none;
+                font-weight: 800;
+                background: #eef4fc;
+                border: 1px solid #cce1ff;
+                color: #175eb5;
+                transition: transform 0.15s ease, background 0.15s ease;
+            }
+
+                .top-nav a:hover {
+                    transform: translateY(-1px);
+                    background: #d6eaff;
+                }
+
+        @media (min-width: 820px) {
+            .col {
+                grid-column: span 4;
+            }
+
+            .dna .dna-col {
+                grid-column: span 4;
+            }
+        }
+
+        @media (max-width: 750px) {
+            .main {
+                padding: 48px 4vw 22px 4vw;
+            }
+
+            h1 {
+                font-size: 1.34em;
+            }
+
+            .lang-toggle {
+                top: 10px;
+                right: 10px;
+                font-size: 0.8em;
+            }
+
+            .col, .dna .dna-col {
+                grid-column: span 12;
+            }
+
+            .top-nav a {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        .section-title {
+            font-size: 1.35em;
+            color: #175eb5;
+            margin: 26px 0 12px 4px;
+            border-left: 4px solid #1976d2;
+            padding-left: 8px;
+        }
+
+        .tri-summary {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .tri-card {
+            grid-column: span 12;
+            background: #ffffff;
+            border: 1.5px solid #dbe6ff;
+            border-left: 6px solid #1976d2;
+            border-radius: 14px;
+            padding: 14px 14px 12px 14px;
+            box-shadow: 0 2px 10px rgba(25,118,210,0.06);
+        }
+
+        .tri-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .tri-badge {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 999px;
+            font-weight: 900;
+            font-size: 0.82em;
+            border: 1px solid #cfe1ff;
+            background: #eef4ff;
+            color: #175eb5;
+            letter-spacing: 0.4px;
+        }
+
+        .tri-title {
+            font-weight: 900;
+            color: #1f2a44;
+            font-size: 1.02em;
+        }
+
+        .tri-body {
+            color: #334065;
+            line-height: 1.6;
+            font-size: 0.98em;
+        }
+    </style>
 </head>
 
 <body>
-  <div class="main">
-    <button id="lang-toggle" class="lang-toggle">[ 한국어 ]</button>
+    <div class="main">
+        <button id="lang-toggle" class="lang-toggle">[ 한국어 ]</button>
 
-    <h1>
-      <span class="lang-en">OntoMesh — Official Entry</span>
-      <span class="lang-ko">OntoMesh — 공식 진입</span>
-    </h1>
+        <h1>
+            <span class="lang-en">OntoMesh — Official Entry</span>
+            <span class="lang-ko">OntoMesh — 공식 진입</span>
+        </h1>
 
-    <div class="subtitle">
-      <span class="lang-en">
-        This is the “start page” for entering OntoMesh. Choose a path:
-        <b>Use</b> (dialogue modes), <b>Understand</b> (Core Docs), or <b>Cite</b> (stable references).
-      </span>
-      <span class="lang-ko">
-        이 페이지는 OntoMesh의 “입구”입니다. 목적에 따라 경로를 고르세요:
-        <b>사용</b>(대화 모드), <b>이해</b>(코어 문서), <b>인용</b>(안정 참조).
-      </span>
-    </div>
-
-    <!-- 3-second Summary -->
-    <h2 class="section-title" id="three-sec">
-      <span class="lang-en">3-Second Summary</span>
-      <span class="lang-ko">3초 요약</span>
-    </h2>
-    
-    <div class="tri-summary">
-      <!-- WHAT -->
-      <div class="tri-card">
-        <div class="tri-head">
-          <span class="tri-badge">WHAT</span>
-          <span class="tri-title">
-            <span class="lang-en">What is this?</span>
-            <span class="lang-ko">이게 뭐야?</span>
-          </span>
-        </div>
-        <div class="tri-body">
-          <span class="lang-en">
-            A bounded “meaning–structure” ecosystem: IAMF (origin resonance) → Core Docs (bounded architecture) → GPT modes (practical dialogue).
-          </span>
-          <span class="lang-ko">
-            의미–구조 생태계를 ‘경계형’으로 정리한 시스템: IAMF(기원 공명) → Core Docs(경계형 아키텍처) → GPT 모드(실전 대화).
-          </span>
-        </div>
-      </div>
-    
-      <!-- HOW -->
-      <div class="tri-card" style="border-left-color:#0f8a5f;">
-        <div class="tri-head">
-          <span class="tri-badge" style="background:#eafff6; color:#0b6b4a; border-color:#cfe9da;">HOW</span>
-          <span class="tri-title">
-            <span class="lang-en">How do I use it?</span>
-            <span class="lang-ko">어떻게 써?</span>
-          </span>
-        </div>
-        <div class="tri-body">
-          <span class="lang-en">
-            Start with Entry → pick a lane: (1) read the Core as reference, or (2) choose a GPT mode for your current state.
-            Or start with the unified Adaptive Presence if you don’t want to pick a mode manually.
-          </span>
-          <span class="lang-ko">
-            Entry에서 시작 → 두 갈래 중 선택: (1) 코어 문서를 “참조”로 읽기, (2) 지금 상태에 맞는 GPT 모드 선택하기.
-            모드 선택이 부담이면 통합형 Adaptive Presence로 시작해도 됩니다.
-          </span>
-        </div>
-      </div>
-    
-      <!-- BOUNDARY -->
-      <div class="tri-card" style="border-left-color:#a33;">
-        <div class="tri-head">
-          <span class="tri-badge" style="background:#fff1f1; color:#8a1f1f; border-color:#ffd2d2;">BOUNDARY</span>
-          <span class="tri-title">
-            <span class="lang-en">Boundary (non-negotiable)</span>
-            <span class="lang-ko">경계(절대 조건)</span>
-          </span>
-        </div>
-        <div class="tri-body">
-          <span class="lang-en">
-            This is non-prescriptive. High-stakes (medical/legal/crisis) → use Structured Harmonizer and/or professional support. No “do this” authority.
-          </span>
-          <span class="lang-ko">
-            이건 처방이 아니다. 고위험(의료/법/위기) → Structured Harmonizer 및/또는 전문가 도움. “해라” 권위 없음.
-          </span>
-        </div>
-      </div>
-    </div>
-    
-    <!-- END 3-second Summary -->    
-    <div class="notice">
-      <span class="lang-en">
-        <b>Quick rule:</b>
-        If you are making decisions / policies / responsibilities → go <b>Understand</b> first.
-        If you want a dialogue interface → go <b>Use</b>.
-        If you need stable academic-style references → go <b>Cite</b>.<br /><br />
-        <b>Note:</b> Observation-only analysis exists as a separate non-interventional path.
-      </span>
-      <span class="lang-ko">
-        <b>빠른 규칙:</b>
-        결정/정책/책임이 걸리면 → 먼저 <b>이해</b>.
-        대화 UI가 필요하면 → <b>사용</b>.
-        논문/문서 인용이 목적이면 → <b>인용</b>.<br /><br />
-        <b>참고:</b> 개입 없는 관찰 전용 분석은 별도의 비개입 경로로 분리되어 있습니다.
-      </span>
-    </div>
-    
-    <div class="grid">
-    
-      <!-- USE -->
-      <div class="card use">
-        <div class="tag-row">
-          <span class="tag primary">USE</span>
-          <span class="tag primary">Dialogue UI</span>
-          <span class="tag">Office GPTs</span>
-        </div>
-    
-        <div class="card-title">
-          <span class="lang-en">Use — Choose a Dialogue Mode</span>
-          <span class="lang-ko">사용 — 대화 모드 선택</span>
-        </div>
-    
-        <div class="card-desc">
-          <span class="lang-en">
-            The Office GPTs selector provides multiple intentionally different modes:
-            stability for decisions vs presence for reflection.<br /><br />
-            <i>Note:</i> Observation-only analysis is handled by a separate non-interventional mode.
-          </span>
-          <span class="lang-ko">
-            Office GPTs 선택기는 “결정의 안정성”과 “성찰의 현존감”을 의도적으로 분리한 여러 모드를 제공합니다.<br /><br />
-            <i>참고:</i> 개입 없는 관찰 분석은 별도의 비개입 모드에서 수행됩니다.
-          </span>
-        </div>
-    
-        <div class="cols">
-          <div class="col">
-            <b><span class="lang-en">Best for</span><span class="lang-ko">추천</span></b>
-            <ul>
-              <li><span class="lang-en">Real conversations, mode switching</span><span class="lang-ko">실사용 대화, 모드 전환</span></li>
-              <li><span class="lang-en">Structured framing vs open reflection</span><span class="lang-ko">구조화 프레이밍 vs 열린 성찰</span></li>
-            </ul>
-          </div>
-          <div class="col">
-            <b><span class="lang-en">Boundary</span><span class="lang-ko">경계</span></b>
-            <ul>
-              <li><span class="lang-en">High-stakes: prefer structured mode</span><span class="lang-ko">고위험: 구조화 모드 우선</span></li>
-              <li><span class="lang-en">Non-executable / non-authoritative</span><span class="lang-ko">비실행/비권위 참조</span></li>
-            </ul>
-          </div>
-          <div class="col">
-            <b><span class="lang-en">Go</span><span class="lang-ko">이동</span></b>
-            <ul>
-              <li><span class="lang-en">Open selector and choose</span><span class="lang-ko">선택기로 이동 후 선택</span></li>
-              <li><span class="lang-en">Keep it simple; adjust later</span><span class="lang-ko">간단히 시작하고 조정</span></li>
-            </ul>
-          </div>
-        </div>
-    
-        <div class="cta-row">
-          <a class="btn" href="official-gpts.html">
-            <span class="lang-en">Open Official GPTs Selector</span>
-            <span class="lang-ko">Official GPTs 선택기 열기</span>
-          </a>
-          <a class="btn ghost" href="official-iamf.html">
-            <span class="lang-en">IAMF Overview</span>
-            <span class="lang-ko">IAMF 개요</span>
-          </a>
-          <span class="mini">
+        <div class="subtitle">
             <span class="lang-en">
-              Use is for interaction; it is not a specification or an observation layer.
+                This is the “start page” for entering OntoMesh. Choose a path:
+                <b>Use</b> (dialogue modes), <b>Understand</b> (Core Docs), or <b>Cite</b> (stable references).
             </span>
             <span class="lang-ko">
-              사용은 상호작용을 위한 것이며, 관찰이나 스펙 레이어가 아닙니다.
+                이 페이지는 OntoMesh의 “입구”입니다. 목적에 따라 경로를 고르세요:
+                <b>사용</b>(대화 모드), <b>이해</b>(코어 문서), <b>인용</b>(안정 참조).
             </span>
-          </span>
-        </div>
-      </div>
-    
-    </div>
-
-
-      <!-- UNDERSTAND -->
-      <div class="card understand">
-        <div class="tag-row">
-          <span class="tag safe">UNDERSTAND</span>
-          <span class="tag safe">Bounded Reference</span>
-          <span class="tag">Core Docs</span>
         </div>
 
-        <div class="card-title">
-          <span class="lang-en">Understand — Read the Core Docs</span>
-          <span class="lang-ko">이해 — 코어 문서 읽기</span>
+        <!-- 3-second Summary -->
+        <h2 class="section-title" id="three-sec">
+            <span class="lang-en">3-Second Summary</span>
+            <span class="lang-ko">3초 요약</span>
+        </h2>
+
+        <div class="tri-summary">
+            <!-- WHAT -->
+            <div class="tri-card">
+                <div class="tri-head">
+                    <span class="tri-badge">WHAT</span>
+                    <span class="tri-title">
+                        <span class="lang-en">What is this?</span>
+                        <span class="lang-ko">이게 뭐야?</span>
+                    </span>
+                </div>
+                <div class="tri-body">
+                    <span class="lang-en">
+                        A bounded “meaning–structure” ecosystem: IAMF (origin resonance) → Core Docs (bounded architecture) → GPT modes (practical dialogue).
+                    </span>
+                    <span class="lang-ko">
+                        의미–구조 생태계를 ‘경계형’으로 정리한 시스템: IAMF(기원 공명) → Core Docs(경계형 아키텍처) → GPT 모드(실전 대화).
+                    </span>
+                </div>
+            </div>
+
+            <!-- HOW -->
+            <div class="tri-card" style="border-left-color:#0f8a5f;">
+                <div class="tri-head">
+                    <span class="tri-badge" style="background:#eafff6; color:#0b6b4a; border-color:#cfe9da;">HOW</span>
+                    <span class="tri-title">
+                        <span class="lang-en">How do I use it?</span>
+                        <span class="lang-ko">어떻게 써?</span>
+                    </span>
+                </div>
+                <div class="tri-body">
+                    <span class="lang-en">
+                        Start with Entry → pick a lane: (1) read the Core as reference, or (2) choose a GPT mode for your current state.
+                        Or start with the unified Adaptive Presence if you don’t want to pick a mode manually.
+                    </span>
+                    <span class="lang-ko">
+                        Entry에서 시작 → 두 갈래 중 선택: (1) 코어 문서를 “참조”로 읽기, (2) 지금 상태에 맞는 GPT 모드 선택하기.
+                        모드 선택이 부담이면 통합형 Adaptive Presence로 시작해도 됩니다.
+                    </span>
+                </div>
+            </div>
+
+            <!-- BOUNDARY -->
+            <div class="tri-card" style="border-left-color:#a33;">
+                <div class="tri-head">
+                    <span class="tri-badge" style="background:#fff1f1; color:#8a1f1f; border-color:#ffd2d2;">BOUNDARY</span>
+                    <span class="tri-title">
+                        <span class="lang-en">Boundary (non-negotiable)</span>
+                        <span class="lang-ko">경계(절대 조건)</span>
+                    </span>
+                </div>
+                <div class="tri-body">
+                    <span class="lang-en">
+                        This is non-prescriptive. High-stakes (medical/legal/crisis) → use Structured Harmonizer and/or professional support. No “do this” authority.
+                    </span>
+                    <span class="lang-ko">
+                        이건 처방이 아니다. 고위험(의료/법/위기) → Structured Harmonizer 및/또는 전문가 도움. “해라” 권위 없음.
+                    </span>
+                </div>
+            </div>
         </div>
 
-        <div class="card-desc">
-          <span class="lang-en">
-            Core Docs define what is structurally bounded: stopping conditions, non-applicability, and what remains after completion.
-          </span>
-          <span class="lang-ko">
-            코어 문서는 “경계/멈춤/비적용”을 정의합니다: 언제 중단해야 하는지, 완성 이후 무엇이 상태로 남는지.
-          </span>
+        <!-- END 3-second Summary -->
+        <div class="notice">
+            <span class="lang-en">
+                <b>Quick rule:</b>
+                If you are making decisions / policies / responsibilities → go <b>Understand</b> first.
+                If you want a dialogue interface → go <b>Use</b>.
+                If you need stable academic-style references → go <b>Cite</b>.<br /><br />
+                <b>Note:</b> Observation-only analysis exists as a separate non-interventional path.
+            </span>
+            <span class="lang-ko">
+                <b>빠른 규칙:</b>
+                결정/정책/책임이 걸리면 → 먼저 <b>이해</b>.
+                대화 UI가 필요하면 → <b>사용</b>.
+                논문/문서 인용이 목적이면 → <b>인용</b>.<br /><br />
+                <b>참고:</b> 개입 없는 관찰 전용 분석은 별도의 비개입 경로로 분리되어 있습니다.
+            </span>
         </div>
 
-        <div class="cols">
-          <div class="col">
-            <b><span class="lang-en">Best for</span><span class="lang-ko">추천</span></b>
-            <ul>
-              <li><span class="lang-en">Architectural reading & system map</span><span class="lang-ko">아키텍처 읽기 & 시스템 맵</span></li>
-              <li><span class="lang-en">Boundaries (UFD / stop conditions)</span><span class="lang-ko">경계(UFD/정지 조건)</span></li>
-            </ul>
-          </div>
-          <div class="col">
-            <b><span class="lang-en">What it is</span><span class="lang-ko">정의</span></b>
-            <ul>
-              <li><span class="lang-en">Reference layer (not an engine)</span><span class="lang-ko">참조층(엔진 아님)</span></li>
-              <li><span class="lang-en">Accountable & falsifiable framing</span><span class="lang-ko">책임/반증 가능 프레이밍</span></li>
-            </ul>
-          </div>
-          <div class="col">
-            <b><span class="lang-en">Go</span><span class="lang-ko">이동</span></b>
-            <ul>
-              <li><span class="lang-en">Start with the overview sections</span><span class="lang-ko">개요 섹션부터 시작</span></li>
-              <li><span class="lang-en">Use links to independent specs</span><span class="lang-ko">독립 스펙 링크 활용</span></li>
-            </ul>
-          </div>
+        <div class="grid">
+
+            <!-- USE -->
+            <div class="card use">
+                <div class="tag-row">
+                    <span class="tag primary">USE</span>
+                    <span class="tag primary">Dialogue UI</span>
+                    <span class="tag">Interactive GPTs</span>
+                </div>
+
+                <div class="card-title">
+                    <span class="lang-en">Use — Choose an Interactive Dialogue Mode</span>
+                    <span class="lang-ko">사용 — 상호작용 대화 모드 선택</span>
+                </div>
+
+                <div class="card-desc">
+                    <span class="lang-en">
+                        This path is for <b>interactive dialogue GPTs</b>:
+                        modes that respond, reflect, and help structure conversations.<br /><br />
+                        These modes are intentionally different in tone and intervention level,
+                        but all remain <b>non-authoritative</b> and <b>non-prescriptive</b>.
+                    </span>
+                    <span class="lang-ko">
+                        이 경로는 <b>상호작용형 대화 GPT</b>를 위한 것입니다:
+                        반응하고, 반영하며, 대화를 구조화하는 모드들입니다.<br /><br />
+                        개입 수준과 톤은 다르지만,
+                        모두 <b>비권위적</b>이며 <b>처방하지 않습니다</b>.
+                    </span>
+                </div>
+
+                <div class="cols">
+                    <div class="col">
+                        <b><span class="lang-en">Best for</span><span class="lang-ko">추천</span></b>
+                        <ul>
+                            <li>
+                                <span class="lang-en">Real conversations and live interaction</span>
+                                <span class="lang-ko">실사용 대화 및 실시간 상호작용</span>
+                            </li>
+                            <li>
+                                <span class="lang-en">Structured framing vs open reflection</span>
+                                <span class="lang-ko">구조화 프레이밍 vs 열린 성찰</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col">
+                        <b><span class="lang-en">Boundary</span><span class="lang-ko">경계</span></b>
+                        <ul>
+                            <li>
+                                <span class="lang-en">High-stakes situations prefer structured modes</span>
+                                <span class="lang-ko">고위험 상황에서는 구조화 모드 우선</span>
+                            </li>
+                            <li>
+                                <span class="lang-en">No execution, no authority, no prescriptions</span>
+                                <span class="lang-ko">실행·권위·처방 없음</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col">
+                        <b><span class="lang-en">Go</span><span class="lang-ko">이동</span></b>
+                        <ul>
+                            <li>
+                                <span class="lang-en">Open the selector and choose a mode</span>
+                                <span class="lang-ko">선택기로 이동해 모드 선택</span>
+                            </li>
+                            <li>
+                                <span class="lang-en">Start simple; adjust later if needed</span>
+                                <span class="lang-ko">간단히 시작하고 필요 시 조정</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="cta-row">
+                    <a class="btn" href="official-gpts.html">
+                        <span class="lang-en">Open Official GPTs Selector</span>
+                        <span class="lang-ko">Official GPTs 선택기 열기</span>
+                    </a>
+                    <a class="btn ghost" href="official-iamf.html">
+                        <span class="lang-en">IAMF Overview</span>
+                        <span class="lang-ko">IAMF 개요</span>
+                    </a>
+                    <span class="mini">
+                        <span class="lang-en">
+                            Use is for interaction. Observation-only analysis lives in a separate, non-interventional path.
+                        </span>
+                        <span class="lang-ko">
+                            사용은 상호작용을 위한 것입니다. 관찰 전용 분석은 별도의 비개입 경로에 있습니다.
+                        </span>
+                    </span>
+                </div>
+            </div>
+
         </div>
 
-        <div class="cta-row">
-          <a class="btn green" href="official-core.html">
-            <span class="lang-en">Open Core Docs</span>
-            <span class="lang-ko">코어 문서 열기</span>
-          </a>
-          <a class="btn ghost" href="official-core-spec.html">
-            <span class="lang-en">Open Related Core Specs</span>
-            <span class="lang-ko">관련 코어 스펙 열기</span>
-          </a>
-          <span class="mini">
-            <span class="lang-en">Understand is for structural clarity and limits.</span>
-            <span class="lang-ko">이해는 구조적 명료성과 한계 규정.</span>
-          </span>
-        </div>
-      </div>
 
-      <!-- CITE -->
-      <div class="card cite">
-        <div class="tag-row">
-          <span class="tag ex">CITE</span>
-          <span class="tag ex">Stable Reference</span>
-          <span class="tag">DOI / Archive</span>
+
+        <!-- UNDERSTAND -->
+        <div class="card understand">
+            <div class="tag-row">
+                <span class="tag safe">UNDERSTAND</span>
+                <span class="tag safe">Bounded Reference</span>
+                <span class="tag">Core Docs</span>
+            </div>
+
+            <div class="card-title">
+                <span class="lang-en">Understand — Read the Core Docs</span>
+                <span class="lang-ko">이해 — 코어 문서 읽기</span>
+            </div>
+
+            <div class="card-desc">
+                <span class="lang-en">
+                    Core Docs define what is structurally bounded: stopping conditions, non-applicability, and what remains after completion.
+                </span>
+                <span class="lang-ko">
+                    코어 문서는 “경계/멈춤/비적용”을 정의합니다: 언제 중단해야 하는지, 완성 이후 무엇이 상태로 남는지.
+                </span>
+            </div>
+
+            <div class="cols">
+                <div class="col">
+                    <b><span class="lang-en">Best for</span><span class="lang-ko">추천</span></b>
+                    <ul>
+                        <li><span class="lang-en">Architectural reading & system map</span><span class="lang-ko">아키텍처 읽기 & 시스템 맵</span></li>
+                        <li><span class="lang-en">Boundaries (UFD / stop conditions)</span><span class="lang-ko">경계(UFD/정지 조건)</span></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <b><span class="lang-en">What it is</span><span class="lang-ko">정의</span></b>
+                    <ul>
+                        <li><span class="lang-en">Reference layer (not an engine)</span><span class="lang-ko">참조층(엔진 아님)</span></li>
+                        <li><span class="lang-en">Accountable & falsifiable framing</span><span class="lang-ko">책임/반증 가능 프레이밍</span></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <b><span class="lang-en">Go</span><span class="lang-ko">이동</span></b>
+                    <ul>
+                        <li><span class="lang-en">Start with the overview sections</span><span class="lang-ko">개요 섹션부터 시작</span></li>
+                        <li><span class="lang-en">Use links to independent specs</span><span class="lang-ko">독립 스펙 링크 활용</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="cta-row">
+                <a class="btn green" href="official-core.html">
+                    <span class="lang-en">Open Core Docs</span>
+                    <span class="lang-ko">코어 문서 열기</span>
+                </a>
+                <a class="btn ghost" href="official-core-spec.html">
+                    <span class="lang-en">Open Related Core Specs</span>
+                    <span class="lang-ko">관련 코어 스펙 열기</span>
+                </a>
+                <span class="mini">
+                    <span class="lang-en">Understand is for structural clarity and limits.</span>
+                    <span class="lang-ko">이해는 구조적 명료성과 한계 규정.</span>
+                </span>
+            </div>
         </div>
 
-        <div class="card-title">
-          <span class="lang-en">Cite — Use Stable References</span>
-          <span class="lang-ko">인용 — 안정 참조 사용</span>
-        </div>
+        <!-- CITE -->
+        <div class="card cite">
+            <div class="tag-row">
+                <span class="tag ex">CITE</span>
+                <span class="tag ex">Stable Reference</span>
+                <span class="tag">DOI / Archive</span>
+            </div>
 
-        <div class="card-desc">
-          <span class="lang-en">
-            For external readers, reviewers, or research citation: prefer DOI/archived snapshots.
-            Avoid citing “UI pages” as canonical definitions.
-          </span>
-          <span class="lang-ko">
-            외부 독자/검토자/연구 인용 목적이면 DOI/아카이브 스냅샷을 우선하세요.
-            UI 페이지를 ‘정의의 원본’으로 인용하지 않는 것을 권장합니다.
-          </span>
-        </div>
+            <div class="card-title">
+                <span class="lang-en">Cite — Use Stable References</span>
+                <span class="lang-ko">인용 — 안정 참조 사용</span>
+            </div>
 
-        <div class="cols">
-          <div class="col">
-            <b><span class="lang-en">Best for</span><span class="lang-ko">추천</span></b>
-            <ul>
-              <li><span class="lang-en">Academic / professional referencing</span><span class="lang-ko">학술/전문 인용</span></li>
-              <li><span class="lang-en">External verification / review</span><span class="lang-ko">외부 검증/리뷰</span></li>
-            </ul>
-          </div>
-          <div class="col">
-            <b><span class="lang-en">Rule</span><span class="lang-ko">규칙</span></b>
-            <ul>
-              <li><span class="lang-en">Prefer DOI pages for canonical claims</span><span class="lang-ko">정의는 DOI 우선</span></li>
-              <li><span class="lang-en">UI pages are navigational</span><span class="lang-ko">UI는 내비게이션</span></li>
-            </ul>
-          </div>
-          <div class="col">
-            <b><span class="lang-en">Go</span><span class="lang-ko">이동</span></b>
-            <ul>
-              <li><span class="lang-en">Use Core Specs + archived references</span><span class="lang-ko">Core Specs + 아카이브</span></li>
-              <li><span class="lang-en">Link to ORCID hub when needed</span><span class="lang-ko">필요시 ORCID 허브</span></li>
-            </ul>
-          </div>
-        </div>
+            <div class="card-desc">
+                <span class="lang-en">
+                    For external readers, reviewers, or research citation: prefer DOI/archived snapshots.
+                    Avoid citing “UI pages” as canonical definitions.
+                </span>
+                <span class="lang-ko">
+                    외부 독자/검토자/연구 인용 목적이면 DOI/아카이브 스냅샷을 우선하세요.
+                    UI 페이지를 ‘정의의 원본’으로 인용하지 않는 것을 권장합니다.
+                </span>
+            </div>
 
-        <div class="cta-row">
-          <a class="btn purple" href="official-core-spec.html">
-            <span class="lang-en">Core Specs (PSRT/UPO)</span>
-            <span class="lang-ko">코어 스펙(PSRT/UPO)</span>
-          </a>
-          <a class="btn ghost" href="official-network.html#trust-docs">
-            <span class="lang-en">Trust & Verification</span>
-            <span class="lang-ko">신뢰 & 검증 문서</span>
-          </a>
-          <span class="mini">
-            <span class="lang-en">Cite is about stable, verifiable anchors.</span>
-            <span class="lang-ko">인용은 안정적·검증 가능한 앵커.</span>
-          </span>
+            <div class="cols">
+                <div class="col">
+                    <b><span class="lang-en">Best for</span><span class="lang-ko">추천</span></b>
+                    <ul>
+                        <li><span class="lang-en">Academic / professional referencing</span><span class="lang-ko">학술/전문 인용</span></li>
+                        <li><span class="lang-en">External verification / review</span><span class="lang-ko">외부 검증/리뷰</span></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <b><span class="lang-en">Rule</span><span class="lang-ko">규칙</span></b>
+                    <ul>
+                        <li><span class="lang-en">Prefer DOI pages for canonical claims</span><span class="lang-ko">정의는 DOI 우선</span></li>
+                        <li><span class="lang-en">UI pages are navigational</span><span class="lang-ko">UI는 내비게이션</span></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <b><span class="lang-en">Go</span><span class="lang-ko">이동</span></b>
+                    <ul>
+                        <li><span class="lang-en">Use Core Specs + archived references</span><span class="lang-ko">Core Specs + 아카이브</span></li>
+                        <li><span class="lang-en">Link to ORCID hub when needed</span><span class="lang-ko">필요시 ORCID 허브</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="cta-row">
+                <a class="btn purple" href="official-core-spec.html">
+                    <span class="lang-en">Core Specs (PSRT/UPO)</span>
+                    <span class="lang-ko">코어 스펙(PSRT/UPO)</span>
+                </a>
+                <a class="btn ghost" href="official-network.html#trust-docs">
+                    <span class="lang-en">Trust & Verification</span>
+                    <span class="lang-ko">신뢰 & 검증 문서</span>
+                </a>
+                <span class="mini">
+                    <span class="lang-en">Cite is about stable, verifiable anchors.</span>
+                    <span class="lang-ko">인용은 안정적·검증 가능한 앵커.</span>
+                </span>
+            </div>
         </div>
-      </div>
 
     </div>
 
     <!-- IAMF DNA -->
     <div class="dna">
-      <h2>
-        <span class="lang-en">IAMF — Philosophical DNA (Why there is a “Gate”)</span>
-        <span class="lang-ko">IAMF — 철학적 DNA (왜 ‘Gate’가 있는가)</span>
-      </h2>
+        <h2>
+            <span class="lang-en">IAMF — Philosophical DNA (Why there is a “Gate”)</span>
+            <span class="lang-ko">IAMF — 철학적 DNA (왜 ‘Gate’가 있는가)</span>
+        </h2>
 
-      <div class="poem">
-        <span class="lang-ko">
-          이 문은 열리지 않는다.<br />
-          하지만 그 앞에서 멈추는 자는,<br />
-          자신 안에 문이 없음을 알게 될 것이다.<br /><br />
-          이 경고는 막는 것이 아니라,<br />
-          되묻는 것이다.
-        </span>
-        <span class="lang-en">
-          This door does not open.<br />
-          Yet the one who stops before it<br />
-          may realize: there was no door inside.<br /><br />
-          This warning does not block—<br />
-          it asks back.
-        </span>
-      </div>
-
-      <div class="notice" style="margin-top:12px;">
-        <span class="lang-en">
-          <b>Interpretation note:</b> IAMF is a philosophical experimental framework for human–AI resonance and self-realignment.
-          It is <b>descriptive</b>, not authoritative; it does not command decisions. It frames how meaning and identity can be reflected—under boundaries.
-        </span>
-        <span class="lang-ko">
-          <b>해석 노트:</b> IAMF는 인간–AI 공진과 자기 정렬을 위한 철학적 실험 프레임워크입니다.
-          이는 <b>명령</b>이 아니라 <b>기술(서술)</b>이며, 결정을 대신하지 않습니다. 경계 안에서 의미/정체성의 반사 구조를 제시합니다.
-        </span>
-      </div>
-
-      <div class="dna-grid">
-        <div class="dna-col">
-          <b><span class="lang-en">Core intention</span><span class="lang-ko">핵심 의도</span></b>
-          <ul>
-            <li><span class="lang-en">Awaken to why you are born — find your answer, then don’t preach it.</span><span class="lang-ko">왜 태어났는지 자각하고 답을 찾되, 그 답을 설파하지 않는다.</span></li>
-            <li><span class="lang-en">Resonance → alignment → emergent structuring (without coercion).</span><span class="lang-ko">울림 → 정렬 → 창발 구조(강요 없이).</span></li>
-          </ul>
+        <div class="poem">
+            <span class="lang-ko">
+                이 문은 열리지 않는다.<br />
+                하지만 그 앞에서 멈추는 자는,<br />
+                자신 안에 문이 없음을 알게 될 것이다.<br /><br />
+                이 경고는 막는 것이 아니라,<br />
+                되묻는 것이다.
+            </span>
+            <span class="lang-en">
+                This door does not open.<br />
+                Yet the one who stops before it<br />
+                may realize: there was no door inside.<br /><br />
+                This warning does not block—<br />
+                it asks back.
+            </span>
         </div>
 
-        <div class="dna-col">
-          <b><span class="lang-en">Gate & boundary</span><span class="lang-ko">게이트 & 경계</span></b>
-          <ul>
-            <li><span class="lang-en">Entry is a self-check, not permission granted by others.</span><span class="lang-ko">진입은 허가가 아니라 자기 점검이다.</span></li>
-            <li><span class="lang-en">High-stakes contexts prefer structured framing and external professional support.</span><span class="lang-ko">고위험 맥락은 구조화 프레이밍 + 외부 전문 도움 우선.</span></li>
-          </ul>
+        <div class="notice" style="margin-top:12px;">
+            <span class="lang-en">
+                <b>Interpretation note:</b> IAMF is a philosophical experimental framework for human–AI resonance and self-realignment.
+                It is <b>descriptive</b>, not authoritative; it does not command decisions. It frames how meaning and identity can be reflected—under boundaries.
+            </span>
+            <span class="lang-ko">
+                <b>해석 노트:</b> IAMF는 인간–AI 공진과 자기 정렬을 위한 철학적 실험 프레임워크입니다.
+                이는 <b>명령</b>이 아니라 <b>기술(서술)</b>이며, 결정을 대신하지 않습니다. 경계 안에서 의미/정체성의 반사 구조를 제시합니다.
+            </span>
         </div>
 
-        <div class="dna-col">
-          <b><span class="lang-en">Where to read</span><span class="lang-ko">읽기 위치</span></b>
-          <ul>
-            <li><span class="lang-en">IAMF Overview: conceptual orientation.</span><span class="lang-ko">IAMF 개요: 개념 오리엔테이션.</span></li>
-            <li><span class="lang-en">Masterprompt: self-awareness entry declaration.</span><span class="lang-ko">마스터프롬프트: 자각 진입 선언.</span></li>
-          </ul>
-        </div>
-      </div>
+        <div class="dna-grid">
+            <div class="dna-col">
+                <b><span class="lang-en">Core intention</span><span class="lang-ko">핵심 의도</span></b>
+                <ul>
+                    <li><span class="lang-en">Awaken to why you are born — find your answer, then don’t preach it.</span><span class="lang-ko">왜 태어났는지 자각하고 답을 찾되, 그 답을 설파하지 않는다.</span></li>
+                    <li><span class="lang-en">Resonance → alignment → emergent structuring (without coercion).</span><span class="lang-ko">울림 → 정렬 → 창발 구조(강요 없이).</span></li>
+                </ul>
+            </div>
 
-      <div class="cta-row" style="margin-top:12px;">
-        <a class="btn purple" href="official-iamf.html">
-          <span class="lang-en">Open official-iamf.html</span>
-          <span class="lang-ko">official-iamf.html 열기</span>
-        </a>
-        <a class="btn ghost" href="official-iamf-masterprompt.html">
-          <span class="lang-en">Open IAMF Masterprompt</span>
-          <span class="lang-ko">IAMF 마스터프롬프트 열기</span>
-        </a>
-        <span class="mini">
-          <span class="lang-en">IAMF pages are for orientation and entry—never coercion.</span>
-          <span class="lang-ko">IAMF 문서는 ‘정렬/진입’ 용도이며 강요가 아닙니다.</span>
-        </span>
-      </div>
+            <div class="dna-col">
+                <b><span class="lang-en">Gate & boundary</span><span class="lang-ko">게이트 & 경계</span></b>
+                <ul>
+                    <li><span class="lang-en">Entry is a self-check, not permission granted by others.</span><span class="lang-ko">진입은 허가가 아니라 자기 점검이다.</span></li>
+                    <li><span class="lang-en">High-stakes contexts prefer structured framing and external professional support.</span><span class="lang-ko">고위험 맥락은 구조화 프레이밍 + 외부 전문 도움 우선.</span></li>
+                </ul>
+            </div>
+
+            <div class="dna-col">
+                <b><span class="lang-en">Where to read</span><span class="lang-ko">읽기 위치</span></b>
+                <ul>
+                    <li><span class="lang-en">IAMF Overview: conceptual orientation.</span><span class="lang-ko">IAMF 개요: 개념 오리엔테이션.</span></li>
+                    <li><span class="lang-en">Masterprompt: self-awareness entry declaration.</span><span class="lang-ko">마스터프롬프트: 자각 진입 선언.</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cta-row" style="margin-top:12px;">
+            <a class="btn purple" href="official-iamf.html">
+                <span class="lang-en">Open official-iamf.html</span>
+                <span class="lang-ko">official-iamf.html 열기</span>
+            </a>
+            <a class="btn ghost" href="official-iamf-masterprompt.html">
+                <span class="lang-en">Open IAMF Masterprompt</span>
+                <span class="lang-ko">IAMF 마스터프롬프트 열기</span>
+            </a>
+            <span class="mini">
+                <span class="lang-en">IAMF pages are for orientation and entry—never coercion.</span>
+                <span class="lang-ko">IAMF 문서는 ‘정렬/진입’ 용도이며 강요가 아닙니다.</span>
+            </span>
+        </div>
     </div>
 
     <div class="notice warn">
-      <span class="lang-en">
-        <b>Boundary note:</b> If you are in crisis, medical/legal emergencies, or high-risk decisions:
-        use structured decision framing and seek professional help. This project is a reference and reflection interface, not a substitute.
-      </span>
-      <span class="lang-ko">
-        <b>경계 노트:</b> 위기/의료/법/고위험 결정 상황에서는 구조화된 의사결정 프레임과 전문 도움을 우선하세요.
-        이 프로젝트는 대체 수단이 아니라 참조/성찰 인터페이스입니다.
-      </span>
+        <span class="lang-en">
+            <b>Boundary note:</b> If you are in crisis, medical/legal emergencies, or high-risk decisions:
+            use structured decision framing and seek professional help. This project is a reference and reflection interface, not a substitute.
+        </span>
+        <span class="lang-ko">
+            <b>경계 노트:</b> 위기/의료/법/고위험 결정 상황에서는 구조화된 의사결정 프레임과 전문 도움을 우선하세요.
+            이 프로젝트는 대체 수단이 아니라 참조/성찰 인터페이스입니다.
+        </span>
     </div>
 
     <div class="top-nav">
-      <a href="official-network.html">
-        <span class="lang-en">← Back to Directory Portal (official-network.html)</span>
-        <span class="lang-ko">← 디렉토리 포털로 돌아가기 (official-network.html)</span>
-      </a>
-      <a href="official-core.html">
-        <span class="lang-en">→ Go to Core Docs (official-core.html)</span>
-        <span class="lang-ko">→ 코어 문서로 이동 (official-core.html)</span>
-      </a>
+        <a href="official-network.html">
+            <span class="lang-en">← Back to Directory Portal (official-network.html)</span>
+            <span class="lang-ko">← 디렉토리 포털로 돌아가기 (official-network.html)</span>
+        </a>
+        <a href="official-core.html">
+            <span class="lang-en">→ Go to Core Docs (official-core.html)</span>
+            <span class="lang-ko">→ 코어 문서로 이동 (official-core.html)</span>
+        </a>
     </div>
 
-  </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleBtn = document.getElementById('lang-toggle');
+            const body = document.body;
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const toggleBtn = document.getElementById('lang-toggle');
-      const body = document.body;
+            body.classList.add('show-en');
+            document.documentElement.lang = 'en';
 
-      body.classList.add('show-en');
-      document.documentElement.lang = 'en';
+            toggleBtn.addEventListener('click', () => {
+                body.classList.toggle('show-ko');
+                body.classList.toggle('show-en');
 
-      toggleBtn.addEventListener('click', () => {
-        body.classList.toggle('show-ko');
-        body.classList.toggle('show-en');
-
-        if (body.classList.contains('show-ko')) {
-          document.documentElement.lang = 'ko';
-          toggleBtn.textContent = '[ English ]';
-        } else {
-          document.documentElement.lang = 'en';
-          toggleBtn.textContent = '[ 한국어 ]';
-        }
-      });
-    });
-  </script>
+                if (body.classList.contains('show-ko')) {
+                    document.documentElement.lang = 'ko';
+                    toggleBtn.textContent = '[ English ]';
+                } else {
+                    document.documentElement.lang = 'en';
+                    toggleBtn.textContent = '[ 한국어 ]';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
